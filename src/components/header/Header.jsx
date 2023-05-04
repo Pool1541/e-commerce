@@ -3,12 +3,12 @@ import Button from '../elements/Button.styled';
 import { NavBar, HeaderContainer } from './Header.styled';
 import SearchBar from '../searchBar/SearchBar';
 import NavLinks from '../navLinks/NavLinks';
-
+import Logo from '../logo/Logo';
 export default function Header() {
   return (
     <HeaderContainer>
       <NavBar>
-        <div>chukg</div>
+        <Logo />
         <NavLinks />
         <SearchBar />
         <Link to='/login'>
