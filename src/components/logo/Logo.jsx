@@ -1,3 +1,3 @@
 export default function NavLinks() {
-  return <div>chukg</div>;
+  return <div>Logo</div>;
 }
