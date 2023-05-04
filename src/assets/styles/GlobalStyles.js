@@ -33,10 +33,13 @@ const GlobalStyle = createGlobalStyle`
     --mahogany : #BD4106;
     --tea-rose : #D0ACAF;
     --snow: #f4eced;
-    --white: #fff
+    --white: #fff;
     --y-green: #94BE1E;
     --gray: #777772;
     --black: #020202;
+    --paragraph-size: 1.5rem;
+    --heading2-size: 2.6rem;
+    --heading1-size: 4.5rem;
   }
 
   * {
@@ -45,6 +48,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: 'Lato', sans-serif;
+  }
+
+  h1 {
+    font-size: var(--heading1-size);
+  }
+
+  h2 {
+    font-size: var(--heading2-size);
   }
 
   html {
@@ -61,6 +72,7 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+    font-size: var(--paragraph-size);
   }
 
   button, input {
@@ -71,6 +83,10 @@ const GlobalStyle = createGlobalStyle`
 
   a, button {
     cursor: pointer;
+  }
+
+  a, button, div, span {
+    font-size: var(--paragraph-size);
   }
 
   ul {
