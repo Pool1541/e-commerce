@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <HeaderContainer>
       <NavBar>
-        <div>LOGO DE ECOMMERCE</div>
+        <div>cualquier cosa</div>
         <ul
           style={{
             display: 'flex',
