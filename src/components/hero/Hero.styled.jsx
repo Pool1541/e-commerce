@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import { Container } from '../elements/Container.styled';
 
-const HeroSection = styled.section`
-  padding: 30px 0 50px 0;
-`;
-
 export const HeroContainer = styled(Container)`
   display: flex;
   gap: 30px;
@@ -82,5 +78,3 @@ export const Slider = styled.div`
     color: var(--gray);
   }
 `;
-
-export default HeroSection;
