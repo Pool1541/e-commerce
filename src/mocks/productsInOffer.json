@@ -1,0 +1,44 @@
+{
+  "products_on_sale": [
+    {
+      "name": "Manzanas",
+      "description": "Paquete de 6 manzanas rojas",
+      "regular_price": 4.99,
+      "sale_price": 3.99,
+      "discount": 20,
+      "image": "https://assets.stickpng.com/images/580b57fbd9996e24bc43c112.png"
+    },
+    {
+      "name": "Leche",
+      "description": "Galón de leche entera",
+      "regular_price": 2.49,
+      "sale_price": 1.99,
+      "discount": 20,
+      "image": "https://www.lactaid.com/sites/lactaid_us/files/product-images/hg_whole_front_0.png"
+    },
+    {
+      "name": "Huevos",
+      "description": "Docena de huevos",
+      "regular_price": 3.99,
+      "sale_price": 2.99,
+      "discount": 25,
+      "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/926/707/products/mesa-de-trabajo-11-ab4aedeb4966ce692416358047799893-640-0.png"
+    },
+    {
+      "name": "Pan de trigo integral",
+      "description": "Pan de trigo integral recién horneado",
+      "regular_price": 2.99,
+      "sale_price": 2.49,
+      "discount": 17,
+      "image": "https://mmkfoods.pe/wp-content/uploads/2020/09/union_integral-600x600.png"
+    },
+    {
+      "name": "Yogur griego",
+      "description": "Yogur griego con fresa",
+      "regular_price": 1.29,
+      "sale_price": 0.99,
+      "discount": 23,
+      "image": "https://mevgal.com/wp-content/uploads/authentic-greek-lactose-free-yogurt-10-150gr.png"
+    }
+  ]
+}
