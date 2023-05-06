@@ -12,7 +12,7 @@ export default function Header() {
         <NavLinks />
         <SearchBar />
         <Link to='/login'>
-          <Button>Sing in</Button>
+          <Button>Sign in</Button>
         </Link>
       </NavBar>
     </HeaderContainer>
