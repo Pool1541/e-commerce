@@ -39,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
     --black: #020202;
     --p-color: #3d3d3d;
     --paragraph-size: 1.5rem;
-    --heading2-size: 2.6rem;
+    --heading2-size: 3.5rem;
     --heading1-size: 4rem;
   }
 

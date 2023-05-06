@@ -12,7 +12,7 @@ export default function HeroSlider() {
       centeredSlides={true}
       autoplay={{
         delay: 5000,
-        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
       }}
       navigation={true}
       modules={[Autoplay, Navigation]}>

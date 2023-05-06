@@ -50,9 +50,11 @@ export const Slide = styled.div`
 export const SlideImage = styled.div`
   width: 100%;
   height: 40%;
+  display: flex;
+  justify-content: center;
 
   img {
-    width: 100%;
+    width: 80%;
     height: 100%;
     object-fit: contain;
   }
