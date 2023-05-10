@@ -9,7 +9,6 @@ const SearchBarContainer = styled.form`
   position: relative;
 
   @media screen and (max-width: 1023px) {
-    width: 200px;
     padding: 0 40px 0 20px;
   }
 
@@ -28,7 +27,7 @@ const SearchBarContainer = styled.form`
   }
 
   input {
-    flex: 1 1 auto;
+    width: 100%;
     font-size: 1.5rem;
   }
 

@@ -1,13 +1,18 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper';
+import { Autoplay } from 'swiper';
 import FeaturedProductsSlide from './FeaturedProductsSlide';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
 import useSlidesPerView from '../../hooks/useSlidesPerView';
+import BREAKPOINTS from '../../assets/styles/breakPoints';
 
 const FPSwiper = styled(Swiper)`
-  padding: 0 0 0 50px;
+  padding: 0 0 0 30px;
+
+  @media screen and (${BREAKPOINTS.MOVIL_L}) {
+    padding: 0;
+  }
 `;
 
 export default function FeaturedProductsSlider() {
@@ -16,13 +21,13 @@ export default function FeaturedProductsSlider() {
   return (
     <FPSwiper
       slidesPerView={SlidesPerView}
+      centeredSlidesBounds={true}
       spaceBetween={10}
       autoplay={{
         delay: 5000,
         pauseOnMouseEnter: true,
       }}
-      navigation={true}
-      modules={[Autoplay, Navigation]}>
+      modules={[Autoplay]}>
       <SwiperSlide>
         <FeaturedProductsSlide />
       </SwiperSlide>

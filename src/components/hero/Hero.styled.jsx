@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Container } from '../elements/Container.styled';
+import BREAKPOINTS from '../../assets/styles/breakPoints';
 
 export const HeroContainer = styled(Container)`
   display: flex;
@@ -41,12 +42,29 @@ export const BannerText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: end;
+
+  hr {
+    margin: 20px 0;
+  }
+
+  @media screen and (${BREAKPOINTS.MOVIL_L}) {
+    padding: 20px 15px;
+  }
 `;
 
 export const FooterOfBanner = styled.div`
   display: flex;
   gap: 30px;
-  padding: 20px 0;
+  padding: 0 0 20px 0;
+
+  @media screen and (${BREAKPOINTS.MOVIL_L}) {
+    gap: 10px;
+    flex-direction: column-reverse;
+    padding: 0;
+    button {
+      height: 35px;
+    }
+  }
 
   button {
     white-space: nowrap;
@@ -71,6 +89,10 @@ export const Slider = styled.div`
   width: 20%;
   min-width: 230px;
   display: flex;
+
+  @media screen and (${BREAKPOINTS.TABLET_L}) {
+    display: none;
+  }
 
   .swiper-button-next:after,
   .swiper-button-prev:after {
