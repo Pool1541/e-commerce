@@ -1,0 +1,253 @@
+{
+  "dairy": {
+    "thumbnail": "https://media.smurfitkappa.com/es/-/m/images/page-hero-610-x-350/dairy.png?rev=ebf265150e10491ab92017a19dadf436",
+    "products": [
+      {
+        "name": "Leche desnatada",
+        "description": "Galón de leche desnatada",
+        "regular_price": 1.99,
+        "image": "/src/assets/images/products/lacteos/leche_desnatada.png",
+        "category": "lacteos"
+      },
+      {
+        "name": "Queso cheddar",
+        "description": "Paquete de queso cheddar rallado",
+        "regular_price": 3.49,
+        "image": "/src/assets/images/products/lacteos/queso_cheddar.png",
+        "category": "lacteos"
+      },
+      {
+        "name": "Yogur griego",
+        "description": "Yogur griego natural",
+        "regular_price": 1.29,
+        "image": "/src/assets/images/products/lacteos/yogur_griego.png",
+        "category": "lacteos"
+      },
+      {
+        "name": "Mantequilla",
+        "description": "Barra de mantequilla sin sal",
+        "regular_price": 2.99,
+        "image": "/src/assets/images/products/lacteos/matenquilla.png",
+        "category": "lacteos"
+      },
+      {
+        "name": "Leche de almendras",
+        "description": "Litro de leche de almendras sin azúcar",
+        "regular_price": 2.49,
+        "image": "/src/assets/images/products/lacteos/leche_de_almendras.png",
+        "category": "lacteos"
+      }
+    ]
+  },
+  "meats": {
+    "thumbnail": "https://www.carnesleyva.com/images/imagenes/home/servicios/carniceria/carniceria-carnes-leyva-min-min.png",
+    "products": [
+      {
+        "name": "Filete de res",
+        "description": "Filete de res de alta calidad",
+        "regular_price": 12.99,
+        "image": "/src/assets/images/products/meats/filete_de_res.png"
+      },
+      {
+        "name": "Pechuga de pollo",
+        "description": "Pechuga de pollo sin hueso y sin piel",
+        "regular_price": 6.99,
+        "image": "/src/assets/images/products/meats/pechuga_de_pollo.png"
+      },
+      {
+        "name": "Costillas de cerdo",
+        "description": "Costillas de cerdo ahumadas",
+        "regular_price": 8.99,
+        "image": "/src/assets/images/products/meats/costillas_de_cerdo.png"
+      },
+      {
+        "name": "Salchicha italiana",
+        "description": "Salchicha italiana condimentada",
+        "regular_price": 4.99,
+        "image": "/src/assets/images/products/meats/salchicha_italiana.png"
+      },
+      {
+        "name": "Carne molida",
+        "description": "Carne de res molida para hamburguesas",
+        "regular_price": 5.99,
+        "image": "/src/assets/images/products/meats/carne_molida.png"
+      }
+    ]
+  },
+  "canned": {
+    "thumbnail": "https://boyertownsalvationarmy.com/wp-content/uploads/2018/08/cans.png",
+    "products": [
+      {
+        "name": "Atún en aceite de oliva",
+        "description": "Lata de atún en aceite de oliva, 120 g",
+        "regular_price": 1.99,
+        "image": "/src/assets/images/products/canned/atun_en_aceite_de_oliva.png",
+        "category": "enlatados"
+      },
+      {
+        "name": "Sopa de tomate",
+        "description": "Lata de sopa de tomate, 300 g",
+        "regular_price": 2.49,
+        "image": "/src/assets/images/products/canned/sopa_de_tomate.png",
+        "category": "enlatados"
+      },
+      {
+        "name": "Maíz dulce",
+        "description": "Lata de maíz dulce, 200 g",
+        "regular_price": 0.99,
+        "image": "/src/assets/images/products/canned/maiz_dulce_enlatado.png",
+        "category": "enlatados"
+      },
+      {
+        "name": "Champiñones en conserva",
+        "description": "Lata de champiñones en conserva, 400 g",
+        "regular_price": 1.79,
+        "image": "/src/assets/images/products/canned/champiñones_en_conserva.png",
+        "category": "enlatados"
+      },
+      {
+        "name": "Frijoles negros",
+        "description": "Lata de frijoles negros, 400 g",
+        "regular_price": 1.29,
+        "image": "/src/assets/images/products/canned/frijoles_negros_enlatados.png",
+        "category": "enlatados"
+      }
+    ]
+  },
+  "fruits": {
+    "thumbnail": "https://www.dole.com/-/media/project/dole/produce-images/headers/dole-produce-fruit-medley.png?rev=1416123f2d094cd1b7494365948214be&hash=F89C9786C9A5F599A784D7753F82236C",
+    "products": [
+      {
+        "name": "Fresas",
+        "description": "Paquete de 500 gramos de fresas frescas",
+        "regular_price": 2.99,
+        "image": "/src/assets/images/products/fruits/fresas.png",
+        "category": "fruits"
+      },
+      {
+        "name": "Mangos",
+        "description": "Caja con 10 mangos",
+        "regular_price": 7.99,
+        "image": "/src/assets/images/products/fruits/mangos.png",
+        "category": "fruits"
+      },
+      {
+        "name": "Piñas",
+        "description": "Piñas maduras y dulces",
+        "regular_price": 3.99,
+        "image": "/src/assets/images/products/fruits/piñas.png",
+        "category": "fruits"
+      },
+      {
+        "name": "Plátanos",
+        "description": "Racimo de 10 plátanos machos",
+        "regular_price": 2.49,
+        "image": "/src/assets/images/products/fruits/platanos.png",
+        "category": "fruits"
+      },
+      {
+        "name": "Uvas",
+        "description": "Paquete de 1 kilogramo de uvas rojas",
+        "regular_price": 5.99,
+        "image": "/src/assets/images/products/fruits/uvas.png",
+        "category": "fruits"
+      }
+    ]
+  },
+  "vegetables": {
+    "thumbnail": "https://www.nicepng.com/png/full/97-970524_amantes-de-los-vegetales-production-of-food-from.png",
+    "products": [
+      {
+        "name": "Tomate",
+        "description": "Paquete de 6 tomates rojos frescos",
+        "regular_price": 2.99,
+        "image": "/src/assets/images/products/vegetables/tomate.png",
+        "category": "vegetales"
+      },
+      {
+        "name": "Lechuga",
+        "description": "Paquete de 3 lechugas verdes frescas",
+        "regular_price": 1.49,
+        "image": "/src/assets/images/products/vegetables/lechuga.png",
+        "category": "vegetales"
+      },
+      {
+        "name": "Pepino",
+        "description": "Paquete de 4 pepinos frescos",
+        "regular_price": 2.29,
+        "image": "/src/assets/images/products/vegetables/pepino.png",
+        "category": "vegetales"
+      },
+      {
+        "name": "Zanahoria",
+        "description": "Paquete de 5 zanahorias frescas",
+        "regular_price": 1.99,
+        "image": "/src/assets/images/products/vegetables/zanahoria.png",
+        "category": "vegetales"
+      },
+      {
+        "name": "Calabacín",
+        "description": "Paquete de 2 calabacines frescos",
+        "regular_price": 2.49,
+        "image": "/src/assets/images/products/vegetables/calabacin.png",
+        "category": "vegetales"
+      }
+    ]
+  },
+  "bread": {
+    "thumbnail": "https://deedeedoes.com/wp-content/uploads/2017/10/breadbasket-2705179_1920-1-1024x700.png",
+    "products": [
+      {
+        "name": "Pan blanco",
+        "description": "Pan blanco recién horneado",
+        "regular_price": 1.49,
+        "image": "/src/assets/images/products/bread/pan_blanco.png",
+        "category": "panadería"
+      },
+      {
+        "name": "Pan de centeno",
+        "description": "Pan de centeno integral con semillas",
+        "regular_price": 2.49,
+        "image": "/src/assets/images/products/bread/pan_de_centeno.png",
+        "category": "panadería"
+      },
+      {
+        "name": "Baguette",
+        "description": "Baguette francesa recién horneada",
+        "regular_price": 1.99,
+        "image": "/src/assets/images/products/bread/baguette.png",
+        "category": "panadería"
+      },
+      {
+        "name": "Croissant",
+        "description": "Croissant francés de mantequilla recién horneado",
+        "regular_price": 1.79,
+        "image": "/src/assets/images/products/bread/croissant.png",
+        "category": "panadería"
+      },
+      {
+        "name": "Pastel de zanahoria",
+        "description": "Pastel de zanahoria con crema de queso",
+        "regular_price": 12.99,
+        "image": "/src/assets/images/products/bread/pastel_de_zanahoria.png",
+        "category": "panadería"
+      }
+    ]
+  },
+  "frozen": {
+    "thumbnail": "https://revistasociosams.com/wp-content/uploads/2022/04/comida-congelada.png",
+    "products": []
+  },
+  "candies": {
+    "thumbnail": "https://www.mymexicancandy.com/product_images/uploaded_images/semana-2-2.png",
+    "products": []
+  },
+  "fish": {
+    "thumbnail": "https://fishnet.pk/wp-content/uploads/2021/09/fish.png",
+    "products": []
+  },
+  "drinks": {
+    "thumbnail": "https://wedeliverlocal.blob.core.windows.net/images/seopagesimages/alcohol.png",
+    "products": []
+  }
+}
