@@ -3,6 +3,8 @@ import { Container } from '../elements/Container.styled';
 import { GridContainer } from '../elements/GridContainer.styled';
 import { Subtitle } from '../elements/Subtitle.styled';
 import Section from '../elements/Section.styled';
+import products from '../../mocks/ProductsByCategory.json';
+import { Link } from 'react-router-dom';
 
 export default function Departments() {
   return (
@@ -10,16 +12,12 @@ export default function Departments() {
       <Container small>
         <Subtitle>Departments</Subtitle>
         <GridContainer>
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
+          {Object.keys(products).map((category, index) => (
+            <GridItem
+              key={index}
+              category={{ name: category, image: products[category].thumbnail }}
+            />
+          ))}
         </GridContainer>
       </Container>
     </Section>
@@ -33,15 +31,18 @@ const GridItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   border: 2px solid rgba(145, 145, 145, 0.32);
 `;
 
 const GridItemImage = styled.div`
-  width: 100%;
+  width: 150px;
+  height: 100px;
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
     filter: drop-shadow(3px 3px 5px #bd40064d);
   }
 `;
@@ -50,18 +51,17 @@ const GridItemTitle = styled.div`
   color: var(--mahogany);
 `;
 
-function GridItem() {
+function GridItem({ category }) {
   return (
-    <GridItemContainer>
-      <GridItemImage>
-        <img
-          src='https://www.dole.com/-/media/project/dole/produce-images/headers/dole-produce-fruit-medley.png?h=540&w=720&rev=0838c3eee98b4dbbb72b166dc3376a08&hash=B1C694F79387C1DBCCE988296505C385'
-          alt='Fruits'
-        />
-      </GridItemImage>
-      <GridItemTitle>
-        <h3>Tu Bi Shvat</h3>
-      </GridItemTitle>
-    </GridItemContainer>
+    <Link to={'/category/' + category.name}>
+      <GridItemContainer>
+        <GridItemImage>
+          <img src={category.image} alt={category.name} />
+        </GridItemImage>
+        <GridItemTitle>
+          <h3>{category.name}</h3>
+        </GridItemTitle>
+      </GridItemContainer>
+    </Link>
   );
 }
