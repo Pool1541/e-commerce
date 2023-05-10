@@ -4,6 +4,7 @@ import { NavBar, HeaderContainer } from './Header.styled';
 import SearchBar from '../searchBar/SearchBar';
 import NavLinks from '../navLinks/NavLinks';
 import Logo from '../logo/Logo';
+
 export default function Header() {
   return (
     <HeaderContainer>

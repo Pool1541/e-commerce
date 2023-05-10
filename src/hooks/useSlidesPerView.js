@@ -4,8 +4,8 @@ function setSlidesPerView(width) {
   if (width >= 1400) return 5;
   else if (width <= 1400 && width > 1100) return 4;
   else if (width <= 1100 && width > 800) return 3;
-  else if (width <= 800 && width > 600) return 2;
-  else if (width <= 600) return 1;
+  else if (width <= 800 && width > 330) return 2;
+  // else if (width <= 330) return 1;
 }
 
 export default function useSlidesPerView() {

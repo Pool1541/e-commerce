@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import Lato_Light from '../fonts/Lato-Light.woff2';
 import Lato_Regular from '../fonts/Lato-Regular.woff2';
 import Lato_Bold from '../fonts/Lato-Bold.woff2';
+import BREAKPOINTS from './breakPoints';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -41,6 +42,12 @@ const GlobalStyle = createGlobalStyle`
     --paragraph-size: 1.5rem;
     --heading2-size: 3rem;
     --heading1-size: 4rem;
+
+    @media screen and (${BREAKPOINTS.MOVIL_L}){
+      --paragraph-size: 1.4rem;
+      --heading1-size: 3rem;
+      --heading2-size: 2rem;  
+    }
   }
 
   * {
@@ -73,7 +80,6 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
-    font-size: var(--paragraph-size);
   }
 
   button, input {
@@ -84,6 +90,7 @@ const GlobalStyle = createGlobalStyle`
 
   a, button {
     cursor: pointer;
+    font-size: var(--paragraph-size);
   }
 
   a, button, div, span {
