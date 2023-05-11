@@ -40,13 +40,16 @@ const GlobalStyle = createGlobalStyle`
     --black: #020202;
     --p-color: #3d3d3d;
     --paragraph-size: 1.5rem;
+    --heading3-size: 2.5rem;
     --heading2-size: 3rem;
     --heading1-size: 4rem;
 
     @media screen and (${BREAKPOINTS.MOVIL_L}){
       --paragraph-size: 1.4rem;
-      --heading1-size: 3rem;
+      --heading3-size: 1.8rem;
       --heading2-size: 2rem;  
+      --heading1-size: 3rem;
+
     }
   }
 
@@ -66,8 +69,17 @@ const GlobalStyle = createGlobalStyle`
     font-size: var(--heading2-size);
   }
 
+  h3 {
+    font-size: var(--heading3-size);
+  }
+
   html {
     font-size: 62.5%;
+  }
+
+  *::selection {
+    background-color: #e9b5846b;
+    color: var(--tea-rose);
   }
 
   body {
