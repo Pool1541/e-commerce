@@ -1,0 +1,19 @@
+{
+  "news": [
+    {
+      "id": 1,
+      "title": "GARDEN SHOP IS NOW OPEN!",
+      "thumbnail": "/src/assets/images/flowers.jpg"
+    },
+    {
+      "id": 2,
+      "title": "CELEBRATION CAKES",
+      "thumbnail": "/src/assets/images/cake.jpg"
+    },
+    {
+      "id": 3,
+      "title": "SEE ALL OUR UPCOMING EVENTS",
+      "thumbnail": "/src/assets/images/events.jpg"
+    }
+  ]
+}

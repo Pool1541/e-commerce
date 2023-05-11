@@ -23,7 +23,7 @@ export const FPContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.7);
+    filter: brightness(0.6);
     z-index: -1;
   }
 `;
