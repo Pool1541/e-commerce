@@ -1,4 +1,5 @@
 import Departments from '../../components/departments/Departments';
+import { Main } from '../../components/elements/Main.styled';
 import FeaturedProducts from '../../components/featuredProducts/FeaturedProducts';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
@@ -9,12 +10,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <Main>
         <Hero />
         <Departments />
         <FeaturedProducts />
         <News />
-      </main>
+      </Main>
       <Footer />
     </>
   );
