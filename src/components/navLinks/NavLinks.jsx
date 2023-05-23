@@ -5,7 +5,7 @@ export default function NavLinks() {
   return (
     <NavLinkContainer>
       <li>
-        <Link>Departments</Link>
+        <Link to={'/departments'}>Departments</Link>
       </li>
       <li>
         <Link>Specials</Link>
