@@ -7,6 +7,12 @@ export default function LoginForm() {
   const [token, setToken] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
+  const [cookie, setCookie] = useState();
+
+  function showCookie() {
+    const cookies = document.cookie;
+    setCookie(cookies);
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -26,11 +32,10 @@ export default function LoginForm() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(credentials),
+          withCredentrials: true,
+          credentials: 'include',
         };
-        const response = await fetch(
-          'https://e-commerce-api-express.up.railway.app/api/auth/login',
-          options
-        );
+        const response = await fetch('http://localhost:3000/api/auth/login', options);
         const data = await response.json();
         if (!response.ok) {
           throw new Error(data.error[0]);
@@ -60,6 +65,8 @@ export default function LoginForm() {
           <div>Bienvenido {token}</div>
         )}
       </Container>
+      <button onClick={showCookie}>Show Cookies</button>
+      <div>{cookie}</div>
     </Section>
   );
 }
