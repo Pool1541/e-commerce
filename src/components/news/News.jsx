@@ -6,6 +6,8 @@ import { Container } from '../elements/Container.styled';
 import { news } from '../../mocks/News.json';
 
 export default function News() {
+  const baseURL = window.location.origin + window.location.pathname;
+
   return (
     <Section>
       <Container>
@@ -18,7 +20,7 @@ export default function News() {
           {news.map((element) => (
             <Link to={`/`} key={element.id}>
               <NewsThumbnail>
-                <img src={element.thumbnail} alt={element.title} />
+                <img src={baseURL + element.thumbnail} alt={element.title} />
                 <p>{element.title}</p>
               </NewsThumbnail>
             </Link>
