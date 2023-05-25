@@ -2,6 +2,10 @@ import { createContext, useEffect, useState } from 'react';
 import { decodedJWT } from '../utils/decodedJWT';
 
 export const AuthContext = createContext();
+export const API_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000/api'
+    : 'https://e-commerce-api-express.up.railway.app/api';
 
 export default function AuthContextProvider({ children }) {
   const [authenticatedUser, setAuthtenticatedUser] = useState({});
@@ -25,7 +29,7 @@ export default function AuthContextProvider({ children }) {
         Authorization: token,
       },
     };
-    const response = await fetch(`http://localhost:3000/api/users/${uid}`, options);
+    const response = await fetch(`${API_URL}/users/${uid}`, options);
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data.error);
@@ -38,7 +42,7 @@ export default function AuthContextProvider({ children }) {
     const options = {
       credentials: 'include',
     };
-    const response = await fetch('http://localhost:3000/api/auth/refresh', options);
+    const response = await fetch(`${API_URL}/auth/refresh`, options);
     if (!response.ok) {
       return logout();
     }
@@ -49,7 +53,7 @@ export default function AuthContextProvider({ children }) {
 
   async function logout() {
     try {
-      await fetch('http://localhost:3000/api/auth/logout', {
+      await fetch(`${API_URL}/auth/logout`, {
         credentials: 'include',
       });
       setAuthtenticatedUser({});

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../context/AuthContext';
 import { Container } from '../../../../components/elements/Container.styled';
 import { Section } from '../../../../components/elements/Section.styled';
+import { API_URL } from '../../../../context/AuthContext';
 import { StyledLoginForm } from './LoginForm.styled';
 
 export default function LoginForm() {
@@ -16,7 +17,6 @@ export default function LoginForm() {
     const entries = Object.fromEntries(formData);
     const { user, stsTokenManager } = await sendAuthData(entries);
     if (user) {
-      console.log(user, stsTokenManager);
       toast.success(`Welcome ${user.username}`);
       login({ user, stsTokenManager });
       navigate('/');
@@ -32,7 +32,7 @@ export default function LoginForm() {
           body: JSON.stringify(credentials),
           credentials: 'include',
         };
-        const response = await fetch('http://localhost:3000/api/auth/login', options);
+        const response = await fetch(`${API_URL}/auth/login`, options);
         const data = await response.json();
         if (!response.ok) {
           throw new Error(data.error);
