@@ -1,30 +1,28 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../../context/AuthContext';
 import { Container } from '../../../../components/elements/Container.styled';
 import { Section } from '../../../../components/elements/Section.styled';
 import { StyledLoginForm } from './LoginForm.styled';
 
 export default function LoginForm() {
-  const [token, setToken] = useState();
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
-  const [cookie, setCookie] = useState();
-
-  function showCookie() {
-    const cookies = document.cookie;
-    setCookie(cookies);
-  }
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError(undefined);
     const formData = new FormData(e.target);
     const entries = Object.fromEntries(formData);
-    const user = await login(entries);
+    const { user, stsTokenManager } = await sendAuthData(entries);
     if (user) {
-      setToken(user.stsTokenManager.token);
+      console.log(user, stsTokenManager);
+      toast.success(`Welcome ${user.username}`);
+      login({ user, stsTokenManager });
+      navigate('/');
     }
 
-    async function login(credentials) {
+    async function sendAuthData(credentials) {
       try {
         const options = {
           method: 'POST',
@@ -32,19 +30,18 @@ export default function LoginForm() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(credentials),
-          withCredentrials: true,
           credentials: 'include',
         };
         const response = await fetch('http://localhost:3000/api/auth/login', options);
         const data = await response.json();
         if (!response.ok) {
-          throw new Error(data.error[0]);
+          throw new Error(data.error);
         }
         return data;
       } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
+        error.message.split(',').forEach((message) => {
+          toast.error(message);
+        });
       }
     }
   }
@@ -57,16 +54,7 @@ export default function LoginForm() {
           <input type='password' placeholder='Password' name='password' />
           <button type='submit'>Login</button>
         </StyledLoginForm>
-        {loading ? (
-          <div>Cargando...</div>
-        ) : error ? (
-          <div>{error}</div>
-        ) : (
-          <div>Bienvenido {token}</div>
-        )}
       </Container>
-      <button onClick={showCookie}>Show Cookies</button>
-      <div>{cookie}</div>
     </Section>
   );
 }

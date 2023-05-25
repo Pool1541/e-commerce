@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledLoginForm = styled.form`
   min-width: 300px;
-  max-width: 800px;
+  max-width: 600px;
   padding: 40px;
   margin: auto;
   display: flex;
