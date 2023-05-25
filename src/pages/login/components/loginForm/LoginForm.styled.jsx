@@ -1,6 +1,7 @@
+import { Form } from 'formik';
 import styled from 'styled-components';
 
-export const StyledLoginForm = styled.form`
+export const StyledLoginForm = styled(Form)`
   min-width: 300px;
   max-width: 600px;
   padding: 40px;
