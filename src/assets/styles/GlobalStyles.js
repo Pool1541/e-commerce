@@ -109,6 +109,7 @@ const GlobalStyle = createGlobalStyle`
   a, button {
     cursor: pointer;
     font-size: var(--paragraph-size);
+    font-weight: 600;
   }
 
   a, button, div, span {

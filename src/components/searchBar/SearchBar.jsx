@@ -1,5 +1,5 @@
 import SearchIcon from '../../assets/icons/Search.icon';
-import Button from '../elements/Button.styled';
+import { Button } from '../elements/Button.styled';
 import SearchBarContainer from './SearchBar.styled';
 
 export default function SearchBar() {

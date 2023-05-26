@@ -3,35 +3,31 @@ import styled from 'styled-components';
 
 export const StyledLoginForm = styled(Form)`
   min-width: 300px;
-  max-width: 600px;
+  max-width: 500px;
   padding: 40px;
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+
+  input {
+    margin-bottom: 15px;
+  }
 
   h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: var(--mahogany);
   }
+`;
 
-  input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--mahogany);
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
+export const LoginButtonsContainer = styled.div`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 
   button {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--mahogany);
-    border-radius: 25px;
     margin-bottom: 10px;
-    background: var(--mahogany);
-    color: white;
-    font-weight: bold;
+    padding: 13px 0;
+    border-radius: 15px;
   }
 `;

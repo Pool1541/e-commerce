@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { NavBar, HeaderContainer } from './Header.styled';
-import Button from '../elements/Button.styled';
+import { Button } from '../elements/Button.styled';
 import SearchBar from '../searchBar/SearchBar';
 import NavLinks from '../navLinks/NavLinks';
 import Logo from '../logo/Logo';

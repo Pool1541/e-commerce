@@ -7,7 +7,7 @@ import { Toaster } from 'sonner';
 function App() {
   return (
     <Router>
-      <Toaster richColors position='bottom-right' expand={true} closeButton />
+      <Toaster richColors position='top-center' expand={true} closeButton />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />

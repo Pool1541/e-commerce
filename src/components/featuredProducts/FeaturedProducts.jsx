@@ -1,6 +1,6 @@
 import { Container } from '../elements/Container.styled';
 import { Subtitle } from '../elements/Subtitle.styled';
-import Button from '../elements/Button.styled';
+import { Button } from '../elements/Button.styled';
 import { Section } from '../elements/Section.styled';
 import { FPContainer, FPHeader, Slider } from './FeaturedProducts.styled';
 import backgroundImage from '../../assets/images/featured-products-background.jpg';
