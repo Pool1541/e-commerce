@@ -3,7 +3,6 @@ import ProfileOptions from '../profileOptions/ProfileOptions';
 import { AvatarContainer } from './Avatart.styled';
 
 export default function Avatar({ user }) {
-  const avatarClassName = 'avatar-container';
   const [options, setOptions] = useState(false);
   const image = JSON.parse(localStorage.getItem('image')) || user?.image;
 
@@ -12,17 +11,11 @@ export default function Avatar({ user }) {
   }
 
   return (
-    <AvatarContainer className={avatarClassName}>
+    <AvatarContainer>
       <button title='User options' onClick={handleClick}>
         <img src={image} alt={user?.name} />
       </button>
-      {options && (
-        <ProfileOptions
-          username={user?.username}
-          classname={avatarClassName}
-          handleClose={handleClick}
-        />
-      )}
+      {options && <ProfileOptions username={user?.username} handleClose={handleClick} />}
     </AvatarContainer>
   );
 }

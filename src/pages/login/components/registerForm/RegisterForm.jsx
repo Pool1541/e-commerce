@@ -9,6 +9,7 @@ import { handlerYupErrors, httpRequest } from '../../../../utils';
 import { ENDPOINTS } from '../../../../config/endpoints';
 import { AuthContext } from '../../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import useOutsideClick from '../../../../hooks/useOutsideClick';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -34,8 +35,9 @@ const validationSchema = Yup.object({
     .max(50, 'password must have a maximum of 20 characters'),
 });
 
-export default function RegisterForm() {
+export default function RegisterForm({ handleRegisterModal }) {
   const { login } = useContext(AuthContext);
+  const ref = useOutsideClick(handleRegisterModal);
   const navigate = useNavigate();
 
   async function handleRegister(values, { setSubmitting }) {
@@ -69,7 +71,7 @@ export default function RegisterForm() {
           password: '',
         }}
         onSubmit={handleRegister}>
-        <RegisterFormContainer>
+        <RegisterFormContainer ref={ref}>
           <h1>Register form</h1>
           <StyledFormikField type='text' placeholder='Name' name='name' />
           <StyledFormikField type='text' placeholder='Username' name='username' />

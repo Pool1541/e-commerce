@@ -3,24 +3,14 @@ import { useContext, useEffect } from 'react';
 import { GearIcon, LogoutIcon, UserIcon } from '../../assets/icons';
 import { ProfileOptionsContainer } from './ProfileOptions.styled';
 import { AuthContext } from '../../context/AuthContext';
+import useOutsideClick from '../../hooks/useOutsideClick';
 
-export default function ProfileOptions({ username, classname, handleClose }) {
+export default function ProfileOptions({ username, handleClose }) {
   const { logout } = useContext(AuthContext);
-
-  useEffect(() => {
-    function handleClick(e) {
-      const container = document.getElementsByClassName(classname)[0];
-      if (!container.contains(e.target)) {
-        handleClose();
-      }
-    }
-    window.addEventListener('click', handleClick);
-
-    return () => window.removeEventListener('click', handleClick);
-  }, []);
+  const ref = useOutsideClick(handleClose);
 
   return (
-    <ProfileOptionsContainer>
+    <ProfileOptionsContainer ref={ref}>
       <p>Welcome {username}</p>
       <ul>
         <li>
