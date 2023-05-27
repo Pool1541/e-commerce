@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { GearIcon, LogoutIcon, UserIcon } from '../../assets/icons';
 import { ProfileOptionsContainer } from './ProfileOptions.styled';
 import { AuthContext } from '../../context/AuthContext';

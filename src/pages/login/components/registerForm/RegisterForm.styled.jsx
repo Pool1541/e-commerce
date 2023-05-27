@@ -1,5 +1,11 @@
 import { Form } from 'formik';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const inner = keyframes`
+  to { 
+    transform: scale(1);
+  }
+`;
 
 export const RegisterFormBackground = styled.div`
   position: absolute;
@@ -20,6 +26,8 @@ export const RegisterFormContainer = styled(Form)`
   gap: 5px;
   border-radius: 20px;
   background-color: white;
+  transform: scale(0);
+  animation: ${inner} 0.3s ease forwards;
 
   h1 {
     text-align: center;

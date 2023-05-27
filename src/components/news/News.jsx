@@ -1,13 +1,9 @@
 import { Link } from 'react-router-dom';
 import { NewsSubtitle, NewsThumbnailsContainer, NewsThumbnail } from './News.styled';
-import { Section } from '../elements/Section.styled';
-import { Subtitle } from '../elements/Subtitle.styled';
-import { Container } from '../elements/Container.styled';
+import { Section, Subtitle, Container } from '../elements';
 import { news } from '../../mocks/News.json';
 
 export default function News() {
-  const baseURL = window.location.origin + window.location.pathname;
-
   return (
     <Section>
       <Container>
@@ -20,7 +16,7 @@ export default function News() {
           {news.map((element) => (
             <Link to={`/`} key={element.id}>
               <NewsThumbnail>
-                <img src={baseURL + element.thumbnail} alt={element.title} />
+                <img src={import.meta.env.BASE_URL + element.thumbnail} alt={element.title} />
                 <p>{element.title}</p>
               </NewsThumbnail>
             </Link>
