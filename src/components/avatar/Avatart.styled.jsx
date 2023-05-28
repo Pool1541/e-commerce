@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import BREAKPOINTS from '../../assets/styles/breakPoints';
 
 export const AvatarContainer = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   position: relative;
 
   @media screen and (${BREAKPOINTS.MOVIL_L}) {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
   }
 
   button {

@@ -20,3 +20,10 @@ export const NavBar = styled.nav`
     padding: 0 10px;
   }
 `;
+
+export const NavButtonGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: min(5rem, 5vw);
+`;
