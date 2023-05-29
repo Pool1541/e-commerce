@@ -1,5 +1,6 @@
 import { BasketIcon } from '../../assets/icons';
 import useOutsideClick from '../../hooks/useOutsideClick';
+import { Button } from '../elements';
 import {
   BasketSidebarContainer,
   BasketSidebarBackground,
@@ -7,6 +8,8 @@ import {
   BasketSidebarHeader,
   StyledBasketIcon,
   BasketSidebarTitle,
+  BasketSidebarBody,
+  BasketSidebarFooter,
 } from './BasketSidebar.styled';
 
 export default function BasketSidebar({ handleClose }) {
@@ -22,7 +25,7 @@ export default function BasketSidebar({ handleClose }) {
           </StyledBasketIcon>
           <BasketSidebarTitle>
             <h3>
-              <span>3</span> productos agregados
+              <span>5</span> productos agregados
             </h3>
             <div>
               <span>!</span>
@@ -30,11 +33,26 @@ export default function BasketSidebar({ handleClose }) {
             </div>
           </BasketSidebarTitle>
         </BasketSidebarHeader>
-        <main>
+        <BasketSidebarBody>
           <div>Producto 1</div>
           <div>Producto 2</div>
-        </main>
-        <footer></footer>
+        </BasketSidebarBody>
+        <BasketSidebarFooter>
+          <div>
+            <span>Subtotal</span>
+            <span>S/ 169.90</span>
+          </div>
+          <div>
+            <span>Descuentos</span>
+            <span>-S/ 20.00</span>
+          </div>
+          <hr />
+          <div>
+            <span>Total</span>
+            <span>S/ 149.90</span>
+          </div>
+          <Button>Finalizar pedido</Button>
+        </BasketSidebarFooter>
       </BasketSidebarContainer>
     </BasketSidebarBackground>
   );

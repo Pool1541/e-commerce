@@ -43,7 +43,6 @@ export const BasketSidebarContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 10px;
   transform: translateX(100%);
   animation: ${translateIn} 0.5s ease forwards;
 
@@ -68,6 +67,7 @@ export const BasketCloseButton = styled.button`
 
 export const BasketSidebarHeader = styled.header`
   width: 90%;
+  padding: 20px 10px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -112,7 +112,7 @@ export const BasketSidebarTitle = styled.div`
     border: 1px solid var(--mahogany);
     border-radius: 5px;
     padding: 5px 10px;
-    gap: 10px;
+    gap: 5px;
     background-color: var(--snow);
 
     span:first-child {
@@ -132,5 +132,31 @@ export const BasketSidebarTitle = styled.div`
       font-size: 1.3rem;
       font-weight: 700;
     }
+  }
+`;
+
+export const BasketSidebarBody = styled.div``;
+
+export const BasketSidebarFooter = styled.footer`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 60px;
+  background-color: var(--gray);
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  span {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  button {
+    margin-top: 10px;
   }
 `;
