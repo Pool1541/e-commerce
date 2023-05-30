@@ -8,6 +8,11 @@ export default function Basket() {
 
   function handleToggleSidebar() {
     setBasketIsOpen((prevState) => !prevState);
+    if (!basketIsOpen) {
+      document.querySelector('body').style.overflow = 'hidden';
+    } else {
+      document.querySelector('body').style.overflow = 'auto';
+    }
   }
 
   return (

@@ -54,7 +54,7 @@ export const BasketSidebarContainer = styled.div`
 export const BasketCloseButton = styled.button`
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 10px;
   color: var(--mahogany);
   font-size: 2.5rem;
   font-weight: 400;
@@ -62,6 +62,11 @@ export const BasketCloseButton = styled.button`
 
   &:hover {
     color: #eb906d;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
   }
 `;
 

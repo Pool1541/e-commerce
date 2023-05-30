@@ -8,3 +8,4 @@ export { default as UserIcon } from './User.icon';
 export { default as GearIcon } from './Gear.icon';
 export { default as LogoutIcon } from './Logout.icon';
 export { default as BasketIcon } from './Basket.icon';
+export { default as CloseIcon } from './Close.icon';

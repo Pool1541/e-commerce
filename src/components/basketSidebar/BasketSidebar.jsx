@@ -1,4 +1,4 @@
-import { BasketIcon } from '../../assets/icons';
+import { BasketIcon, CloseIcon } from '../../assets/icons';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import { Button } from '../elements';
 import {
@@ -18,7 +18,9 @@ export default function BasketSidebar({ handleClose }) {
   return (
     <BasketSidebarBackground>
       <BasketSidebarContainer ref={ref}>
-        <BasketCloseButton onClick={handleClose}>x</BasketCloseButton>
+        <BasketCloseButton onClick={handleClose}>
+          <CloseIcon />
+        </BasketCloseButton>
         <BasketSidebarHeader>
           <StyledBasketIcon>
             <BasketIcon />
