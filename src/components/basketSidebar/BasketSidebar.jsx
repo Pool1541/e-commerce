@@ -11,6 +11,7 @@ import {
   BasketSidebarBody,
   BasketSidebarFooter,
 } from './BasketSidebar.styled';
+import BasketSidebarItem from './BasketSidebarItem';
 
 export default function BasketSidebar({ handleClose }) {
   const ref = useOutsideClick(handleClose);
@@ -36,8 +37,16 @@ export default function BasketSidebar({ handleClose }) {
           </BasketSidebarTitle>
         </BasketSidebarHeader>
         <BasketSidebarBody>
-          <div>Producto 1</div>
-          <div>Producto 2</div>
+          <BasketSidebarItem />
+          <BasketSidebarItem />
+          <BasketSidebarItem />
+          <BasketSidebarItem />
+          <BasketSidebarItem />
+          <BasketSidebarItem />
+          <BasketSidebarItem />
+          <BasketSidebarItem />
+          <BasketSidebarItem />
+          <BasketSidebarItem />
         </BasketSidebarBody>
         <BasketSidebarFooter>
           <div>

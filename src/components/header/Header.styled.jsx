@@ -25,5 +25,5 @@ export const NavButtonGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: min(5rem, 5vw);
+  gap: min(3rem, 5vw);
 `;

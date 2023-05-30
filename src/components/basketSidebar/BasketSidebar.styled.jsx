@@ -131,6 +131,7 @@ export const BasketSidebarTitle = styled.div`
       color: var(--mahogany);
       font-weight: 700;
       font-size: 1rem;
+      padding: 0 0 2px 0;
     }
 
     span {
@@ -140,7 +141,11 @@ export const BasketSidebarTitle = styled.div`
   }
 `;
 
-export const BasketSidebarBody = styled.div``;
+export const BasketSidebarBody = styled.div`
+  flex: 1 1 auto;
+  padding: 0 20px;
+  overflow: auto;
+`;
 
 export const BasketSidebarFooter = styled.footer`
   width: 100%;
