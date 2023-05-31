@@ -44,7 +44,7 @@ export default function BasketSidebar({ handleClose, basket }) {
           </StyledBasketIcon>
           <BasketSidebarTitle>
             <h3>
-              <span>5</span> productos agregados
+              <span>{basket.quantity}</span> productos agregados
             </h3>
             <div>
               <span>!</span>
