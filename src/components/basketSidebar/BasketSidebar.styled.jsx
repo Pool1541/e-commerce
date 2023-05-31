@@ -135,7 +135,8 @@ export const BasketSidebarTitle = styled.div`
     }
 
     span {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      white-space: nowrap;
       font-weight: 700;
     }
   }
@@ -169,5 +170,23 @@ export const BasketSidebarFooter = styled.footer`
 
   button {
     margin-top: 10px;
+  }
+`;
+
+export const BasketEmpty = styled.div`
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  p {
+    font-size: 2rem;
   }
 `;

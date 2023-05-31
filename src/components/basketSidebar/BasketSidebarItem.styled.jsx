@@ -32,6 +32,10 @@ export const BasketSidebarItemHeader = styled.div`
   display: flex;
   justify-content: space-between;
 
+  div:first-child {
+    flex: 1 1 auto;
+  }
+
   p {
     text-transform: uppercase;
     margin-bottom: 5px;
@@ -59,10 +63,25 @@ export const BasketSidebarItemFooter = styled.div`
     width: 40%;
     border-radius: 25px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     padding: 5px 0;
     background-color: var(--snow);
     font-weight: 100;
     color: var(--black);
+
+    button {
+      display: flex;
+    }
+
+    button:first-child {
+      color: red;
+    }
+
+    button:last-child {
+      color: green;
+    }
   }
 
   div {

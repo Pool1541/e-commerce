@@ -2,9 +2,10 @@ import { BasketContainer, StyledBasketIcon, QuantityNotification } from './Baske
 import { BasketIcon } from '../../assets/icons';
 import { useState } from 'react';
 import BasketSidebar from '../basketSidebar/BasketSidebar';
-import { useMemo } from 'react';
+import useBasket from '../../hooks/useBasket';
 
 export default function Basket() {
+  const { basket } = useBasket();
   const [basketIsOpen, setBasketIsOpen] = useState(false);
 
   function handleToggleSidebar() {
@@ -20,11 +21,13 @@ export default function Basket() {
     <BasketContainer>
       <StyledBasketIcon onClick={handleToggleSidebar}>
         <BasketIcon />
-        <QuantityNotification>
-          <span>5</span>
-        </QuantityNotification>
+        {basket.quantity > 0 && (
+          <QuantityNotification>
+            <span>{basket.quantity}</span>
+          </QuantityNotification>
+        )}
       </StyledBasketIcon>
-      {basketIsOpen && <BasketSidebar handleClose={handleToggleSidebar} />}
+      {basketIsOpen && <BasketSidebar handleClose={handleToggleSidebar} basket={basket} />}
     </BasketContainer>
   );
 }

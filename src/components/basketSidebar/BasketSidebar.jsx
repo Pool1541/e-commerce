@@ -1,5 +1,4 @@
 import { BasketIcon, CloseIcon } from '../../assets/icons';
-import useBasket from '../../hooks/useBasket';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import { Button } from '../elements';
 import {
@@ -11,13 +10,27 @@ import {
   BasketSidebarTitle,
   BasketSidebarBody,
   BasketSidebarFooter,
+  BasketEmpty,
 } from './BasketSidebar.styled';
 import BasketSidebarItem from './BasketSidebarItem';
 
-export default function BasketSidebar({ handleClose }) {
-  const { basket } = useBasket();
-  // Se ejecuta el handleClose inmediatamente cuando se renderiza el componente y por eso se cierra
+export default function BasketSidebar({ handleClose, basket }) {
   const ref = useOutsideClick(handleClose);
+
+  if (basket.products.length === 0)
+    return (
+      <BasketSidebarBackground>
+        <BasketSidebarContainer ref={ref}>
+          <BasketCloseButton onClick={handleClose}>
+            <CloseIcon />
+          </BasketCloseButton>
+          <BasketEmpty>
+            <BasketIcon />
+            <p>Basket is empty</p>
+          </BasketEmpty>
+        </BasketSidebarContainer>
+      </BasketSidebarBackground>
+    );
 
   return (
     <BasketSidebarBackground>
@@ -35,7 +48,7 @@ export default function BasketSidebar({ handleClose }) {
             </h3>
             <div>
               <span>!</span>
-              <span>Tu carrito está listo para ir a pagar</span>
+              <span>Tu canasta está lista para ir a pagar</span>
             </div>
           </BasketSidebarTitle>
         </BasketSidebarHeader>

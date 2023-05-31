@@ -40,12 +40,13 @@ export const QuantityNotification = styled.div`
   }
 
   span {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--white);
     font-weight: 600;
 
     @media screen and (${BREAKPOINTS.MOVIL_L}) {
       font-size: 1rem;
+      padding: 0 0 2px 0;
     }
   }
 `;

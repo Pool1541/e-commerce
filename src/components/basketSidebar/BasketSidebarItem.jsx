@@ -1,4 +1,4 @@
-import { CloseIcon } from '../../assets/icons';
+import { CloseIcon, DashIcon, PlusIcon } from '../../assets/icons';
 import useBasket from '../../hooks/useBasket';
 import {
   BasketSidebarItemContainer,
@@ -9,7 +9,7 @@ import {
 } from './BasketSidebarItem.styled';
 
 export default function BasketSidebarItem({ image, title, brand, price, quantity, id }) {
-  const { removeFromBasket, decreaseQuantity } = useBasket();
+  const { removeFromBasket, decreaseQuantity, addToBasket } = useBasket();
 
   return (
     <BasketSidebarItemContainer>
@@ -23,15 +23,20 @@ export default function BasketSidebarItem({ image, title, brand, price, quantity
             <h3>{title}</h3>
           </div>
           <div>
-            <button onClick={() => removeFromBasket({ id })}>
+            <button onClick={() => removeFromBasket({ id, quantity })}>
               <CloseIcon />
             </button>
           </div>
         </BasketSidebarItemHeader>
         <BasketSidebarItemFooter>
           <div>
+            <button onClick={() => decreaseQuantity({ id })}>
+              <DashIcon />
+            </button>
             <span>{quantity}</span>
-            <button onClick={() => decreaseQuantity({ id })}>reduce</button>
+            <button onClick={() => addToBasket({ id })}>
+              <PlusIcon />
+            </button>
           </div>
           <div>
             S/ <span>{price}</span>
