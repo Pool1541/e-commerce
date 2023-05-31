@@ -1,4 +1,5 @@
 import { CloseIcon } from '../../assets/icons';
+import useBasket from '../../hooks/useBasket';
 import {
   BasketSidebarItemContainer,
   BasketSidebarItemFooter,
@@ -7,33 +8,33 @@ import {
   BasketSidebarItemInfo,
 } from './BasketSidebarItem.styled';
 
-export default function BasketSidebarItem() {
+export default function BasketSidebarItem({ image, title, brand, price, quantity, id }) {
+  const { removeFromBasket, decreaseQuantity } = useBasket();
+
   return (
     <BasketSidebarItemContainer>
       <BasketSidebarItemImage>
-        <img
-          src='https://vivanda.vtexassets.com/arquivos/ids/255425-96-auto'
-          alt='Whisky JOHNNIE WALKER Gold Label Reserve Botella 750ml'
-        />
+        <img src={image} alt={title} />
       </BasketSidebarItemImage>
       <BasketSidebarItemInfo>
         <BasketSidebarItemHeader>
           <div>
-            <p>JOHNNIE WALKER</p>
-            <h3>Whisky JOHNNIE WALKER Gold Label Reserve Botella 750ml</h3>
+            <p>{brand}</p>
+            <h3>{title}</h3>
           </div>
           <div>
-            <button>
+            <button onClick={() => removeFromBasket({ id })}>
               <CloseIcon />
             </button>
           </div>
         </BasketSidebarItemHeader>
         <BasketSidebarItemFooter>
           <div>
-            <span>1</span>
+            <span>{quantity}</span>
+            <button onClick={() => decreaseQuantity({ id })}>reduce</button>
           </div>
           <div>
-            S/ <span>439.80</span>
+            S/ <span>{price}</span>
           </div>
         </BasketSidebarItemFooter>
       </BasketSidebarItemInfo>

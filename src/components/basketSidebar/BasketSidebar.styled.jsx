@@ -142,6 +142,7 @@ export const BasketSidebarTitle = styled.div`
 `;
 
 export const BasketSidebarBody = styled.div`
+  width: 100%;
   flex: 1 1 auto;
   padding: 0 20px;
   overflow: auto;

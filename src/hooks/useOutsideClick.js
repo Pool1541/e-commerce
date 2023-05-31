@@ -10,14 +10,12 @@ export default function useOutsideClick(callback) {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      document.addEventListener('click', handleClick);
-    }, 100);
+    document.addEventListener('click', handleClick, true);
 
     return () => {
-      document.removeEventListener('click', handleClick);
+      document.removeEventListener('click', handleClick, true);
     };
-  }, []);
+  }, [callback]);
 
   return ref;
 }

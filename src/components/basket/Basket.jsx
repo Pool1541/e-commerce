@@ -2,6 +2,7 @@ import { BasketContainer, StyledBasketIcon, QuantityNotification } from './Baske
 import { BasketIcon } from '../../assets/icons';
 import { useState } from 'react';
 import BasketSidebar from '../basketSidebar/BasketSidebar';
+import { useMemo } from 'react';
 
 export default function Basket() {
   const [basketIsOpen, setBasketIsOpen] = useState(false);

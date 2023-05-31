@@ -1,6 +1,8 @@
 {
   "products_on_sale": [
     {
+      "id": 1,
+      "brand": "Another Brand",
       "name": "Manzanas",
       "description": "Paquete de 6 manzanas rojas",
       "regular_price": 4.99,
@@ -9,6 +11,8 @@
       "image": "https://www.lamanzanadeoro.es/wp-content/uploads/2020/11/manzana-gala2.png"
     },
     {
+      "id": 2,
+      "brand": "Another Brand",
       "name": "Leche",
       "description": "Galón de leche entera",
       "regular_price": 2.49,
@@ -17,6 +21,8 @@
       "image": "https://www.lactaid.com/sites/lactaid_us/files/product-images/hg_whole_front_0.png"
     },
     {
+      "id": 3,
+      "brand": "Another Brand",
       "name": "Huevos",
       "description": "Docena de huevos",
       "regular_price": 3.99,
@@ -25,6 +31,8 @@
       "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/926/707/products/mesa-de-trabajo-11-ab4aedeb4966ce692416358047799893-640-0.png"
     },
     {
+      "id": 4,
+      "brand": "Another Brand",
       "name": "Pan de trigo integral",
       "description": "Pan de trigo integral recién horneado",
       "regular_price": 2.99,
@@ -33,6 +41,8 @@
       "image": "https://mmkfoods.pe/wp-content/uploads/2020/09/union_integral-600x600.png"
     },
     {
+      "id": 5,
+      "brand": "Another Brand",
       "name": "Yogur griego",
       "description": "Yogur griego con fresa",
       "regular_price": 1.29,

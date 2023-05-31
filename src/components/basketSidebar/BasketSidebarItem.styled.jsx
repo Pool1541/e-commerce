@@ -11,7 +11,7 @@ export const BasketSidebarItemContainer = styled.div`
 `;
 
 export const BasketSidebarItemImage = styled.div`
-  min-width: 70px;
+  width: 70px;
   height: 70px;
 
   img {
@@ -21,6 +21,7 @@ export const BasketSidebarItemImage = styled.div`
 `;
 
 export const BasketSidebarItemInfo = styled.div`
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,17 +30,18 @@ export const BasketSidebarItemInfo = styled.div`
 
 export const BasketSidebarItemHeader = styled.div`
   display: flex;
+  justify-content: space-between;
 
   p {
     text-transform: uppercase;
     margin-bottom: 5px;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     color: var(--gray);
   }
 
   h3 {
     width: 90%;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   svg {
