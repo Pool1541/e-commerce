@@ -1,17 +1,22 @@
 import styled from 'styled-components';
+import BREAKPOINTS from '../../../../assets/styles/breakPoints';
 
 export const Slide = styled.div`
-  height: 100%;
+  height: 200px;
   display: flex;
-  padding: 10px 20px;
+  padding: 10px;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   font-weight: 700;
+  position: relative;
+  border: 1px solid var(--gray);
+  border-radius: 25px;
+  overflow: hidden;
 
   h3 {
     font-size: 1rem;
-    white-space: nowrap;
+
     color: var(--mahogany);
   }
 
@@ -22,28 +27,36 @@ export const Slide = styled.div`
   }
 
   button {
+    position: absolute;
     display: flex;
-    width: 80%;
+    top: 50%;
+    bottom: 50%;
+    width: 50%;
     height: 35px;
     padding: 5px 0;
     align-items: center;
     background-color: var(--mahogany);
     border-radius: 25px;
     color: var(--white);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
 
+    @media screen and (${BREAKPOINTS.MOVIL_L}) {
+      position: static;
+      width: 50%;
+      height: 20px;
+      padding: 0px 0;
+      opacity: 1;
+      span {
+        font-size: 0.9rem;
+      }
+    }
     span {
       flex: 1 1 auto;
     }
-
-    hr {
-      transform: rotate(180deg);
-      height: 100%;
-      margin-right: 15px;
-    }
-
-    svg {
-      margin-right: 20px;
-    }
+  }
+  &:hover button {
+    opacity: 1;
   }
 `;
 
