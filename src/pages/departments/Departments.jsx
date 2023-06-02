@@ -1,9 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import { BagIcon } from '../../assets/icons';
-import { Slide, SlideImage, SlidePrice } from '../../components/DepaSlider/DepaSlide.styled';
+import Card from './components/card/Card';
+import Header from '../../components/header/Header';
+import { Container, Main } from '../../components/elements';
+import Footer from '../../components/footer/Footer';
+import GridContainer from './components/gridContainer/GridContainer';
 
 export default function Departments() {
   const [products, setProducts] = useState();
@@ -25,22 +26,17 @@ export default function Departments() {
 
   return (
     <>
-      {products.products.map((product) => (
-        <Slide key={product._id}>
-          <h3>{product.title}</h3>
-          <SlideImage>
-            <img src={product.image} alt={product.title} />
-          </SlideImage>
-          <SlidePrice>
-            <span>{product.price}</span>
-          </SlidePrice>
-          <button>
-            <span>Add</span>
-            <hr />
-            <BagIcon />
-          </button>
-        </Slide>
-      ))}
+      <Header />
+      <Main>
+        <Container>
+          <GridContainer>
+            {products.products.map((product) => (
+              <Card key={product.id} product={product} />
+            ))}
+          </GridContainer>
+        </Container>
+      </Main>
+      <Footer />
     </>
   );
 }
