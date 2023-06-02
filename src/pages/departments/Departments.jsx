@@ -2,6 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+import { BagIcon } from '../../assets/icons';
+import { Slide, SlideImage, SlidePrice } from '../../components/DepaSlider/DepaSlide.styled';
+
 export default function Departments() {
   const [products, setProducts] = useState();
   const [loading, setLoading] = useState(true);
@@ -21,12 +24,23 @@ export default function Departments() {
   }
 
   return (
-    <div>
+    <>
       {products.products.map((product) => (
-        <div key={product._id}>
-          <h1>{product.title}</h1>
-        </div>
+        <Slide key={product._id}>
+          <h3>{product.title}</h3>
+          <SlideImage>
+            <img src={product.image} alt={product.title} />
+          </SlideImage>
+          <SlidePrice>
+            <span>{product.price}</span>
+          </SlidePrice>
+          <button>
+            <span>Add</span>
+            <hr />
+            <BagIcon />
+          </button>
+        </Slide>
       ))}
-    </div>
+    </>
   );
 }
