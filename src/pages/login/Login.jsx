@@ -7,7 +7,6 @@ import RegisterForm from './components/registerForm/RegisterForm';
 
 export default function Login() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  console.log(isRegisterModalOpen);
 
   function toggleRegisterModal() {
     setIsRegisterModalOpen((prev) => !prev);
