@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { createContext } from 'react';
+import { useState, createContext } from 'react';
+import { toFixed } from '../utils';
 
 export const BasketContext = createContext();
 const initialValue = {
   products: [],
   quantity: 0,
+  subTotal: 0,
+  discounts: 0,
   total: 0,
 };
 
@@ -53,9 +55,36 @@ export default function BasketContextProvider({ children }) {
     let quantity = 0;
     basketClone.products.forEach((product) => (quantity += product.quantity));
     basketClone.quantity = quantity;
-    localStorage.setItem('basket', JSON.stringify(basketClone));
-    setBasket(basketClone);
+    calculateSubtotal(basketClone);
   }
+
+  function calculateSubtotal(basketClone) {
+    const result = basketClone.products.reduce(
+      (acc, curr) => {
+        acc.subTotal = toFixed(acc.subTotal + curr.price * curr.quantity);
+        acc.discounts = toFixed(
+          curr.discount
+            ? acc.discounts + ((curr.price * curr.discount) / 100) * curr.quantity
+            : acc.discounts
+        );
+
+        acc.total = toFixed(acc.subTotal - acc.discounts);
+        return acc;
+      },
+      {
+        subTotal: 0,
+        discounts: 0,
+        total: 0,
+      }
+    );
+    console.log(result);
+    localStorage.setItem('basket', JSON.stringify({ ...basketClone, ...result }));
+    setBasket({ ...basketClone, ...result });
+  }
+
+  function discounts() {}
+
+  function calculateTotal() {}
 
   return (
     <BasketContext.Provider

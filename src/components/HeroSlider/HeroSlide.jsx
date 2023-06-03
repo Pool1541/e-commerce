@@ -14,6 +14,7 @@ export default function HeroSlide({ product }) {
       image: product.image,
       brand: product.brand,
       price: product.regular_price,
+      discount: product.discount,
     });
     if (successMessage) {
       toast.success(successMessage);

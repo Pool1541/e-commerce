@@ -68,16 +68,16 @@ export default function BasketSidebar({ handleClose, basket }) {
         <BasketSidebarFooter>
           <div>
             <span>Subtotal</span>
-            <span>S/ 169.90</span>
+            <span>S/ {basket.subTotal}</span>
           </div>
           <div>
             <span>Descuentos</span>
-            <span>-S/ 20.00</span>
+            <span>-S/ {basket.discounts}</span>
           </div>
           <hr />
           <div>
             <span>Total</span>
-            <span>S/ 149.90</span>
+            <span>S/ {basket.total}</span>
           </div>
           <Button>Finalizar pedido</Button>
         </BasketSidebarFooter>
