@@ -5,6 +5,8 @@ import Header from '../../components/header/Header';
 import { Container, Main } from '../../components/elements';
 import Footer from '../../components/footer/Footer';
 import GridContainer from './components/gridContainer/GridContainer';
+import FilterContainer from './components/filters/FilterContainer';
+import FilterContextProvider from '../../context/FilterContext';
 
 export default function Departments() {
   const [products, setProducts] = useState();
@@ -25,18 +27,19 @@ export default function Departments() {
   }
 
   return (
-    <>
+    <FilterContextProvider>
       <Header />
       <Main>
         <Container>
+          <FilterContainer />
           <GridContainer>
             {products.products.map((product) => (
-              <Card key={product.id} product={product} />
+              <Card key={product._id} product={product} />
             ))}
           </GridContainer>
         </Container>
       </Main>
       <Footer />
-    </>
+    </FilterContextProvider>
   );
 }

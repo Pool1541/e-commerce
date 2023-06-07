@@ -77,7 +77,7 @@ export default function BasketContextProvider({ children }) {
         total: 0,
       }
     );
-    console.log(result);
+
     localStorage.setItem('basket', JSON.stringify({ ...basketClone, ...result }));
     setBasket({ ...basketClone, ...result });
   }
