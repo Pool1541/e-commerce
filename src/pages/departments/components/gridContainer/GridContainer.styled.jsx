@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import BREAKPOINTS from '../../../../assets/styles/breakPoints';
 
 export const Grid = styled.div`
-  width: 70%;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
-  gap: 1rem;
+  grid-template-columns: repeat(5, minmax(100px, 1fr));
+  gap: 3rem;
   @media screen and (${BREAKPOINTS.MOVIL_L}) {
     width: 100%;
   }

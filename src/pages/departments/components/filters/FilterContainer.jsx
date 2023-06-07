@@ -5,16 +5,8 @@ const priceFilter = {
   title: 'price',
   filterList: [
     {
-      value: 5,
-      title: '$5.00 and under',
-    },
-    {
-      value: 10,
-      title: '$10.00 and under',
-    },
-    {
-      value: 15,
-      title: '$15.00 and under',
+      value: 0,
+      title: '',
     },
   ],
 };
@@ -68,7 +60,7 @@ export default function FilterContainer() {
     <StyledFilterContainer>
       <Filters filterList={categoryFilter.filterList} title={categoryFilter.title} />
       <Filters filterList={brandFilter.filterList} title={brandFilter.title} />
-      <Filters filterList={priceFilter.filterList} title={priceFilter.title} radio />
+      <Filters filterList={priceFilter.filterList} title={priceFilter.title} range />
     </StyledFilterContainer>
   );
 }

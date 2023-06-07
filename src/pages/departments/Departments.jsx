@@ -7,6 +7,7 @@ import Footer from '../../components/footer/Footer';
 import GridContainer from './components/gridContainer/GridContainer';
 import FilterContainer from './components/filters/FilterContainer';
 import FilterContextProvider from '../../context/FilterContext';
+import { DepartmentsContainer } from './Departments.styled';
 
 export default function Departments() {
   const [products, setProducts] = useState();
@@ -30,14 +31,14 @@ export default function Departments() {
     <FilterContextProvider>
       <Header />
       <Main>
-        <Container>
+        <DepartmentsContainer>
           <FilterContainer />
           <GridContainer>
             {products.products.map((product) => (
               <Card key={product._id} product={product} />
             ))}
           </GridContainer>
-        </Container>
+        </DepartmentsContainer>
       </Main>
       <Footer />
     </FilterContextProvider>
