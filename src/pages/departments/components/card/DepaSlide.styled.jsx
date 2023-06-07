@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import BREAKPOINTS from '../../../../assets/styles/breakPoints';
 
 export const Slide = styled.div`
-  height: 200px;
+  height: 260px;
   display: flex;
   padding: 10px;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const Slide = styled.div`
   overflow: hidden;
 
   h3 {
-    font-size: 1rem;
+    font-size: 1.3rem;
 
     color: var(--mahogany);
   }
@@ -29,10 +29,10 @@ export const Slide = styled.div`
   button {
     position: absolute;
     display: flex;
-    top: 50%;
+    top: 40%;
     bottom: 50%;
     width: 50%;
-    height: 35px;
+    height: 30px;
     padding: 5px 0;
     align-items: center;
     background-color: var(--mahogany);
@@ -62,12 +62,12 @@ export const Slide = styled.div`
 
 export const SlideImage = styled.div`
   width: 100%;
-  height: 40%;
+  height: 50%;
   display: flex;
   justify-content: center;
 
   img {
-    width: 100px;
+    width: 150px;
 
     object-fit: contain;
   }

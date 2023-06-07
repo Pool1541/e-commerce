@@ -17,5 +17,7 @@ export default function FilterContextProvider({ children }) {
     }));
   }
 
-  return <FilterContext.Provider value={{ filters }}>{children}</FilterContext.Provider>;
+  return (
+    <FilterContext.Provider value={{ filters, changeBrand }}>{children}</FilterContext.Provider>
+  );
 }
