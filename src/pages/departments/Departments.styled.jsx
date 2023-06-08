@@ -6,5 +6,5 @@ export const DepartmentsContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
   margin: 50px auto;
-  gap: 4rem;
+  gap: 1rem;
 `;

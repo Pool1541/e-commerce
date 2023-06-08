@@ -9,9 +9,8 @@ export default function Card({ product }) {
           <img src={product.image} alt={product.title} />
         </SlideImage>
         <h3>{product.title}</h3>
-
         <SlidePrice>
-          <span>{product.price}</span>
+          <span>$ {product.price}</span>
         </SlidePrice>
         <button>
           <span>Add</span>

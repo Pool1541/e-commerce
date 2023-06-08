@@ -4,7 +4,7 @@ export const StyledFilterContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 200px;
+  width: 250px;
 `;
 
 export const StyledFilters = styled.form`

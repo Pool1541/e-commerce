@@ -4,20 +4,17 @@ export const FilterContext = createContext();
 const initialValue = {
   category: [],
   brand: [],
-  maxPrice: 0,
+  price: 0,
 };
 
 export default function FilterContextProvider({ children }) {
   const [filters, setFilters] = useState(initialValue);
 
-  function changeBrand(e) {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      category: [...category, e.target.value],
-    }));
+  function changeFilters(filterName, filterValue) {
+    setFilters((prevState) => ({ ...prevState, [filterName]: filterValue }));
   }
 
   return (
-    <FilterContext.Provider value={{ filters, changeBrand }}>{children}</FilterContext.Provider>
+    <FilterContext.Provider value={{ filters, changeFilters }}>{children}</FilterContext.Provider>
   );
 }
