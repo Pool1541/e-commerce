@@ -15,7 +15,7 @@ export default function Filters({ title, filterList, range = false }) {
   }
 
   function handleRange(e) {
-    changeFilters(title, e.target.value);
+    changeFilters(title, Number(e.target.value));
   }
 
   return (
@@ -31,12 +31,12 @@ export default function Filters({ title, filterList, range = false }) {
                   type='range'
                   name={title}
                   id={id}
-                  value={filters.price}
+                  value={filters.maxPrice}
                   min={0}
-                  max={1000}
+                  max={5000}
                   onInput={handleRange}
                 />
-                <span>$ {filters.price}</span>
+                <span>$ {filters.maxPrice}</span>
               </>
             ) : (
               <>

@@ -2,7 +2,7 @@ import { StyledFilterContainer } from './Filters.styled';
 import Filters from './Filters';
 
 const priceFilter = {
-  title: 'price',
+  title: 'maxPrice',
   filterList: [
     {
       value: 0,
@@ -15,16 +15,16 @@ const categoryFilter = {
   title: 'category',
   filterList: [
     {
-      value: 'smarthphone',
-      title: 'SmarthPhone',
+      value: 'smartphones',
+      title: 'SmartPhones',
     },
     {
-      value: 'videogame',
-      title: 'Videogame',
+      value: 'videojuegos',
+      title: 'Videojuegos',
     },
     {
-      value: 'console',
-      title: 'Console',
+      value: 'consolas',
+      title: 'consolas',
     },
   ],
 };
@@ -51,6 +51,14 @@ const brandFilter = {
     {
       value: 'samsung',
       title: 'Samsung',
+    },
+    {
+      value: 'xiaomi',
+      title: 'Xiaomi',
+    },
+    {
+      value: 'meta',
+      title: 'Meta',
     },
   ],
 };

@@ -4,7 +4,7 @@ export const FilterContext = createContext();
 const initialValue = {
   category: [],
   brand: [],
-  price: 0,
+  maxPrice: 0,
 };
 
 export default function FilterContextProvider({ children }) {

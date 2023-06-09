@@ -1,3 +1,4 @@
+export * from './buildQuery';
 export * from './decodedJWT';
 export * from './handlerYupErrors';
 export * from './httpRequest';
