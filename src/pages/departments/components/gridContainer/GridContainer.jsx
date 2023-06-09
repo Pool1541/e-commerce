@@ -2,6 +2,7 @@ import { Grid } from './GridContainer.styled';
 import { useContext, useEffect, useState } from 'react';
 import { FilterContext } from '../../../../context/FilterContext';
 import { buildQuery } from '../../../../utils';
+import { API_URL, ENDPOINTS } from '../../../../config';
 import Card from '../card/Card';
 
 export default function GridContainer() {
@@ -14,7 +15,7 @@ export default function GridContainer() {
     async function getProducts() {
       try {
         const query = buildQuery(filters);
-        const response = await fetch(`http://localhost:3000/api/products/${query}`, {
+        const response = await fetch(`${API_URL}${ENDPOINTS.GET_PRODUCTS}${query}`, {
           signal: abortController.signal,
         });
         const data = await response.json();

@@ -26,6 +26,10 @@ const categoryFilter = {
       value: 'consolas',
       title: 'consolas',
     },
+    {
+      value: 'computo',
+      title: 'Computo',
+    },
   ],
 };
 

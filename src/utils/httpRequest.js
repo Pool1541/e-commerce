@@ -1,4 +1,4 @@
-import { API_URL } from '../context/AuthContext';
+import { API_URL } from '../config';
 import { toast } from 'sonner';
 
 export async function httpRequest(options, endpoint) {

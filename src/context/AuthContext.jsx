@@ -1,11 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
+import { API_URL } from '../config';
 import { decodedJWT } from '../utils/decodedJWT';
 
 export const AuthContext = createContext();
-export const API_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000/api'
-    : 'https://e-commerce-api-express.up.railway.app/api';
 
 export default function AuthContextProvider({ children }) {
   const [authenticatedUser, setAuthtenticatedUser] = useState({});
