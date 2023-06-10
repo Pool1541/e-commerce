@@ -11,3 +11,4 @@ export { default as BasketIcon } from './Basket.icon';
 export { default as CloseIcon } from './Close.icon';
 export { default as PlusIcon } from './Plus.icon';
 export { default as DashIcon } from './Dash.icon';
+export { default as CaretDownIcon } from './CaretDown.icon';

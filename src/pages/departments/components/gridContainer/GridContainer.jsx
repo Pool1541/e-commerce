@@ -35,6 +35,7 @@ export default function GridContainer() {
   if (loading) {
     return <p>Loading...</p>;
   }
+
   return (
     <Grid>
       {products.products.map((product) => (

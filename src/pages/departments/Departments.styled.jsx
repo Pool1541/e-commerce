@@ -7,9 +7,5 @@ export const DepartmentsContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
   margin: 50px auto;
-  gap: 1rem;
-
-  @media screen and (${BREAKPOINTS.TABLET_L}) {
-    flex-direction: column;
-  }
+  gap: 2rem;
 `;
