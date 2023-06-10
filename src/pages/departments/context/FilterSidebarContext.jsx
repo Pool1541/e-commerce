@@ -1,19 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createContext } from 'react';
 
-const MobileViewport = 768;
-const isDesktopViewport = window.innerWidth > MobileViewport;
+const mobileViewportWidth = 768;
+const initialValue = window.innerWidth < mobileViewportWidth;
 
 export const FilterSidebarContext = createContext();
 
 export default function FilterSidebarContextProvider({ children }) {
-  const [filtersSidebarIsOpen, setFiltersSidebarIsOpen] = useState(isDesktopViewport);
+  const [isMobileViewport, setIsMobileViewport] = useState(initialValue);
+  const [filtersSidebarIsOpen, setFiltersSidebarIsOpen] = useState(!isMobileViewport);
 
   function toggleFilterSidebar() {
-    if (!isDesktopViewport) setFiltersSidebarIsOpen(!filtersSidebarIsOpen);
+    if (isMobileViewport) setFiltersSidebarIsOpen(!filtersSidebarIsOpen);
   }
 
-  // Agragar un oyente de evento para detectar el resize del viewport y ajustar el comportamiento de la función toggle de acuerdo a ello.
+  useEffect(() => {
+    function handleResize(e) {
+      const currentViewportWidth = e.target.innerWidth;
+      if (!isMobileViewport && currentViewportWidth < mobileViewportWidth) {
+        setIsMobileViewport(true);
+        setFiltersSidebarIsOpen(false);
+      } else if (isMobileViewport && currentViewportWidth > mobileViewportWidth) {
+        setIsMobileViewport(false);
+        setFiltersSidebarIsOpen(true);
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [filtersSidebarIsOpen]);
 
   return (
     <FilterSidebarContext.Provider value={{ filtersSidebarIsOpen, toggleFilterSidebar }}>
