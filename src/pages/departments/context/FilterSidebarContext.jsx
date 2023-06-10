@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { createContext } from 'react';
 
-const MobileWith = 768;
-const initialValue = window.innerWidth > MobileWith;
+const MobileViewport = 768;
+const isDesktopViewport = window.innerWidth > MobileViewport;
 
 export const FilterSidebarContext = createContext();
 
 export default function FilterSidebarContextProvider({ children }) {
-  const [filtersSidebarIsOpen, setFiltersSidebarIsOpen] = useState(initialValue);
+  const [filtersSidebarIsOpen, setFiltersSidebarIsOpen] = useState(isDesktopViewport);
 
   function toggleFilterSidebar() {
-    setFiltersSidebarIsOpen(!filtersSidebarIsOpen);
+    if (!isDesktopViewport) setFiltersSidebarIsOpen(!filtersSidebarIsOpen);
   }
 
   return (
