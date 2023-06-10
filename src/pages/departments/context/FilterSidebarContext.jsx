@@ -29,7 +29,7 @@ export default function FilterSidebarContextProvider({ children }) {
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, [filtersSidebarIsOpen]);
+  }, [isMobileViewport]);
 
   return (
     <FilterSidebarContext.Provider value={{ filtersSidebarIsOpen, toggleFilterSidebar }}>
