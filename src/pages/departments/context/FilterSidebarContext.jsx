@@ -13,6 +13,8 @@ export default function FilterSidebarContextProvider({ children }) {
     if (!isDesktopViewport) setFiltersSidebarIsOpen(!filtersSidebarIsOpen);
   }
 
+  // Agragar un oyente de evento para detectar el resize del viewport y ajustar el comportamiento de la función toggle de acuerdo a ello.
+
   return (
     <FilterSidebarContext.Provider value={{ filtersSidebarIsOpen, toggleFilterSidebar }}>
       {children}

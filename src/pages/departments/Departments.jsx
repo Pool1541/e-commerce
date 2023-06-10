@@ -5,8 +5,8 @@ import GridContainer from './components/gridContainer/GridContainer';
 import FilterContainer from './components/filters/FilterContainer';
 import FilterContextProvider from '../../context/FilterContext';
 import { DepartmentsContainer } from './Departments.styled';
-import Sort from './components/sort/Sort';
 import FilterSidebarContextProvider from './context/FilterSidebarContext';
+import Buttons from './components/buttons/Buttons';
 
 export default function Departments() {
   return (
@@ -17,7 +17,7 @@ export default function Departments() {
           <DepartmentsContainer>
             <FilterContainer />
             <div>
-              <Sort />
+              <Buttons />
               <GridContainer />
               <div
                 style={{

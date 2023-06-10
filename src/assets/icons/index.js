@@ -12,3 +12,5 @@ export { default as CloseIcon } from './Close.icon';
 export { default as PlusIcon } from './Plus.icon';
 export { default as DashIcon } from './Dash.icon';
 export { default as CaretDownIcon } from './CaretDown.icon';
+export { default as FilterICon } from './Filter.icon';
+export { default as SortIcon } from './Sort.icon';
