@@ -5,7 +5,7 @@ import { CaretDownIcon } from '../../../../assets/icons';
 import { useState } from 'react';
 
 export default function Filters({ title, filterList, range = false }) {
-  const { filters, changeFilters } = useContext(FilterContext);
+  const { changeFilters } = useContext(FilterContext);
   const [open, setOpen] = useState(false);
 
   function handleOpen(e) {
@@ -35,31 +35,39 @@ export default function Filters({ title, filterList, range = false }) {
         </span>
       </button>
       {filterList.map((item) => {
-        const id = useId();
         return (
-          <FilterWrapper key={id}>
+          <FilterWrapper key={item.title}>
             {range ? (
-              <FilterRange>
-                <input
-                  type='range'
-                  name={title}
-                  id={id}
-                  value={filters.maxPrice}
-                  min={0}
-                  max={5000}
-                  onInput={handleRange}
-                />
-                <span>$ {filters.maxPrice}</span>
-              </FilterRange>
+              <RangeInput inputData={item} controller={handleRange} />
             ) : (
-              <>
-                <input type='checkbox' name={title} id={id} value={item.value} />
-                <label htmlFor={id}>{item.title}</label>
-              </>
+              <CheckedInput inputData={item} title={title} />
             )}
           </FilterWrapper>
         );
       })}
     </StyledFilters>
+  );
+}
+
+function CheckedInput({ inputData, title }) {
+  const { filters } = useContext(FilterContext);
+  const id = useId();
+  const isChecked = filters[title].includes(inputData.value);
+
+  return (
+    <>
+      <input type='checkbox' id={id} value={inputData.value} defaultChecked={isChecked} />
+      <label htmlFor={id}>{inputData.title}</label>
+    </>
+  );
+}
+
+function RangeInput({ controller }) {
+  const { filters } = useContext(FilterContext);
+  return (
+    <FilterRange>
+      <input type='range' value={filters.maxPrice} min={0} max={5000} onInput={controller} />
+      <span>$ {filters.maxPrice}</span>
+    </FilterRange>
   );
 }
