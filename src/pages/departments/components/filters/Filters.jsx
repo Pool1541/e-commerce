@@ -16,29 +16,29 @@ export default function Filters({ title, filterList, range = false }) {
   function handleChange(e) {
     const nodes = e.target.form.querySelectorAll('input');
     const filters = Array.from(nodes).reduce((acc, curr) => {
-      if (curr.checked) acc.push(curr.value);
+      let filterObject = {
+        value: +curr.value || curr.value,
+        checked: (+curr.value && true) || curr.checked,
+      };
+      acc.push(filterObject);
       return acc;
     }, []);
     changeFilters(title, filters);
   }
 
-  function handleRange(e) {
-    changeFilters(title, Number(e.target.value));
-  }
-
   return (
-    <StyledFilters onInput={range ? () => {} : handleChange} open={open}>
+    <StyledFilters onChange={range ? () => {} : handleChange} open={open}>
       <button onClick={handleOpen}>
         <h4>{title}</h4>
         <span>
           <CaretDownIcon />
         </span>
       </button>
-      {filterList.map((item) => {
+      {filterList.map((item, index) => {
         return (
-          <FilterWrapper key={item.title}>
+          <FilterWrapper key={index}>
             {range ? (
-              <RangeInput inputData={item} controller={handleRange} />
+              <RangeInput inputData={item} controller={handleChange} />
             ) : (
               <CheckedInput inputData={item} title={title} />
             )}
@@ -49,25 +49,24 @@ export default function Filters({ title, filterList, range = false }) {
   );
 }
 
-function CheckedInput({ inputData, title }) {
-  const { filters } = useContext(FilterContext);
+function CheckedInput({ inputData }) {
+  const { checked, value } = inputData;
   const id = useId();
-  const isChecked = filters[title].includes(inputData.value);
 
   return (
     <>
-      <input type='checkbox' id={id} value={inputData.value} defaultChecked={isChecked} />
-      <label htmlFor={id}>{inputData.title}</label>
+      <input type='checkbox' id={id} value={value} defaultChecked={checked} />
+      <label htmlFor={id}>{value}</label>
     </>
   );
 }
 
-function RangeInput({ controller }) {
-  const { filters } = useContext(FilterContext);
+function RangeInput({ inputData, controller }) {
+  const { value } = inputData;
   return (
     <FilterRange>
-      <input type='range' value={filters.maxPrice} min={0} max={5000} onInput={controller} />
-      <span>$ {filters.maxPrice}</span>
+      <input type='range' defaultValue={value} min={0} max={5000} onChange={controller} />
+      <span>$ {value}</span>
     </FilterRange>
   );
 }
