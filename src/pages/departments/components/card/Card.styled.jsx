@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import BREAKPOINTS from '../../../../assets/styles/breakPoints';
 
 export const Slide = styled.div`
-  height: 260px;
+  height: 300px;
   display: flex;
   padding: 10px;
   flex-direction: column;
@@ -10,14 +10,29 @@ export const Slide = styled.div`
   align-items: center;
   font-weight: 700;
   position: relative;
-  border: 1px solid var(--gray);
+
+  box-shadow: 1px 1px 10px 1px #00000013;
   border-radius: 25px;
   overflow: hidden;
 
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  &:hover {
+    outline: 2px solid #00000036;
+  }
+
   h3 {
     font-size: 1.3rem;
-
-    color: var(--mahogany);
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--p-color);
   }
 
   p {
@@ -62,14 +77,14 @@ export const Slide = styled.div`
 
 export const SlideImage = styled.div`
   width: 100%;
-  height: 50%;
+  height: 60%;
   display: flex;
   justify-content: center;
 
   img {
-    width: 150px;
-
+    width: 100%;
     object-fit: contain;
+    transition: transform 0.2s ease;
   }
 `;
 

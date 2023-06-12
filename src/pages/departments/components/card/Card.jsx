@@ -1,7 +1,9 @@
-import { BagIcon } from '../../../../assets/icons';
-import { Slide, SlideImage, SlidePrice } from './DepaSlide.styled';
+import { formatCurrency } from '../../../../utils/formatCurrency';
+import { Slide, SlideImage, SlidePrice } from './Card.styled';
 
 export default function Card({ product }) {
+  const currency = formatCurrency(product.price);
+
   return (
     <>
       <Slide>
@@ -10,7 +12,7 @@ export default function Card({ product }) {
         </SlideImage>
         <h3>{product.title}</h3>
         <SlidePrice>
-          <span>$ {product.price}</span>
+          <span>{currency}</span>
         </SlidePrice>
         <button>
           <span>Add</span>
