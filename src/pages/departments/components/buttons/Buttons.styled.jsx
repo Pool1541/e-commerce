@@ -17,9 +17,14 @@ export const StyledButtonsContainer = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+
+    span {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+    }
   }
 
-  button:first-child {
+  > button:first-child {
     display: none;
 
     @media screen and (${BREAKPOINTS.TABLET_L}) {
@@ -29,6 +34,8 @@ export const StyledButtonsContainer = styled.div`
 
   @media screen and (${BREAKPOINTS.TABLET_L}) {
     justify-content: center;
+    max-width: 400px;
+    margin: auto;
 
     button {
       width: 50%;
@@ -51,9 +58,6 @@ export const StyledSortButtonContainer = styled.div`
 
   @media screen and (${BREAKPOINTS.TABLET_L}) {
     width: 50%;
-    span {
-      display: none;
-    }
 
     button {
       width: 100%;

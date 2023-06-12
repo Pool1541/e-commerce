@@ -39,7 +39,7 @@ export default function GridContainer() {
   return (
     <Grid>
       {products.products.map((product) => (
-        <Card key={product._id} product={product} />
+        <Card key={product.id} product={product} />
       ))}
     </Grid>
   );

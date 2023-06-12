@@ -10,7 +10,7 @@ export default function Buttons() {
     <StyledButtonsContainer>
       <Button onClick={toggleFilterSidebar}>
         <FilterIcon />
-        Filtrar
+        <span>Filtrar</span>
       </Button>
       <SortButton />
     </StyledButtonsContainer>
