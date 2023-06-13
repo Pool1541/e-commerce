@@ -41,37 +41,12 @@ export const Slide = styled.div`
     color: var(--p-color);
   }
 
-  button {
-    position: absolute;
-    display: flex;
-    top: 40%;
-    bottom: 50%;
-    width: 50%;
-    height: 30px;
-    padding: 5px 0;
-    align-items: center;
-    background-color: var(--mahogany);
-    border-radius: 25px;
-    color: var(--white);
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-
-    @media screen and (${BREAKPOINTS.MOVIL_L}) {
-      position: static;
-      width: 50%;
-      height: 20px;
-      padding: 0px 0;
-      opacity: 1;
-      span {
-        font-size: 0.9rem;
-      }
-    }
-    span {
-      flex: 1 1 auto;
-    }
+  @media screen and (${BREAKPOINTS.MOVIL_L}) {
+    height: 250px;
   }
-  &:hover button {
-    opacity: 1;
+
+  @media screen and (${BREAKPOINTS.MOVIL_S}) {
+    height: 200px;
   }
 `;
 

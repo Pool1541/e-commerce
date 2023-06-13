@@ -1,12 +1,12 @@
 import Header from '../../components/header/Header';
-import { Main } from '../../components/elements';
 import Footer from '../../components/footer/Footer';
+import Buttons from './components/buttons/Buttons';
 import GridContainer from './components/gridContainer/GridContainer';
 import FilterContainer from './components/filters/FilterContainer';
 import FilterContextProvider from '../../context/FilterContext';
-import { DepartmentsContainer } from './Departments.styled';
 import FilterSidebarContextProvider from './context/FilterSidebarContext';
-import Buttons from './components/buttons/Buttons';
+import { DepartmentsContainer } from './Departments.styled';
+import { Main } from '../../components/elements';
 
 export default function Departments() {
   return (
@@ -16,7 +16,7 @@ export default function Departments() {
         <Main>
           <DepartmentsContainer>
             <FilterContainer />
-            <div>
+            <div style={{ flex: '1 1 auto' }}>
               <Buttons />
               <GridContainer />
               <div
