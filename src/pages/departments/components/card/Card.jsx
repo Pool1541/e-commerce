@@ -6,7 +6,7 @@ export default function Card({ product }) {
   const currency = formatCurrency(product.price);
 
   return (
-    <Link to={`/departments/${product.id}`}>
+    <Link to={`/product/${product.id}`}>
       <Slide>
         <SlideImage>
           <img src={product.image} alt={product.title} />

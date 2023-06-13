@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createContext } from 'react';
 
 const mobileViewportWidth = 768;
-const initialValue = window.innerWidth < mobileViewportWidth;
+const initialValue = window.innerWidth <= mobileViewportWidth;
 
 export const FilterSidebarContext = createContext();
 
@@ -17,10 +17,10 @@ export default function FilterSidebarContextProvider({ children }) {
   useEffect(() => {
     function handleResize(e) {
       const currentViewportWidth = e.target.innerWidth;
-      if (!isMobileViewport && currentViewportWidth < mobileViewportWidth) {
+      if (!isMobileViewport && currentViewportWidth <= mobileViewportWidth) {
         setIsMobileViewport(true);
         setFiltersSidebarIsOpen(false);
-      } else if (isMobileViewport && currentViewportWidth > mobileViewportWidth) {
+      } else if (isMobileViewport && currentViewportWidth >= mobileViewportWidth) {
         setIsMobileViewport(false);
         setFiltersSidebarIsOpen(true);
       }
