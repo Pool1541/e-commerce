@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const BasketSidebarItemContainer = styled.div`
   display: flex;
+  align-items: center;
   gap: 20px;
   padding: 20px 0;
 
@@ -11,16 +12,19 @@ export const BasketSidebarItemContainer = styled.div`
 `;
 
 export const BasketSidebarItemImage = styled.div`
-  width: 70px;
-  height: 70px;
+  width: 35%;
+  height: 80px;
+  overflow: hidden;
 
   img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 `;
 
 export const BasketSidebarItemInfo = styled.div`
+  width: 70%;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
