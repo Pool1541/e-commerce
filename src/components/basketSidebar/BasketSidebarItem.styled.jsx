@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import BREAKPOINTS from '../../assets/styles/breakPoints';
 
 export const BasketSidebarItemContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 20px 0;
+  gap: 1rem;
+  padding: 1.5rem 0;
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--gray);
@@ -13,7 +14,7 @@ export const BasketSidebarItemContainer = styled.div`
 
 export const BasketSidebarItemImage = styled.div`
   width: 35%;
-  height: 80px;
+  height: 100%;
   overflow: hidden;
 
   img {
@@ -50,6 +51,12 @@ export const BasketSidebarItemHeader = styled.div`
   h3 {
     width: 90%;
     font-size: 1.5rem;
+    word-break: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   svg {
@@ -65,6 +72,7 @@ export const BasketSidebarItemFooter = styled.div`
 
   div:first-child {
     width: 40%;
+    min-width: 90px;
     border-radius: 25px;
     text-align: center;
     display: flex;

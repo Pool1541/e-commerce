@@ -76,6 +76,10 @@ export const BasketSidebarHeader = styled.header`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media screen and (${BREAKPOINTS.MOVIL_S}) {
+    padding: 15px 5px;
+  }
 `;
 
 export const StyledBasketIcon = styled.div`
@@ -87,6 +91,14 @@ export const StyledBasketIcon = styled.div`
   height: 60px;
   border-radius: 50px;
   box-shadow: 1px 1px 5px 1px #24242426;
+
+  @media screen and (${BREAKPOINTS.MOVIL_S}) {
+    border-radius: 0;
+    width: unset;
+    height: unset;
+    box-shadow: none;
+  }
+
   svg {
     width: 33px;
     height: 33px;
@@ -157,6 +169,11 @@ export const BasketSidebarFooter = styled.footer`
   padding: 20px 60px;
   background-color: var(--gray);
 
+  @media screen and (${BREAKPOINTS.MOVIL_S}) {
+    padding: 10px 50px;
+    gap: 5px;
+  }
+
   div {
     display: flex;
     justify-content: space-between;
@@ -170,6 +187,10 @@ export const BasketSidebarFooter = styled.footer`
 
   button {
     margin-top: 10px;
+
+    @media screen and (${BREAKPOINTS.MOVIL_S}) {
+      margin-top: 5px;
+    }
   }
 `;
 
