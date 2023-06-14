@@ -1,13 +1,31 @@
-import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../../../utils/formatCurrency';
-import { Slide, SlideImage, SlidePrice } from './Card.styled';
+import { Slide, SlideImage, SlidePrice, CardLink, AddButton } from './Card.styled';
+import useBasket from '../../../../hooks/useBasket';
+import { toast } from 'sonner';
 
 export default function Card({ product }) {
   const currency = formatCurrency(product.price);
 
+  const { addToBasket } = useBasket();
+
+  function addProduct(successMessage) {
+    addToBasket({
+      id: product.id,
+      title: product.title,
+      name: product.title,
+      image: product.image,
+      brand: product.brand,
+      price: product.price,
+      discount: product.discount,
+    });
+    if (successMessage) {
+      toast.success(successMessage);
+    }
+  }
+
   return (
-    <Link to={`/product/${product.id}`}>
-      <Slide>
+    <Slide>
+      <CardLink to={`/product/${product.id}`}>
         <SlideImage>
           <img src={product.image} alt={product.title} />
         </SlideImage>
@@ -15,7 +33,10 @@ export default function Card({ product }) {
         <SlidePrice>
           <span>{currency}</span>
         </SlidePrice>
-      </Slide>
-    </Link>
+      </CardLink>
+      <AddButton onClick={() => addProduct('Se ha agregado el producto a tu canasta')}>
+        Agregar al carrito
+      </AddButton>
+    </Slide>
   );
 }

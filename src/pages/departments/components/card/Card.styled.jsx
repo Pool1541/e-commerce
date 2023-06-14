@@ -1,26 +1,27 @@
 import styled from 'styled-components';
 import BREAKPOINTS from '../../../../assets/styles/breakPoints';
+import { Link } from 'react-router-dom';
+import { Button } from '../../../../components/elements';
 
 export const Slide = styled.div`
   height: 300px;
   display: flex;
-  padding: 10px;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   font-weight: 700;
   position: relative;
-
   box-shadow: 1px 1px 10px 1px #00000013;
   border-radius: 25px;
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 1px 1px 10px 1px #0000003b;
+  }
 
   &:hover img {
     transform: scale(1.1);
-  }
-
-  &:hover {
-    outline: 2px solid #00000036;
   }
 
   h3 {
@@ -44,9 +45,18 @@ export const Slide = styled.div`
   @media screen and (${BREAKPOINTS.MOVIL_L}) {
     height: 250px;
   }
+`;
 
-  @media screen and (${BREAKPOINTS.MOVIL_S}) {
-    height: 200px;
+export const CardLink = styled(Link)`
+  height: 90%;
+  max-height: 263px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media screen and (${BREAKPOINTS.MOVIL_L}) {
+    max-height: 213px;
   }
 `;
 
@@ -72,5 +82,14 @@ export const SlidePrice = styled.div`
   span:nth-child(2) {
     color: var(--gray);
     text-decoration: line-through;
+  }
+`;
+
+export const AddButton = styled(Button)`
+  width: 100%;
+  border-radius: 0;
+
+  @media screen and (${BREAKPOINTS.MOVIL_S}) {
+    font-size: 1.3rem;
   }
 `;
