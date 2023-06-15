@@ -1,5 +1,6 @@
 import { BasketIcon, CloseIcon } from '../../assets/icons';
 import useOutsideClick from '../../hooks/useOutsideClick';
+import { formatCurrency } from '../../utils';
 import { Button } from '../elements';
 import {
   BasketSidebarContainer,
@@ -13,9 +14,11 @@ import {
   BasketEmpty,
 } from './BasketSidebar.styled';
 import BasketSidebarItem from './BasketSidebarItem';
+import useLockedBody from '../../hooks/useLockedBody';
 
-export default function BasketSidebar({ handleClose, basket }) {
+export default function BasketSidebar({ isOpen, handleClose, basket }) {
   const ref = useOutsideClick(handleClose);
+  useLockedBody(isOpen);
 
   if (basket.products.length === 0)
     return (
@@ -68,16 +71,16 @@ export default function BasketSidebar({ handleClose, basket }) {
         <BasketSidebarFooter>
           <div>
             <span>Subtotal</span>
-            <span>S/ {basket.subTotal}</span>
+            <span>{formatCurrency(basket.subTotal)}</span>
           </div>
           <div>
             <span>Descuentos</span>
-            <span>-S/ {basket.discounts}</span>
+            <span>- {formatCurrency(basket.discounts)}</span>
           </div>
           <hr />
           <div>
             <span>Total</span>
-            <span>S/ {basket.total}</span>
+            <span>{formatCurrency(basket.total)}</span>
           </div>
           <Button>Finalizar pedido</Button>
         </BasketSidebarFooter>

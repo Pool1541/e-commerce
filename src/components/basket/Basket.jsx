@@ -10,11 +10,6 @@ export default function Basket() {
 
   function handleToggleSidebar() {
     setBasketIsOpen((prevState) => !prevState);
-    if (!basketIsOpen) {
-      document.querySelector('body').style.overflow = 'hidden';
-    } else {
-      document.querySelector('body').style.overflow = 'auto';
-    }
   }
 
   return (
@@ -27,7 +22,9 @@ export default function Basket() {
           </QuantityNotification>
         )}
       </StyledBasketIcon>
-      {basketIsOpen && <BasketSidebar handleClose={handleToggleSidebar} basket={basket} />}
+      {basketIsOpen && (
+        <BasketSidebar isOpen={basketIsOpen} handleClose={handleToggleSidebar} basket={basket} />
+      )}
     </BasketContainer>
   );
 }

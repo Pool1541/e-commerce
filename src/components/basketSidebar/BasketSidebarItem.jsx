@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { CloseIcon, DashIcon, PlusIcon } from '../../assets/icons';
 import useBasket from '../../hooks/useBasket';
+import { formatCurrency } from '../../utils';
 import {
   BasketSidebarItemContainer,
   BasketSidebarItemFooter,
@@ -20,7 +22,9 @@ export default function BasketSidebarItem({ image, title, brand, price, quantity
         <BasketSidebarItemHeader>
           <div>
             <p>{brand}</p>
-            <h3>{title}</h3>
+            <h3>
+              <Link to={`/product/${id}`}>{title}</Link>
+            </h3>
           </div>
           <div>
             <button onClick={() => removeFromBasket({ id, quantity })}>
@@ -39,7 +43,7 @@ export default function BasketSidebarItem({ image, title, brand, price, quantity
             </button>
           </div>
           <div>
-            S/ <span>{price}</span>
+            <span>{formatCurrency(price)}</span>
           </div>
         </BasketSidebarItemFooter>
       </BasketSidebarItemInfo>
