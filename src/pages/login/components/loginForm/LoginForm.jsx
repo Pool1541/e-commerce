@@ -1,8 +1,7 @@
 import * as Yup from 'yup';
+import useAuth from '../../../../hooks/useAuth';
 import { Formik } from 'formik';
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../../context/AuthContext';
 import { handlerYupErrors } from '../../../../utils';
 import { LoginButtonsContainer, StyledLoginForm } from './LoginForm.styled';
 import { Container, Button, Section, StyledFormikField } from '../../../../components/elements';
@@ -14,7 +13,7 @@ const validationSchema = Yup.object({
 });
 
 export default function LoginForm({ handleRegisterModal }) {
-  const { authenticateUser } = useContext(AuthContext);
+  const { authenticateUser } = useAuth();
   const navigate = useNavigate();
 
   async function handleSubmit(values, { setSubmitting }) {

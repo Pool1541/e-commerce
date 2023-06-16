@@ -1,14 +1,13 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { useContext } from 'react';
 import { RegisterFormBackground, RegisterFormContainer } from './RegisterForm.styled';
 import { Button } from '../../../../components/elements/Button.styled';
 import { StyledFormikField } from '../../../../components/elements/Input.styled';
 import { handlerYupErrors } from '../../../../utils';
-import { AuthContext } from '../../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import useOutsideClick from '../../../../hooks/useOutsideClick';
 import { successAuth } from '../utils/successAuth';
+import useOutsideClick from '../../../../hooks/useOutsideClick';
+import useAuth from '../../../../hooks/useAuth';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -35,7 +34,7 @@ const validationSchema = Yup.object({
 });
 
 export default function RegisterForm({ handleRegisterModal }) {
-  const { authenticateUser } = useContext(AuthContext);
+  const { authenticateUser } = useAuth();
   const ref = useOutsideClick(handleRegisterModal);
   const navigate = useNavigate();
 
