@@ -1,7 +1,11 @@
 import { createContext, useEffect, useState } from 'react';
-import { API_URL } from '../config';
 import { decodedJWT } from '../utils/decodedJWT';
 import useLocalStorage from '../hooks/useLocalStorage';
+import {
+  getAuthTokenByRefreshToken,
+  getUserById,
+  removeRefreshToken,
+} from '../repositories/AuthRepository';
 
 export const AuthContext = createContext();
 
@@ -29,44 +33,27 @@ export default function AuthContextProvider({ children }) {
 
   async function getAuthenticatedUserInfo(token) {
     const { uid } = decodedJWT(token);
-    const options = {
-      headers: {
-        Authorization: token,
-      },
-    };
-    const response = await fetch(`${API_URL}/users/${uid}`, options);
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.error);
-    }
+    const data = await getUserById(uid, token);
     setAuthtenticatedUser(data.user);
     setUserImage(data.user.image);
   }
 
   async function getNewAuthToken() {
-    const options = {
-      credentials: 'include',
-    };
-    const response = await fetch(`${API_URL}/auth/refresh`, options);
-    if (!response.ok) {
-      return logout();
-    }
-    const { stsTokenManager } = await response.json();
+    const { stsTokenManager } = await getAuthTokenByRefreshToken(logout);
     setAccessToken(stsTokenManager);
     return stsTokenManager;
   }
 
   async function logout() {
     try {
-      await fetch(`${API_URL}/auth/logout`, {
-        credentials: 'include',
-      });
+      await removeRefreshToken();
+    } catch (error) {
+      console.log(error);
+    } finally {
       setAuthtenticatedUser({});
       setAccessToken({});
       setIsAuthenticated(false);
       removeUserImage(userImageKey);
-    } catch (error) {
-      console.log(error);
     }
   }
 

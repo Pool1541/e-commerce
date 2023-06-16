@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 import useSessionStorage from '../hooks/useSessionStorage';
 
 export const FilterContext = createContext();
@@ -62,7 +62,7 @@ const initialValue = [
     filterList: [
       {
         value: 0,
-        checked: true,
+        checked: false,
       },
     ],
   },

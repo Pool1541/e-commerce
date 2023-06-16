@@ -5,11 +5,11 @@ import { useContext } from 'react';
 import { RegisterFormBackground, RegisterFormContainer } from './RegisterForm.styled';
 import { Button } from '../../../../components/elements/Button.styled';
 import { StyledFormikField } from '../../../../components/elements/Input.styled';
-import { handlerYupErrors, httpRequest } from '../../../../utils';
-import { ENDPOINTS } from '../../../../config/endpoints';
+import { handlerYupErrors } from '../../../../utils';
 import { AuthContext } from '../../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import useOutsideClick from '../../../../hooks/useOutsideClick';
+import { registerUser } from '../../../../repositories/AuthRepository';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -43,16 +43,8 @@ export default function RegisterForm({ handleRegisterModal }) {
   async function handleRegister(values, { setSubmitting }) {
     try {
       const validatedData = validationSchema.validateSync(values, { abortEarly: false });
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(validatedData),
-        credentials: 'include',
-      };
-      const { user, stsTokenManager } = await httpRequest(options, ENDPOINTS.POST_REGISTER);
-      toast.success(`Welcome ${user.username}`);
+      const { user, stsTokenManager } = await registerUser(validatedData);
+      user.username && toast.success(`Welcome ${user.username}`);
       login({ user, stsTokenManager });
       navigate('/');
     } catch (validationError) {
