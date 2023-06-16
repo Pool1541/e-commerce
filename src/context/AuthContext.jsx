@@ -4,8 +4,11 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import {
   getAuthTokenByRefreshToken,
   getUserById,
+  loginUser,
+  registerUser,
   removeRefreshToken,
 } from '../repositories/AuthRepository';
+import { errorHandler } from '../errors/errorHandler';
 
 export const AuthContext = createContext();
 
@@ -24,31 +27,50 @@ export default function AuthContextProvider({ children }) {
     false
   );
 
-  function login({ stsTokenManager, user }) {
-    setAuthtenticatedUser(user);
-    setUserImage(user.image);
-    setAccessToken(stsTokenManager);
-    setIsAuthenticated(true);
+  async function authenticateUser(credentials, isRegistering = false) {
+    try {
+      const { user, stsTokenManager } = isRegistering
+        ? await registerUser(credentials)
+        : await loginUser(credentials);
+
+      setAuthtenticatedUser(user);
+      setUserImage(user.image);
+      setAccessToken(stsTokenManager);
+      setIsAuthenticated(true);
+
+      return user;
+    } catch (error) {
+      errorHandler(error);
+    }
   }
 
   async function getAuthenticatedUserInfo(token) {
-    const { uid } = decodedJWT(token);
-    const data = await getUserById(uid, token);
-    setAuthtenticatedUser(data.user);
-    setUserImage(data.user.image);
+    try {
+      const { uid } = decodedJWT(token);
+      const data = await getUserById(uid, token);
+      setAuthtenticatedUser(data.user);
+      setUserImage(data.user.image);
+    } catch (error) {
+      errorHandler(error);
+    }
   }
 
   async function getNewAuthToken() {
-    const { stsTokenManager } = await getAuthTokenByRefreshToken(logout);
-    setAccessToken(stsTokenManager);
-    return stsTokenManager;
+    try {
+      const { stsTokenManager } = await getAuthTokenByRefreshToken();
+      setAccessToken(stsTokenManager);
+      return stsTokenManager;
+    } catch (error) {
+      errorHandler(error);
+      logout();
+    }
   }
 
   async function logout() {
     try {
       await removeRefreshToken();
     } catch (error) {
-      console.log(error);
+      errorHandler(error);
     } finally {
       setAuthtenticatedUser({});
       setAccessToken({});
@@ -59,9 +81,13 @@ export default function AuthContextProvider({ children }) {
 
   useEffect(() => {
     async function fetchData() {
-      if (isAuthenticated) {
-        const { token } = await getNewAuthToken();
-        await getAuthenticatedUserInfo(token);
+      try {
+        if (isAuthenticated) {
+          const { token } = await getNewAuthToken();
+          await getAuthenticatedUserInfo(token);
+        }
+      } catch (error) {
+        if (error.name !== 'TypeError') console.log(error);
       }
     }
     fetchData();
@@ -74,7 +100,7 @@ export default function AuthContextProvider({ children }) {
         accessToken,
         isAuthenticated,
         userImage,
-        login,
+        authenticateUser,
         logout,
       }}>
       {children}

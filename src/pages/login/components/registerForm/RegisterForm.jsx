@@ -1,5 +1,4 @@
 import * as Yup from 'yup';
-import { toast } from 'sonner';
 import { Formik } from 'formik';
 import { useContext } from 'react';
 import { RegisterFormBackground, RegisterFormContainer } from './RegisterForm.styled';
@@ -9,7 +8,7 @@ import { handlerYupErrors } from '../../../../utils';
 import { AuthContext } from '../../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import useOutsideClick from '../../../../hooks/useOutsideClick';
-import { registerUser } from '../../../../repositories/AuthRepository';
+import { successAuth } from '../utils/successAuth';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -36,23 +35,23 @@ const validationSchema = Yup.object({
 });
 
 export default function RegisterForm({ handleRegisterModal }) {
-  const { login } = useContext(AuthContext);
+  const { authenticateUser } = useContext(AuthContext);
   const ref = useOutsideClick(handleRegisterModal);
   const navigate = useNavigate();
 
   async function handleRegister(values, { setSubmitting }) {
     try {
+      const isRegistering = true;
       const validatedData = validationSchema.validateSync(values, { abortEarly: false });
-      const { user, stsTokenManager } = await registerUser(validatedData);
-      user.username && toast.success(`Welcome ${user.username}`);
-      login({ user, stsTokenManager });
-      navigate('/');
+      const user = await authenticateUser(validatedData, isRegistering);
+
+      successAuth(user, navigate);
     } catch (validationError) {
-      if (!validationError.inner) return;
-      handlerYupErrors(validationError);
+      if (validationError instanceof Yup.ValidationError) handlerYupErrors(validationError);
     }
     setSubmitting(false);
   }
+
   return (
     <RegisterFormBackground>
       <Formik

@@ -1,31 +1,39 @@
 import { ENDPOINTS } from '../config';
 import { httpRequest } from '../utils';
-import { API_URL } from '../config';
+import { AuthError, UserError } from '../errors/customErrors';
 
 export async function loginUser(body) {
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-    credentials: 'include',
-  };
+  try {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+      credentials: 'include',
+    };
 
-  return await httpRequest(options, ENDPOINTS.POST_LOGIN);
+    return await httpRequest(options, ENDPOINTS.POST_LOGIN);
+  } catch (error) {
+    throw new AuthError(error.message);
+  }
 }
 
 export async function registerUser(body) {
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-    credentials: 'include',
-  };
+  try {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+      credentials: 'include',
+    };
 
-  return await httpRequest(options, ENDPOINTS.POST_REGISTER);
+    return await httpRequest(options, ENDPOINTS.POST_REGISTER);
+  } catch (error) {
+    throw new AuthError(error.message);
+  }
 }
 
 export async function getUserById(uid, token) {
@@ -36,28 +44,21 @@ export async function getUserById(uid, token) {
       },
     };
 
-    const response = await fetch(`${API_URL}/users/${uid}`, options);
-    if (!response.ok) throw new Error(data.error);
-    return await response.json();
+    return await httpRequest(options, `${ENDPOINTS.GET_USER_BY_ID}/${uid}`);
   } catch (error) {
-    console.log(error);
+    throw new UserError(error.message);
   }
 }
 
-export async function getAuthTokenByRefreshToken(callback) {
+export async function getAuthTokenByRefreshToken() {
   try {
     const options = {
       credentials: 'include',
     };
 
-    const response = await fetch(`${API_URL}${ENDPOINTS.GET_REFRESH_TOKEN}`, options);
-    if (!response.ok) {
-      callback();
-      throw new Error(response.error);
-    }
-    return await response.json();
+    return await httpRequest(options, ENDPOINTS.GET_REFRESH_TOKEN);
   } catch (error) {
-    console.log(error);
+    throw new UserError(error.message);
   }
 }
 
@@ -67,8 +68,8 @@ export async function removeRefreshToken() {
       credentials: 'include',
     };
 
-    await fetch(`${API_URL}${ENDPOINTS.GET_LOGOUT}`, options);
+    return await httpRequest(options, ENDPOINTS.GET_LOGOUT);
   } catch (error) {
-    console.log(error);
+    throw new UserError(error.message);
   }
 }
