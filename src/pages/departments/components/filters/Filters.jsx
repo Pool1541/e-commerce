@@ -6,7 +6,8 @@ import { useState } from 'react';
 
 export default function Filters({ title, filterList, range = false }) {
   const { changeFilters } = useContext(FilterContext);
-  const [open, setOpen] = useState(false);
+  const someFilterChecked = filterList.some((filter) => filter.checked);
+  const [open, setOpen] = useState(someFilterChecked);
 
   function handleOpen(e) {
     e.preventDefault();
