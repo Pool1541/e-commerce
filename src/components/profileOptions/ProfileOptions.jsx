@@ -4,6 +4,7 @@ import { GearIcon, LogoutIcon, UserIcon } from '../../assets/icons';
 import { ProfileOptionsContainer } from './ProfileOptions.styled';
 import { AuthContext } from '../../context/AuthContext';
 import useOutsideClick from '../../hooks/useOutsideClick';
+import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '../../config';
 
 export default function ProfileOptions({ username, handleClose }) {
   const { logout } = useContext(AuthContext);
@@ -14,13 +15,13 @@ export default function ProfileOptions({ username, handleClose }) {
       <p>Welcome {username}</p>
       <ul>
         <li>
-          <Link to='/dashboard'>
+          <Link to={PRIVATE_ROUTES.DASHBOARD}>
             <UserIcon />
             Perfil
           </Link>
         </li>
         <li>
-          <Link to='/settings'>
+          <Link to={PRIVATE_ROUTES.SETTINGS}>
             <GearIcon />
             Ajustes
           </Link>

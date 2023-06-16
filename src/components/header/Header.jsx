@@ -8,6 +8,7 @@ import NavLinks from '../navLinks/NavLinks';
 import Logo from '../logo/Logo';
 import Avatar from '../avatar/Avatar';
 import Basket from '../basket/Basket';
+import { PUBLIC_ROUTES } from '../../config';
 
 export default function Header() {
   const { authenticatedUser, isAuthenticated } = useContext(AuthContext);
@@ -22,7 +23,7 @@ export default function Header() {
           {isAuthenticated ? (
             <Avatar user={authenticatedUser} />
           ) : (
-            <Link to='/login'>
+            <Link to={PUBLIC_ROUTES.LOGIN}>
               <Button>Sign in</Button>
             </Link>
           )}
