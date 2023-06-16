@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import useSessionStorage from '../hooks/useSessionStorage';
 
 export const FilterContext = createContext();
 const initialValue = [
@@ -68,12 +69,15 @@ const initialValue = [
 ];
 
 export default function FilterContextProvider({ children }) {
-  const [filters, setFilters] = useState(initialValue);
+  const filtersKey = 'Filters';
+  const [storedValue, setStoredValue] = useSessionStorage(filtersKey, initialValue);
+  const [filters, setFilters] = useState(storedValue);
 
   function changeFilters(filterName, filterValue) {
     const filtersClone = structuredClone(filters);
     const filterToChange = filtersClone.find((filter) => filter.title === filterName);
     filterToChange.filterList = filterValue;
+    setStoredValue(filtersClone);
     setFilters(filtersClone);
   }
 
