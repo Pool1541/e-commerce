@@ -1,22 +1,30 @@
 import { createContext, useEffect, useState } from 'react';
 import { API_URL } from '../config';
 import { decodedJWT } from '../utils/decodedJWT';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
+  const isAuthenticatedKey = 'isAuthenticated';
+  const userImageKey = 'userImage';
   const [authenticatedUser, setAuthtenticatedUser] = useState({});
   const [accessToken, setAccessToken] = useState({});
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    JSON.parse(localStorage.getItem('isAuthenticated')) || false
+  const {
+    storedValue: userImage,
+    setValue: setUserImage,
+    removeValue: removeUserImage,
+  } = useLocalStorage(userImageKey, undefined);
+  const { storedValue: isAuthenticated, setValue: setIsAuthenticated } = useLocalStorage(
+    isAuthenticatedKey,
+    false
   );
 
   function login({ stsTokenManager, user }) {
     setAuthtenticatedUser(user);
-    localStorage.setItem('image', JSON.stringify(user.image));
+    setUserImage(user.image);
     setAccessToken(stsTokenManager);
     setIsAuthenticated(true);
-    localStorage.setItem('isAuthenticated', true);
   }
 
   async function getAuthenticatedUserInfo(token) {
@@ -32,7 +40,7 @@ export default function AuthContextProvider({ children }) {
       throw new Error(data.error);
     }
     setAuthtenticatedUser(data.user);
-    localStorage.setItem('image', JSON.stringify(data.user.image));
+    setUserImage(data.user.image);
   }
 
   async function getNewAuthToken() {
@@ -56,8 +64,7 @@ export default function AuthContextProvider({ children }) {
       setAuthtenticatedUser({});
       setAccessToken({});
       setIsAuthenticated(false);
-      localStorage.setItem('isAuthenticated', JSON.stringify(false));
-      localStorage.removeItem('image');
+      removeUserImage(userImageKey);
     } catch (error) {
       console.log(error);
     }
@@ -79,6 +86,7 @@ export default function AuthContextProvider({ children }) {
         authenticatedUser,
         accessToken,
         isAuthenticated,
+        userImage,
         login,
         logout,
       }}>

@@ -70,14 +70,12 @@ const initialValue = [
 
 export default function FilterContextProvider({ children }) {
   const filtersKey = 'Filters';
-  const [storedValue, setStoredValue] = useSessionStorage(filtersKey, initialValue);
-  const [filters, setFilters] = useState(storedValue);
+  const [filters, setFilters] = useSessionStorage(filtersKey, initialValue);
 
   function changeFilters(filterName, filterValue) {
     const filtersClone = structuredClone(filters);
     const filterToChange = filtersClone.find((filter) => filter.title === filterName);
     filterToChange.filterList = filterValue;
-    setStoredValue(filtersClone);
     setFilters(filtersClone);
   }
 

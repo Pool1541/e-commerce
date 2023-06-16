@@ -1,5 +1,6 @@
-import { useState, createContext } from 'react';
+import { createContext } from 'react';
 import { toFixed } from '../utils';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export const BasketContext = createContext();
 const initialValue = {
@@ -11,7 +12,8 @@ const initialValue = {
 };
 
 export default function BasketContextProvider({ children }) {
-  const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || initialValue);
+  const basketKey = 'basket';
+  const { storedValue: basket, setValue: setBasket } = useLocalStorage(basketKey, initialValue);
 
   function addToBasket(product) {
     const basketClone = structuredClone(basket);
@@ -47,7 +49,6 @@ export default function BasketContextProvider({ children }) {
   }
 
   function clearBasket() {
-    localStorage.removeItem('basket', JSON.stringify(initialValue));
     setBasket(initialValue);
   }
 
@@ -78,13 +79,8 @@ export default function BasketContextProvider({ children }) {
       }
     );
 
-    localStorage.setItem('basket', JSON.stringify({ ...basketClone, ...result }));
     setBasket({ ...basketClone, ...result });
   }
-
-  function discounts() {}
-
-  function calculateTotal() {}
 
   return (
     <BasketContext.Provider
