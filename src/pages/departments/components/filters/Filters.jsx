@@ -6,7 +6,9 @@ import { useState } from 'react';
 
 export default function Filters({ title, filterList, range = false }) {
   const { changeFilters } = useContext(FilterContext);
-  const someFilterChecked = filterList.some((filter) => filter.checked);
+  const someFilterChecked = filterList.some(
+    (filter) => filter.checked || (typeof filter.value === 'number' && filter.value > 0)
+  );
   const [open, setOpen] = useState(someFilterChecked);
 
   function handleOpen(e) {
@@ -17,23 +19,30 @@ export default function Filters({ title, filterList, range = false }) {
   function handleChange(e) {
     const nodes = e.target.form.querySelectorAll('input');
     const filters = Array.from(nodes).reduce((acc, curr) => {
-      if (curr.type === 'range') {
-        let filterObject = {
-          value: +curr.value,
-          maxValue: curr.max,
-          checked: false,
-        };
-        acc.push(filterObject);
-      } else {
-        let filterObject = {
-          value: curr.value,
-          checked: curr.checked,
-        };
-        acc.push(filterObject);
-      }
+      let filterObject = {
+        value: curr.value,
+        checked: curr.checked,
+      };
+      acc.push(filterObject);
+      return acc;
+    }, []);
+
+    changeFilters(title, filters);
+  }
+
+  function handleRangeChange(e) {
+    const nodes = e.target.form.querySelectorAll('input');
+    const filters = Array.from(nodes).reduce((acc, curr) => {
+      let filterObject = {
+        value: +curr.value,
+        maxValue: curr.max,
+        checked: false,
+      };
+      acc.push(filterObject);
 
       return acc;
     }, []);
+
     changeFilters(title, filters);
   }
 
@@ -50,7 +59,7 @@ export default function Filters({ title, filterList, range = false }) {
           return (
             <FilterWrapper key={index}>
               {range ? (
-                <RangeInput inputData={item} controller={handleChange} />
+                <RangeInput inputData={item} controller={handleRangeChange} />
               ) : (
                 <CheckedInput inputData={item} title={title} />
               )}
