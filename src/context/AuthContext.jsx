@@ -7,7 +7,7 @@ import {
   loginUser,
   registerUser,
   removeRefreshToken,
-} from '../repositories/AuthRepository';
+} from '../repositories/authRepository';
 import { errorHandler } from '../errors/errorHandler';
 
 export const AuthContext = createContext();

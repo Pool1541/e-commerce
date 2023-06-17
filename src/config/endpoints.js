@@ -6,4 +6,5 @@ export const ENDPOINTS = {
   GET_PRODUCTS: '/products',
   GET_PRODUCT_BY_ID: '/products',
   GET_REFRESH_TOKEN: '/auth/refresh',
+  GET_FILTERS_BY_NAME: '/filters/',
 };

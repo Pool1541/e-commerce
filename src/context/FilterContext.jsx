@@ -1,76 +1,12 @@
-import { createContext } from 'react';
+import { createContext, useEffect } from 'react';
 import useSessionStorage from '../hooks/useSessionStorage';
+import { getFilters } from '../repositories/filterRepository';
 
 export const FilterContext = createContext();
-const initialValue = [
-  {
-    title: 'category',
-    filterList: [
-      {
-        value: 'smartphones',
-        checked: false,
-      },
-      {
-        value: 'videojuegos',
-        checked: false,
-      },
-      {
-        value: 'consolas',
-        checked: false,
-      },
-      {
-        value: 'computo',
-        checked: false,
-      },
-    ],
-  },
-  {
-    title: 'brand',
-    filterList: [
-      {
-        value: 'apple',
-        checked: false,
-      },
-      {
-        value: 'sony',
-        checked: false,
-      },
-      {
-        value: 'motorola',
-        checked: false,
-      },
-      {
-        value: 'nintendo',
-        checked: false,
-      },
-      {
-        value: 'samsung',
-        checked: false,
-      },
-      {
-        value: 'xiaomi',
-        checked: false,
-      },
-      {
-        value: 'meta',
-        checked: false,
-      },
-    ],
-  },
-  {
-    title: 'maxPrice',
-    filterList: [
-      {
-        value: 0,
-        checked: false,
-      },
-    ],
-  },
-];
 
 export default function FilterContextProvider({ children }) {
   const filtersKey = 'Filters';
-  const [filters, setFilters] = useSessionStorage(filtersKey, initialValue);
+  const [filters, setFilters] = useSessionStorage(filtersKey, []);
 
   function changeFilters(filterName, filterValue) {
     const filtersClone = structuredClone(filters);
@@ -78,6 +14,24 @@ export default function FilterContextProvider({ children }) {
     filterToChange.filterList = filterValue;
     setFilters(filtersClone);
   }
+
+  async function getAllFilters() {
+    const response = await getFilters();
+    const transformData = response.map((item) => {
+      const filterList = item.filterList.map((filter) => {
+        return item.title === 'maxPrice'
+          ? { maxValue: filter, value: 0, checked: false }
+          : { value: filter, checked: false };
+      });
+      return { ...item, filterList };
+    });
+
+    setFilters(transformData);
+  }
+
+  useEffect(() => {
+    if (filters.length <= 0) getAllFilters();
+  }, []);
 
   return (
     <FilterContext.Provider value={{ filters, changeFilters }}>{children}</FilterContext.Provider>

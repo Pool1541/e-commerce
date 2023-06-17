@@ -17,11 +17,21 @@ export default function Filters({ title, filterList, range = false }) {
   function handleChange(e) {
     const nodes = e.target.form.querySelectorAll('input');
     const filters = Array.from(nodes).reduce((acc, curr) => {
-      let filterObject = {
-        value: +curr.value || curr.value,
-        checked: (+curr.value && true) || curr.checked,
-      };
-      acc.push(filterObject);
+      if (curr.type === 'range') {
+        let filterObject = {
+          value: +curr.value,
+          maxValue: curr.max,
+          checked: false,
+        };
+        acc.push(filterObject);
+      } else {
+        let filterObject = {
+          value: curr.value,
+          checked: curr.checked,
+        };
+        acc.push(filterObject);
+      }
+
       return acc;
     }, []);
     changeFilters(title, filters);
@@ -63,10 +73,10 @@ function CheckedInput({ inputData }) {
 }
 
 function RangeInput({ inputData, controller }) {
-  const { value } = inputData;
+  const { value, maxValue } = inputData;
   return (
     <FilterRange>
-      <input type='range' defaultValue={value} min={0} max={5000} onChange={controller} />
+      <input type='range' defaultValue={value} min={0} max={maxValue} onChange={controller} />
       <span>$ {value}</span>
     </FilterRange>
   );
