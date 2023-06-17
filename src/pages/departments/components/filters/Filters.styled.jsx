@@ -47,9 +47,18 @@ export const StyledFilters = styled.form`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-height: ${({ open }) => (open ? '100%' : '3rem')};
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(1, 0, 0, 1);
+  max-height: ${({ open }) => (open ? '180px' : '3rem')};
+  transition: all 0.2s linear;
+
+  > div {
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.2s linear;
+
+    ::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+  }
 
   button {
     display: flex;
@@ -71,6 +80,14 @@ export const FilterWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  label {
+    text-transform: lowercase;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
 `;
 
 export const FilterRange = styled.div`

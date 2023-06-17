@@ -45,17 +45,19 @@ export default function Filters({ title, filterList, range = false }) {
           <CaretDownIcon />
         </span>
       </button>
-      {filterList.map((item, index) => {
-        return (
-          <FilterWrapper key={index}>
-            {range ? (
-              <RangeInput inputData={item} controller={handleChange} />
-            ) : (
-              <CheckedInput inputData={item} title={title} />
-            )}
-          </FilterWrapper>
-        );
-      })}
+      <div>
+        {filterList.map((item, index) => {
+          return (
+            <FilterWrapper key={index}>
+              {range ? (
+                <RangeInput inputData={item} controller={handleChange} />
+              ) : (
+                <CheckedInput inputData={item} title={title} />
+              )}
+            </FilterWrapper>
+          );
+        })}
+      </div>
     </StyledFilters>
   );
 }
