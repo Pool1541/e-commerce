@@ -15,7 +15,7 @@ export default function FilterContextProvider({ children }) {
     setFilters(filtersClone);
   }
 
-  async function getAllFilters() {
+  async function getInitialFilter() {
     const response = await getFilters();
     const transformData = response.map((item) => {
       const filterList = item.filterList.map((filter) => {
@@ -30,7 +30,7 @@ export default function FilterContextProvider({ children }) {
   }
 
   useEffect(() => {
-    if (filters.length <= 0) getAllFilters();
+    if (filters.length <= 0) getInitialFilter();
   }, []);
 
   return (
