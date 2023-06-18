@@ -1,36 +1,9 @@
-import { Grid } from './GridContainer.styled';
-import { useContext, useEffect, useState } from 'react';
-import { FilterContext } from '../../../../context/FilterContext';
-import { buildQuery } from '../../../../utils';
-import { API_URL, ENDPOINTS } from '../../../../config';
 import Card from '../card/Card';
+import useProduct from '../../../../hooks/useProducts';
+import { Grid } from './GridContainer.styled';
 
 export default function GridContainer() {
-  const [products, setProducts] = useState();
-  const [loading, setLoading] = useState(true);
-  const { filters } = useContext(FilterContext);
-
-  useEffect(() => {
-    const abortController = new AbortController();
-    async function getProducts() {
-      try {
-        const query = buildQuery(filters);
-        const response = await fetch(`${API_URL}${ENDPOINTS.GET_PRODUCTS}${query}`, {
-          signal: abortController.signal,
-        });
-        const data = await response.json();
-        setProducts(data);
-        setLoading(false);
-      } catch (error) {
-        if (error.name === 'AbortError') return;
-      }
-    }
-    getProducts();
-
-    return () => {
-      abortController.abort();
-    };
-  }, [filters]);
+  const { products, loading } = useProduct();
 
   if (loading) {
     return <p>Loading...</p>;

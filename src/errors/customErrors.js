@@ -11,3 +11,10 @@ export class UserError extends Error {
     this.name = 'UserError';
   }
 }
+
+export class ProductError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'ProductError';
+  }
+}

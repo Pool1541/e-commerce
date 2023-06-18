@@ -1,6 +1,6 @@
 import { createContext, useEffect } from 'react';
-import useSessionStorage from '../hooks/useSessionStorage';
 import { getFilters } from '../repositories/filterRepository';
+import useSessionStorage from '../hooks/useSessionStorage';
 
 export const FilterContext = createContext();
 
