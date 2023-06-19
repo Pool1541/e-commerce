@@ -1,11 +1,11 @@
-import { Button, Input } from './ProductQuantity.styled';
+import { BodyQuantity, Button, Input } from './ProductQuantity.styled';
 
 export default function ProductQuantity() {
   return (
-    <>
+    <BodyQuantity>
       <Button>-</Button>
-      <Input type='number' value='1' />
+      <Input type='tel' defaultValue='1' />
       <Button>+</Button>
-    </>
+    </BodyQuantity>
   );
 }

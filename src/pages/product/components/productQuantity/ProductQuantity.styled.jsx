@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-
+export const BodyQuantity = styled.div`
+  margin: 10px 0;
+`;
 export const Button = styled.button`
   width: 4rem;
   height: 3rem;
@@ -14,4 +16,5 @@ export const Input = styled.input`
   border: 1px solid #d5222e;
   width: 4rem;
   height: 3rem;
+  appearance: none;
 `;

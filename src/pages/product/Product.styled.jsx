@@ -19,6 +19,10 @@ export const ProductHeader = styled.div`
   }
 `;
 
-export const BodyQuantity = styled.div`
-  margin: 10px 0;
+export const ProductBody = styled.div`
+  display: flex;
+`;
+
+export const SeccionLittleDes = styled.div`
+  width: 50%;
 `;
