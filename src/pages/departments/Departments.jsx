@@ -6,6 +6,7 @@ import FilterContainer from './components/filters/FilterContainer';
 import FilterSidebarContextProvider from './context/FilterSidebarContext';
 import { DepartmentsContainer } from './Departments.styled';
 import { Main } from '../../components/elements';
+import Pagination from '../../components/pagination/Pagination';
 
 export default function Departments() {
   return (
@@ -17,16 +18,7 @@ export default function Departments() {
           <div style={{ flex: '1 1 auto' }}>
             <Buttons />
             <GridContainer />
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-                height: '80px',
-              }}>
-              Pagination
-            </div>
+            <Pagination />
           </div>
         </DepartmentsContainer>
       </Main>
