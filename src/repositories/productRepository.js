@@ -9,6 +9,6 @@ export async function fetchProducts(query, abortController) {
     };
     return await httpRequest(options, `${ENDPOINTS.GET_PRODUCTS}${query}`);
   } catch (error) {
-    throw new ProductError(error);
+    throw new ProductError(error.message);
   }
 }

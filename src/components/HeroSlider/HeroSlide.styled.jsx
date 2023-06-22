@@ -10,14 +10,26 @@ export const Slide = styled.div`
   font-weight: 700;
 
   h3 {
-    font-size: 2.3rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
     white-space: nowrap;
     color: var(--mahogany);
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   p {
+    text-align: center;
     font-size: 1.5rem;
-    padding: 0 20px;
+    word-break: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0px;
     color: var(--p-color);
   }
 

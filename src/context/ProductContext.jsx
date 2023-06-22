@@ -7,11 +7,9 @@ import { errorHandler } from '../errors/errorHandler';
 export const ProductContext = createContext();
 
 export default function ProductContextProvider({ children }) {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState({ products: [] });
   const [loading, setLoading] = useState(true);
   const { filters } = useContext(FilterContext);
-
-  console.log('ProductContext');
 
   async function loadProducts(abortController) {
     try {

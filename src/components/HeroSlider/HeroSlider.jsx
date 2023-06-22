@@ -3,9 +3,13 @@ import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import HeroSlide from './HeroSlide';
-import { products_on_sale as products } from '../../mocks/productsInOffer.json';
+import useProducts from '../../hooks/useProducts';
 
 export default function HeroSlider() {
+  const { products, loading } = useProducts();
+
+  if (loading) return <div>Cargando...</div>;
+
   return (
     <Swiper
       spaceBetween={30}
@@ -16,7 +20,7 @@ export default function HeroSlider() {
       }}
       navigation={true}
       modules={[Autoplay, Navigation]}>
-      {products.map((product, i) => (
+      {products.products.map((product, i) => (
         <SwiperSlide key={i}>
           <HeroSlide product={product} />
         </SwiperSlide>

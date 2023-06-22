@@ -1,19 +1,22 @@
-import { Slide, SlideImage, SlidePrice } from './HeroSliderItem.styled';
+import { Slide, SlideImage, SlidePrice } from './HeroSlide.styled';
 import BagIcon from '../../assets/icons/Bag.icon';
 import useBasket from '../../hooks/useBasket';
 import { toast } from 'sonner';
+import { formatCurrency } from '../../utils';
 
 export default function HeroSlide({ product }) {
   const { addToBasket } = useBasket();
+  let { title, brand, price, image } = product;
+  price = formatCurrency(price);
 
   function addProduct(successMessage) {
     addToBasket({
       id: product.id,
-      title: product.name,
-      name: product.name,
+      title: product.title,
+      name: product.title,
       image: product.image,
       brand: product.brand,
-      price: product.regular_price,
+      price: product.price,
       discount: product.discount,
     });
     if (successMessage) {
@@ -23,14 +26,14 @@ export default function HeroSlide({ product }) {
 
   return (
     <Slide>
-      <h3>{product.name}</h3>
-      <p>{product.description}</p>
+      <h3>{brand}</h3>
+      <p>{title}</p>
       <SlideImage>
-        <img src={product.image} alt={product.name} />
+        <img src={image} alt={title} />
       </SlideImage>
       <SlidePrice>
-        <span>2 for ${product.regular_price}</span>
-        <span>2 for ${product.sale_price}</span>
+        <span>{price}</span>
+        <span>{price}</span>
       </SlidePrice>
       <button onClick={() => addProduct('Se ha agregado el producto a tu canasta')}>
         <span>Add</span>

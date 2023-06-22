@@ -1,19 +1,13 @@
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import { useParams } from 'react-router-dom';
-import { Main, Container, Subtitle, Section } from '../../components/elements';
+import { Main, Container, Section } from '../../components/elements';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { httpRequest } from '../../utils';
 import { ENDPOINTS } from '../../config';
 import ProductImage from './components/productImage/ProductImage';
-import {
-  BodyQuantity,
-  ContainerProduct,
-  ProductBody,
-  ProductHeader,
-  SeccionLittleDes,
-} from './Product.styled';
+import { ContainerProduct, ProductBody, ProductHeader, SeccionLittleDes } from './Product.styled';
 import ProductQuantity from './components/productQuantity/productQuantity';
 import ProductInformation from './components/productInfomation/ProductInformation';
 import ProductButtons from './components/productButtons/ProductButtons';
