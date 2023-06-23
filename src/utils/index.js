@@ -1,3 +1,4 @@
+export * from './buildPagination';
 export * from './buildQuery';
 export * from './decodedJWT';
 export * from './formatCurrency';

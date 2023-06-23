@@ -34,11 +34,13 @@ export default function ProductContextProvider({ children }) {
   }
 
   async function pagination(page) {
-    const query = buildQuery(filters);
-    const defQuery = query ? `${query}&from=${(page - 1) * 20}` : `?from=${(page - 1) * 20}`;
-    const results = await fetchProductsPerPage(defQuery);
-    setProducts(results);
-    setCurrentPage(page);
+    if (typeof page === 'number') {
+      const query = buildQuery(filters);
+      const defQuery = query ? `${query}&from=${(page - 1) * 20}` : `?from=${(page - 1) * 20}`;
+      const results = await fetchProductsPerPage(defQuery);
+      setProducts(results);
+      setCurrentPage(page);
+    }
   }
 
   useEffect(() => {

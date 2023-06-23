@@ -1,9 +1,11 @@
 import { PaginationButton, StyledPaginationContainer } from './Pagination.styled';
 import useProducts from '../../hooks/useProducts';
+import { buildPagination } from '../../utils';
 
 export default function Pagination() {
   const { pagination, currentPage, pages } = useProducts();
-  const pageArray = Array.from({ length: pages }, (_, index) => index + 1);
+  const arrFromPagination = Array.from({ length: pages }, (_, index) => index + 1);
+  const pagesToRender = buildPagination(arrFromPagination, currentPage);
 
   return (
     <StyledPaginationContainer>
@@ -17,8 +19,8 @@ export default function Pagination() {
             Atrás
           </PaginationButton>
         </li>
-        {pageArray.map((e) => (
-          <li key={e}>
+        {pagesToRender.map((e, index) => (
+          <li key={index}>
             <PaginationButton
               current={currentPage === e}
               onClick={() => {
