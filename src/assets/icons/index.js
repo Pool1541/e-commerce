@@ -14,3 +14,5 @@ export { default as DashIcon } from './Dash.icon';
 export { default as CaretDownIcon } from './CaretDown.icon';
 export { default as FilterICon } from './Filter.icon';
 export { default as SortIcon } from './Sort.icon';
+export { default as ChevronLeftIcon } from './ChevronLeft.icon';
+export { default as ChevronRightIcon } from './ChevronRight.icon';

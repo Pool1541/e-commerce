@@ -32,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --mahogany : #BD4106;
+    --mahogany800: #BD4106AB;
     --tea-rose : #D0ACAF;
     --snow: #f4eced;
     --white: #fff;

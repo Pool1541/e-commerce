@@ -1,6 +1,7 @@
 import { PaginationButton, StyledPaginationContainer } from './Pagination.styled';
 import useProducts from '../../hooks/useProducts';
 import { buildPagination } from '../../utils';
+import { ChevronLeftIcon, ChevronRightIcon } from '../../assets/icons';
 
 export default function Pagination() {
   const { pagination, currentPage, pages } = useProducts();
@@ -16,7 +17,7 @@ export default function Pagination() {
               pagination(currentPage <= 1 ? 1 : currentPage - 1);
             }}
             disabled={currentPage === 1 ? true : false}>
-            Atrás
+            <ChevronLeftIcon />
           </PaginationButton>
         </li>
         {pagesToRender.map((e, index) => (
@@ -36,7 +37,7 @@ export default function Pagination() {
               pagination(currentPage >= pages ? currentPage : currentPage + 1);
             }}
             disabled={currentPage == pages}>
-            Siguiente
+            <ChevronRightIcon />
           </PaginationButton>
         </li>
       </ul>

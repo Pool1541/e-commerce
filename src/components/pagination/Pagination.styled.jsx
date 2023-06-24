@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BREAKPOINTS from '../../assets/styles/breakPoints';
 
 export const StyledPaginationContainer = styled.nav`
   height: 80px;
@@ -7,31 +8,39 @@ export const StyledPaginationContainer = styled.nav`
   justify-content: flex-end;
   align-items: center;
 
+  @media screen and (${BREAKPOINTS.MOVIL_L}) {
+    justify-content: center;
+  }
+
   ul {
+    width: 100%;
+    max-width: 300px;
     display: flex;
-    gap: 0.2rem;
+    justify-content: space-around;
+    gap: 0.5rem;
+
+    @media screen and (${BREAKPOINTS.MOVIL_L}) {
+      max-width: unset;
+    }
   }
 `;
 
 export const PaginationButton = styled.button`
-  border-radius: 5px;
-  padding: 10px 15px;
-  background: ${({ current }) => (current ? 'var(--tea-rose)' : 'var(--snow)')};
-  transition: background 0.2s ease;
-  color: var(--p-color);
+  color: ${({ current }) => (current ? 'var(--mahogany)' : 'var(--mahogany800)')};
+  font-weight: ${({ current }) => (current ? '600' : '400')};
+  letter-spacing: 1px;
 
   &:disabled {
-    background: var(--gray);
-    color: var(--snow);
+    color: var(--gray);
     cursor: default;
 
     &:hover {
-      background: var(--gray);
-      color: var(--snow);
+      background: unset;
+      color: var(--gray);
     }
   }
 
   &:hover {
-    background: var(--tea-rose);
+    color: var(--mahogany);
   }
 `;
