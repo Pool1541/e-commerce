@@ -3,14 +3,10 @@ import useProduct from '../../../../hooks/useProducts';
 import { Grid } from './GridContainer.styled';
 
 export default function GridContainer() {
-  const { products, loading, error } = useProduct();
+  const { products, loading } = useProduct();
 
   if (loading) {
     return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
   }
 
   return (

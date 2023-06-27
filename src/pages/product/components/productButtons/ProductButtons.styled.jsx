@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 
-export const BodyButtons = styled.div``;
-export const Button = styled.button`
-  min-width: 100px;
-  background-color: var(--mahogany);
-  color: var(--white);
+export const ProductButtonsContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 0.5rem;
+
+  button {
+    width: 50%;
+    padding: 10px 0;
+  }
+
+  button:last-child {
+    background: var(--white);
+    color: var(--mahogany);
+    border: 1px solid var(--mahogany);
+  }
 `;
+
 export const ButtonBuy = styled.button``;

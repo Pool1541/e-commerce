@@ -21,6 +21,7 @@ export const ContainerInformation = styled.div`
   ul {
     list-style-type: disc;
   }
+
   li {
     padding-bottom: 5px;
   }
