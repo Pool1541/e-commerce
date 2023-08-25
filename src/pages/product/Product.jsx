@@ -30,7 +30,7 @@ export default function Product() {
     }
 
     fetchProduct();
-  }, []);
+  }, [productID]);
 
   if (loading) return <div>Cargando...</div>;
 
