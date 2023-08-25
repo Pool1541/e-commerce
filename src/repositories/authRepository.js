@@ -1,7 +1,6 @@
 import { ENDPOINTS } from '../config';
 import { httpRequest } from '../utils';
 import { AuthError, UserError } from '../errors/customErrors';
-// Fix file name
 
 export async function loginUser(body) {
   try {
