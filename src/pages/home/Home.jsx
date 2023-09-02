@@ -7,6 +7,7 @@ import Hero from '../../components/hero/Hero';
 import News from '../../components/news/News';
 
 export default function Home() {
+  console.log('Shamela')
   return (
     <>
       <Header />
