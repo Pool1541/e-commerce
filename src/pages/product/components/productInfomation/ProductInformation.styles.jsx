@@ -18,11 +18,11 @@ export const ContainerInformation = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  ul {
+  /* ul {
     list-style-type: disc;
-  }
+  } */
 
   li {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
   }
 `;

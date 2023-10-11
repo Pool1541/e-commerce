@@ -2,11 +2,12 @@ import { formatCurrency } from '../../../../utils';
 import { ProductPriceContainer, Prices, Discount, PaymentMethods } from './ProductPrice.styled';
 
 export default function ProductPrice({ product }) {
+  const priceWithDiscount = product.price - (product.price * product.discount) / 100;
   return (
     <ProductPriceContainer>
       <Prices>
         <span>Precio exclusivo web</span>
-        <span>{formatCurrency(product.price)}</span>
+        <span>{formatCurrency(priceWithDiscount)}</span>
         <span>{formatCurrency(product.price)}</span>
       </Prices>
       <Discount>

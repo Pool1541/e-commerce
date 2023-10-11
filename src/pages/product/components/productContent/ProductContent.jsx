@@ -13,7 +13,7 @@ export default function ProductContent({ product }) {
         <h1>{product.title}</h1>
       </ProductHeader>
       <ProductBody>
-        <ProductFeatures />
+        <ProductFeatures features={product.features} />
         <ProductBodyRight>
           <ProductPrice product={product} />
           <ProductQuantity />

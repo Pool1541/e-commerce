@@ -44,7 +44,10 @@ export default function Product() {
               <ProductImage image={productInfo.image} title={productInfo.title} />
               <ProductContent product={productInfo} />
             </ContainerProduct>
-            <ProductInformation />
+            <ProductInformation
+              features={productInfo.features}
+              description={productInfo.description}
+            />
           </Container>
         </Section>
       </Main>
