@@ -1,4 +1,9 @@
-import { BodyInformation, ContainerInformation } from './ProductInformation.styles';
+import {
+  BodyInformation,
+  DescriptionContainer,
+  FeatureContainer,
+  StyleFeature,
+} from './ProductInformation.styles';
 
 export default function ProductInformation({ description, features }) {
   description = description.filter((desc) => desc !== '');
@@ -6,19 +11,21 @@ export default function ProductInformation({ description, features }) {
   const index = features.findIndex((feat) => feat.includes('Vendido por'));
   features = index !== -1 ? features.slice(0, index) : features;
 
+  features = features.map((feat) => feat.split(':'));
+
   return (
     <BodyInformation>
-      <ContainerInformation>
+      <FeatureContainer>
         <h1>Especificaciones</h1>
         <ul>
           {features.map((item, i) => (
             <li key={i}>
-              <p>{item}</p>
+              <Feature feature={item} />
             </li>
           ))}
         </ul>
-      </ContainerInformation>
-      <ContainerInformation>
+      </FeatureContainer>
+      <DescriptionContainer>
         <h1>Descripción</h1>
         <ul>
           {description.map((item, i) => (
@@ -27,7 +34,16 @@ export default function ProductInformation({ description, features }) {
             </li>
           ))}
         </ul>
-      </ContainerInformation>
+      </DescriptionContainer>
     </BodyInformation>
+  );
+}
+
+function Feature({ feature }) {
+  return (
+    <StyleFeature>
+      <p>{feature[0]}</p>
+      <p>{feature[1]}</p>
+    </StyleFeature>
   );
 }

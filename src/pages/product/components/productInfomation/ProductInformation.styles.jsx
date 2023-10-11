@@ -12,7 +12,7 @@ export const BodyInformation = styled.div`
   }
 `;
 
-export const ContainerInformation = styled.div`
+export const FeatureContainer = styled.div`
   display: flex;
   width: 50%;
   flex-direction: column;
@@ -23,6 +23,28 @@ export const ContainerInformation = styled.div`
   } */
 
   li {
+    width: 80%;
     padding-bottom: 10px;
+  }
+`;
+
+export const DescriptionContainer = styled.div`
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    width: 80%;
+    padding-bottom: 10px;
+  }
+`;
+
+export const StyleFeature = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  p:last-child {
+    font-weight: bold;
   }
 `;
