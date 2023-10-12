@@ -1,7 +1,8 @@
 import { ProductFeaturesContainer } from './ProductFeatures.styled';
 
 export default function ProductFeatures({ features }) {
-  features = features.slice(0, 6);
+  const index = features.findIndex((feat) => feat.includes('Vendido por'));
+  features = index !== -1 ? features.slice(0, index).slice(0, 6) : features.slice(0, 6);
   return (
     <ProductFeaturesContainer>
       <ul>
