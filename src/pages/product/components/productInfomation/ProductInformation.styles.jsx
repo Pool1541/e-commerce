@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BREAKPOINTS from '../../../../assets/styles/breakPoints';
 
 export const BodyInformation = styled.div`
   display: flex;
@@ -6,9 +7,18 @@ export const BodyInformation = styled.div`
   h1 {
     width: 80%;
     font-size: 2rem;
-    border-bottom: solid 1px #000;
+    border-bottom: solid 1px rgb(204, 204, 204);
     padding-bottom: 10px;
     overflow: hidden;
+  }
+
+  @media screen and (${BREAKPOINTS.LAPTOP_M}) {
+    flex-direction: column-reverse;
+    gap: 5rem;
+
+    h1 {
+      width: 100%;
+    }
   }
 `;
 
@@ -18,13 +28,21 @@ export const FeatureContainer = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  /* ul {
-    list-style-type: disc;
-  } */
+  ul {
+    margin-top: 1rem;
+  }
 
   li {
     width: 80%;
     padding-bottom: 10px;
+  }
+
+  @media screen and (${BREAKPOINTS.LAPTOP_M}) {
+    width: 100%;
+
+    li {
+      width: 100%;
+    }
   }
 `;
 
@@ -34,9 +52,21 @@ export const DescriptionContainer = styled.div`
   flex-direction: column;
   gap: 10px;
 
+  ul {
+    margin-top: 1rem;
+  }
+
   li {
     width: 80%;
     padding-bottom: 10px;
+  }
+
+  @media screen and (${BREAKPOINTS.LAPTOP_M}) {
+    width: 100%;
+
+    li {
+      width: 100%;
+    }
   }
 `;
 
@@ -44,7 +74,12 @@ export const StyleFeature = styled.div`
   display: flex;
   justify-content: space-between;
 
+  p {
+    width: 50%;
+  }
+
   p:last-child {
     font-weight: bold;
+    text-align: end;
   }
 `;
