@@ -13,6 +13,14 @@ export async function fetchProducts(query, abortController) {
   }
 }
 
+export async function fetchProductById({ id = '', options = {} }) {
+  try {
+    return await httpRequest(options, `${ENDPOINTS.GET_PRODUCT_BY_ID}/${id}`);
+  } catch (error) {
+    throw new ProductError(error.message);
+  }
+}
+
 export async function fetchProductsPerPage(query) {
   try {
     const options = {};
