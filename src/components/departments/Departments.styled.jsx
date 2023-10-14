@@ -34,4 +34,13 @@ export const GridItemImage = styled.div`
 
 export const GridItemTitle = styled.div`
   color: var(--mahogany);
+
+  h3 {
+    font-size: 1.8rem;
+
+    @media screen and (${BREAKPOINTS.MOVIL_L}) {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+    }
+  }
 `;
