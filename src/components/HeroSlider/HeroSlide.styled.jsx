@@ -20,7 +20,7 @@ export const Slide = styled.div`
     }
   }
 
-  p {
+  a {
     text-align: center;
     font-size: 1.5rem;
     word-break: break-word;

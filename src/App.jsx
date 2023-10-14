@@ -14,7 +14,7 @@ function App() {
         <Route path={PUBLIC_ROUTES.HOME} element={<Home />} />
         <Route path={PUBLIC_ROUTES.LOGIN} element={<Login />} />
         <Route path={PUBLIC_ROUTES.CATALOG} element={<Departments />} />
-        <Route path={PUBLIC_ROUTES.PRODUCT} element={<Product />} />
+        <Route path={`${PUBLIC_ROUTES.PRODUCT}/:productID`} element={<Product />} />
       </Routes>
     </Router>
   );

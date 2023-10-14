@@ -9,6 +9,7 @@ import {
   BasketSidebarItemImage,
   BasketSidebarItemInfo,
 } from './BasketSidebarItem.styled';
+import { PUBLIC_ROUTES } from '../../config';
 
 export default function BasketSidebarItem({ image, title, brand, price, quantity, id }) {
   const { removeFromBasket, decreaseQuantity, addToBasket } = useBasket();
@@ -23,7 +24,7 @@ export default function BasketSidebarItem({ image, title, brand, price, quantity
           <div>
             <p>{brand}</p>
             <h3>
-              <Link to={`/product/${id}`}>{title}</Link>
+              <Link to={`${PUBLIC_ROUTES.PRODUCT}/${id}`}>{title}</Link>
             </h3>
           </div>
           <div>

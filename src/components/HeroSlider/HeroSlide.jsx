@@ -3,10 +3,12 @@ import BagIcon from '../../assets/icons/Bag.icon';
 import useBasket from '../../hooks/useBasket';
 import { toast } from 'sonner';
 import { formatCurrency } from '../../utils';
+import { Link } from 'react-router-dom';
+import { PUBLIC_ROUTES } from '../../config';
 
 export default function HeroSlide({ product }) {
   const { addToBasket } = useBasket();
-  let { title, brand, price, image } = product;
+  let { title, brand, price, image, id } = product;
   price = formatCurrency(price);
 
   function addProduct(successMessage) {
@@ -27,7 +29,7 @@ export default function HeroSlide({ product }) {
   return (
     <Slide>
       <h3>{brand}</h3>
-      <p>{title}</p>
+      <Link to={`${PUBLIC_ROUTES.PRODUCT}/${id}`}>{title}</Link>
       <SlideImage>
         <img src={image} alt={title} />
       </SlideImage>

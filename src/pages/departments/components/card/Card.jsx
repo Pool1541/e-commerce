@@ -1,7 +1,8 @@
 import { formatCurrency } from '../../../../utils/formatCurrency';
 import { Slide, SlideImage, SlidePrice, CardLink, AddButton } from './Card.styled';
-import useBasket from '../../../../hooks/useBasket';
+import { PUBLIC_ROUTES } from '../../../../config';
 import { toast } from 'sonner';
+import useBasket from '../../../../hooks/useBasket';
 
 export default function Card({ product }) {
   const currency = formatCurrency(product.price);
@@ -25,7 +26,7 @@ export default function Card({ product }) {
 
   return (
     <Slide>
-      <CardLink to={`/product/${product.id}`}>
+      <CardLink to={`${PUBLIC_ROUTES.PRODUCT}/${product.id}`}>
         <SlideImage>
           <img src={product.image} alt={product.title} />
         </SlideImage>
