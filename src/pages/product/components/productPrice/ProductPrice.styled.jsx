@@ -10,10 +10,10 @@ export const ProductPriceContainer = styled.div`
 export const Prices = styled.div`
   display: flex;
   flex-direction: column;
+  font-weight: bold;
+  color: var(--mahogany);
 
-  span {
-    font-weight: bold;
-    color: var(--mahogany);
+  span:nth-child(2) {
     font-size: var(--heading3-size);
   }
 
@@ -22,7 +22,7 @@ export const Prices = styled.div`
     margin-bottom: 1rem;
   }
 
-  span:last-child {
+  span:nth-child(3) {
     font-size: var(--paragraph-size);
     color: var(--gray);
     text-decoration: line-through;

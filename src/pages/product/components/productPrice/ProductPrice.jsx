@@ -8,11 +8,14 @@ export default function ProductPrice({ product }) {
       <Prices>
         <span>Precio exclusivo web</span>
         <span>{formatCurrency(priceWithDiscount)}</span>
-        <span>{formatCurrency(product.price)}</span>
+        {product.discount >= 1 && <span>{formatCurrency(product.price)}</span>}
       </Prices>
-      <Discount>
-        <span>-{product.discount} %</span>
-      </Discount>
+      {product.discount >= 1 && (
+        <Discount>
+          <span>-{product.discount} %</span>
+        </Discount>
+      )}
+
       <PaymentMethods>
         <span>Todos los medios de pago</span>
       </PaymentMethods>

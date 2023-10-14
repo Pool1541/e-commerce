@@ -17,13 +17,14 @@ export default function BasketContextProvider({ children }) {
 
   function addToBasket(product) {
     const basketClone = structuredClone(basket);
+    const { quantity = 1 } = product;
     const productInBasket = basketClone.products.find((item) => item.id === product.id);
     if (productInBasket) {
-      productInBasket.quantity += 1;
+      productInBasket.quantity += quantity;
     } else {
       basketClone.products.push({
         ...product,
-        quantity: 1,
+        quantity,
       });
     }
     setAndCalculateQuantity(basketClone);
