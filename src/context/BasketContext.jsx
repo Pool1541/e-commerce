@@ -17,8 +17,8 @@ export default function BasketContextProvider({ children }) {
 
   function addToBasket(product) {
     const basketClone = structuredClone(basket);
-    const { quantity = 1 } = product;
-    const productInBasket = basketClone.products.find((item) => item.id === product.id);
+    const { id, quantity = 1 } = product;
+    const productInBasket = basketClone.products.find((item) => item.id === id);
     if (productInBasket) {
       productInBasket.quantity += quantity;
     } else {
