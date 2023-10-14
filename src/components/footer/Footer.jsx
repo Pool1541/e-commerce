@@ -9,7 +9,7 @@ export default function Footer() {
       <Container>
         <FooterGrid>
           <FooterList>
-            <h3>ShokerStore</h3>
+            <h3>E-mporium</h3>
             <ul>
               <li>
                 <p>
