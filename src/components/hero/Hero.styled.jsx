@@ -15,15 +15,16 @@ export const HeroContainer = styled(Container)`
 `;
 
 export const Banner = styled.div`
+  height: unset !important;
+  max-height: 400px;
   flex: 1 1 auto;
   position: relative;
+  border: none !important;
 
   img {
-    position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    filter: brightness(0.6);
+    object-fit: contain;
     z-index: -1;
   }
 

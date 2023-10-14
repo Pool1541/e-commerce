@@ -9,7 +9,7 @@ export default function Hero() {
       <HeroContainer>
         <Banner>
           <img src={bannerImage} alt='Banner' />
-          <BannerText>
+          {/* <BannerText>
             <h1>Check out our selection of tu bishvat exotic fruits</h1>
             <hr />
             <FooterOfBanner>
@@ -19,7 +19,7 @@ export default function Hero() {
                 eveniet assumenda repellendus praesentium!
               </p>
             </FooterOfBanner>
-          </BannerText>
+          </BannerText> */}
         </Banner>
         <Slider>
           <HeroSlider />
