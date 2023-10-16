@@ -1,4 +1,4 @@
-import { createContext, useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { getFilters } from '../repositories/filterRepository';
 import useSessionStorage from '../hooks/useSessionStorage';
 
@@ -6,6 +6,7 @@ export const FilterContext = createContext();
 
 export default function FilterContextProvider({ children }) {
   const filtersKey = 'Filters';
+  const [categoryName, setCategoryName] = useState();
   const [filters, setFilters] = useSessionStorage(filtersKey, []);
 
   function changeFilters(filterName, filterValue) {
@@ -15,8 +16,8 @@ export default function FilterContextProvider({ children }) {
     setFilters(filtersClone);
   }
 
-  async function getInitialFilter() {
-    const response = await getFilters();
+  async function getInitialFilter({ category }) {
+    const response = await getFilters({ category });
     const transformData = response.map((item) => {
       const filterList = item.filterList.map((filter) => {
         return item.title === 'maxPrice'
@@ -30,10 +31,12 @@ export default function FilterContextProvider({ children }) {
   }
 
   useEffect(() => {
-    if (filters.length <= 0) getInitialFilter();
-  }, []);
+    getInitialFilter({ category: categoryName });
+  }, [categoryName]);
 
   return (
-    <FilterContext.Provider value={{ filters, changeFilters }}>{children}</FilterContext.Provider>
+    <FilterContext.Provider value={{ filters, changeFilters, setCategoryName }}>
+      {children}
+    </FilterContext.Provider>
   );
 }

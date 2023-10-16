@@ -6,6 +6,7 @@ import { Section } from '../elements/Section.styled';
 import { GridItemContainer, GridItemImage, GridItemTitle } from './Departments.styled';
 import { getCategories } from '../../repositories/categoryRepository';
 import useDataFetcher from '../../hooks/useDataFetcher';
+import { PUBLIC_ROUTES } from '../../config';
 
 export default function Departments() {
   const { data: categories, loading } = useDataFetcher({ fetcherFn: getCategories });
@@ -30,7 +31,7 @@ export default function Departments() {
 
 function GridItem({ category }) {
   return (
-    <Link to={'/category/' + category.name}>
+    <Link to={`${PUBLIC_ROUTES.CATEGORY}/${category.name}`} preventScrollReset={true}>
       <GridItemContainer>
         <GridItemImage>
           <img src={category.image} alt={category.name} />

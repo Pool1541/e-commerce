@@ -1,7 +1,7 @@
 export const PUBLIC_ROUTES = {
   HOME: '/',
   LOGIN: '/login',
-  CATALOG: '/departments',
+  CATEGORY: '/category',
   PRODUCT: '/product',
 };
 
