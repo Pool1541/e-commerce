@@ -2,11 +2,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { fetchProducts } from '../../repositories/productRepository';
+import useDataFetcher from '../../hooks/useDataFetcher';
 import HeroSlide from './HeroSlide';
-import useProducts from '../../hooks/useProducts';
 
 export default function HeroSlider() {
-  const { products, loading } = useProducts();
+  const { data: products, loading } = useDataFetcher({ fetcherFn: fetchProducts });
 
   if (loading) return <div>Cargando...</div>;
 

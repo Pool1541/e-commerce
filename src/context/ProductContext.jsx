@@ -11,12 +11,13 @@ export default function ProductContextProvider({ children }) {
   const [pages, setPages] = useState();
   const [currentPage, setCurrentPage] = useState();
   const [loading, setLoading] = useState(true);
-  const { filters } = useContext(FilterContext);
+  const { filters, currentCategory } = useContext(FilterContext);
 
-  async function loadProducts(abortController) {
+  async function loadProducts(options) {
     try {
-      const query = buildQuery(filters);
-      const data = await fetchProducts(query, abortController);
+      setLoading(true);
+      const query = buildQuery(filters) || `?category=${currentCategory}`;
+      const data = await fetchProducts({ query, options });
       setProducts(data);
       getTotalPages(data);
       setCurrentPage(1);
@@ -45,7 +46,10 @@ export default function ProductContextProvider({ children }) {
 
   useEffect(() => {
     const abortController = new AbortController();
-    loadProducts(abortController);
+    const options = {
+      signal: abortController.signal,
+    };
+    loadProducts(options);
 
     return () => {
       abortController.abort();

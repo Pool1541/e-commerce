@@ -1,12 +1,13 @@
 import { createContext, useEffect, useState } from 'react';
 import { getFilters } from '../repositories/filterRepository';
 import useSessionStorage from '../hooks/useSessionStorage';
+import { useParams } from 'react-router-dom';
 
 export const FilterContext = createContext();
 
 export default function FilterContextProvider({ children }) {
   const filtersKey = 'Filters';
-  const [categoryName, setCategoryName] = useState();
+  const { categoryName: currentCategory } = useParams();
   const [filters, setFilters] = useSessionStorage(filtersKey, []);
 
   function changeFilters(filterName, filterValue) {
@@ -31,11 +32,11 @@ export default function FilterContextProvider({ children }) {
   }
 
   useEffect(() => {
-    getInitialFilter({ category: categoryName });
-  }, [categoryName]);
+    getInitialFilter({ category: currentCategory });
+  }, [currentCategory]);
 
   return (
-    <FilterContext.Provider value={{ filters, changeFilters, setCategoryName }}>
+    <FilterContext.Provider value={{ filters, changeFilters, currentCategory }}>
       {children}
     </FilterContext.Provider>
   );
