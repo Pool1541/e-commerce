@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect } from 'react';
 import { getFilters } from '../repositories/filterRepository';
 import useSessionStorage from '../hooks/useSessionStorage';
 import { useParams } from 'react-router-dom';
