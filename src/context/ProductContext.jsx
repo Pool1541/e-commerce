@@ -16,7 +16,8 @@ export default function ProductContextProvider({ children }) {
   async function loadProducts(options) {
     try {
       setLoading(true);
-      const query = buildQuery(filters) || `?category=${currentCategory}`;
+      let query = buildQuery(filters);
+      query = query ? query + `&category=${currentCategory}` : `?category=${currentCategory}`;
       const data = await fetchProducts({ query, options });
       setProducts(data);
       getTotalPages(data);

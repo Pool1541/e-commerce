@@ -4,6 +4,12 @@ import { FilterContext } from '../../../../context/FilterContext';
 import { CaretDownIcon } from '../../../../assets/icons';
 import { useState } from 'react';
 
+const filterLabels = {
+  subCategory: 'Sub categorías',
+  brand: 'Marcas',
+  maxPrice: 'Precio máximo',
+};
+
 export default function Filters({ title, filterList, range = false }) {
   const { changeFilters } = useContext(FilterContext);
   const someFilterChecked = filterList.some(
@@ -49,7 +55,7 @@ export default function Filters({ title, filterList, range = false }) {
   return (
     <StyledFilters onChange={range ? () => {} : handleChange} open={open}>
       <button onClick={handleOpen}>
-        <h4>{title}</h4>
+        <h4>{filterLabels[title]}</h4>
         <span>
           <CaretDownIcon />
         </span>
