@@ -3,6 +3,7 @@ import { FilterRange, FilterWrapper, StyledFilters } from './Filters.styled';
 import { FilterContext } from '../../../../context/FilterContext';
 import { CaretDownIcon } from '../../../../assets/icons';
 import { useState } from 'react';
+import { transformToTitleCase } from '../../../../utils';
 
 const filterLabels = {
   subCategory: 'Sub categorías',
@@ -79,12 +80,13 @@ export default function Filters({ title, filterList, range = false }) {
 
 function CheckedInput({ inputData }) {
   const { checked, value } = inputData;
+  const transformedValue = transformToTitleCase(value);
   const id = useId();
 
   return (
     <>
       <input type='checkbox' id={id} value={value} defaultChecked={checked} />
-      <label htmlFor={id}>{value}</label>
+      <label htmlFor={id}>{transformedValue}</label>
     </>
   );
 }
