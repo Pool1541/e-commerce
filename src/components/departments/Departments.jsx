@@ -7,6 +7,7 @@ import { GridItemContainer, GridItemImage, GridItemTitle } from './Departments.s
 import { getCategories } from '../../repositories/categoryRepository';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import { PUBLIC_ROUTES } from '../../config';
+import { transformToTitleCase } from '../../utils';
 
 export default function Departments() {
   const { data: categories, loading } = useDataFetcher({ fetcherFn: getCategories });
@@ -30,14 +31,15 @@ export default function Departments() {
 }
 
 function GridItem({ category }) {
+  const transformedTitle = transformToTitleCase(category.name);
   return (
-    <Link to={`${PUBLIC_ROUTES.CATEGORY}/${category.name}`} preventScrollReset={true}>
+    <Link to={`${PUBLIC_ROUTES.CATEGORY}/${category.name}`}>
       <GridItemContainer>
         <GridItemImage>
-          <img src={category.image} alt={category.name} />
+          <img src={category.image} alt={transformedTitle} />
         </GridItemImage>
         <GridItemTitle>
-          <h3>{category.name}</h3>
+          <h3>{transformedTitle}</h3>
         </GridItemTitle>
       </GridItemContainer>
     </Link>

@@ -4,7 +4,7 @@ import BREAKPOINTS from '../../assets/styles/breakPoints';
 export const GridContainer = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fit, 170px);
   justify-content: space-around;
   gap: 20px;
 
