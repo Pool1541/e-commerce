@@ -26,6 +26,7 @@ export const StyledFilterContainer = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   min-width: 200px;
+  max-width: 200px;
 
   @media screen and (${BREAKPOINTS.TABLET_L}) {
     position: fixed;
