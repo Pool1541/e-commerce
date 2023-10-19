@@ -34,7 +34,7 @@ export default function FilterContextProvider({ children }) {
   }
 
   useEffect(() => {
-    currentCategory !== filters[0].category && getInitialFilter({ category: currentCategory });
+    currentCategory !== filters[0]?.category && getInitialFilter({ category: currentCategory });
   }, [currentCategory]);
 
   return (
