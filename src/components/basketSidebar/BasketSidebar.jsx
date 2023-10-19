@@ -73,10 +73,13 @@ export default function BasketSidebar({ isOpen, handleClose, basket }) {
             <span>Subtotal</span>
             <span>{formatCurrency(basket.subTotal)}</span>
           </div>
-          <div>
-            <span>Descuentos</span>
-            <span>- {formatCurrency(basket.discounts)}</span>
-          </div>
+          {basket.discounts ? (
+            <div>
+              <span>Descuentos</span>
+              <span>- {formatCurrency(basket.discounts)}</span>
+            </div>
+          ) : null}
+
           <hr />
           <div>
             <span>Total</span>

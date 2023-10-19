@@ -8,6 +8,10 @@ const initialValue = {
   quantity: 0,
   subTotal: 0,
   discounts: 0,
+  coupon: {
+    discount: 0,
+    code: '',
+  },
   total: 0,
 };
 
@@ -64,21 +68,20 @@ export default function BasketContextProvider({ children }) {
     const result = basketClone.products.reduce(
       (acc, curr) => {
         acc.subTotal = toFixed(acc.subTotal + curr.price * curr.quantity);
-        acc.discounts = toFixed(
-          curr.discount
-            ? acc.discounts + ((curr.price * curr.discount) / 100) * curr.quantity
-            : acc.discounts
-        );
-
-        acc.total = toFixed(acc.subTotal - acc.discounts);
         return acc;
       },
       {
         subTotal: 0,
-        discounts: 0,
-        total: 0,
       }
     );
+
+    result.discounts = toFixed(
+      basketClone.coupon.code
+        ? (result.subTotal * basketClone.coupon.discount) / 100
+        : basketClone.discounts
+    );
+
+    result.total = toFixed(result.subTotal - basketClone.discounts);
 
     setBasket({ ...basketClone, ...result });
   }
