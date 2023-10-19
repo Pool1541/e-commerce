@@ -28,11 +28,13 @@ export default function FilterContextProvider({ children }) {
       return { ...item, filterList };
     });
 
+    transformData[0].category = currentCategory;
+
     setFilters(transformData);
   }
 
   useEffect(() => {
-    getInitialFilter({ category: currentCategory });
+    currentCategory !== filters[0].category && getInitialFilter({ category: currentCategory });
   }, [currentCategory]);
 
   return (

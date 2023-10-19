@@ -37,7 +37,8 @@ export default function ProductContextProvider({ children }) {
 
   async function pagination(page) {
     if (typeof page === 'number') {
-      const query = buildQuery(filters);
+      let query = buildQuery(filters);
+      query = query ? query + `&category=${currentCategory}` : `?category=${currentCategory}`;
       const defQuery = query ? `${query}&from=${(page - 1) * 20}` : `?from=${(page - 1) * 20}`;
       const results = await fetchProductsPerPage(defQuery);
       setProducts(results);
