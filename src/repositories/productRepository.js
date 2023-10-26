@@ -18,6 +18,14 @@ export async function fetchProductById({ id = '', options = {} }) {
   }
 }
 
+export async function searchProducts({ query = '', options = {} }) {
+  try {
+    return await httpRequest(options, `${ENDPOINTS.SEARCH_PRODUCTS}/?keyword=${query}`);
+  } catch (error) {
+    throw new ProductError(error.message);
+  }
+}
+
 export async function fetchProductsPerPage(query) {
   try {
     const options = {};

@@ -1,5 +1,9 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { fetchProducts, fetchProductsPerPage } from '../repositories/productRepository';
+import {
+  fetchProducts,
+  fetchProductsPerPage,
+  searchProducts,
+} from '../repositories/productRepository';
 import { FilterContext } from './FilterContext';
 import { errorHandler } from '../errors/errorHandler';
 import { buildQuery } from '../utils';
@@ -8,10 +12,35 @@ export const ProductContext = createContext();
 
 export default function ProductContextProvider({ children }) {
   const [products, setProducts] = useState({ products: [] });
+  const [query, setQuery] = useState('');
   const [pages, setPages] = useState();
   const [currentPage, setCurrentPage] = useState();
   const [loading, setLoading] = useState(true);
   const { filters, currentCategory } = useContext(FilterContext);
+
+  async function search(options) {
+    try {
+      setLoading(true);
+      const data = await searchProducts({ options, query });
+      setProducts(data);
+      getTotalPages(data);
+      setCurrentPage(1);
+    } catch (error) {
+      errorHandler(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    const options = {
+      signal: abortController.signal,
+    };
+    search(options);
+
+    return () => abortController.abort();
+  }, [query]);
 
   async function loadProducts(options) {
     try {
@@ -66,6 +95,7 @@ export default function ProductContextProvider({ children }) {
         pages,
         currentPage,
         pagination,
+        setQuery,
       }}>
       {children}
     </ProductContext.Provider>
