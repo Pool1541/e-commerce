@@ -25,4 +25,6 @@ export const Box = styled.div`
   justify-content: ${({ justifyContent }) => (justifyContent ? justifyContent : 'center')};
   gap: ${({ gap }) => (gap ? gap : 'normal normal')};
   padding: ${({ padding }) => (padding ? padding : '0 0 0 0')};
+  overflow: ${({ overflow }) => (overflow ? overflow : 'visible')};
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : '0')};
 `;

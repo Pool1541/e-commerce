@@ -3,6 +3,7 @@ import BREAKPOINTS from '../../../../assets/styles/breakPoints';
 
 export const Grid = styled.div`
   width: 100%;
+  min-height: calc(100vh - 16.5rem);
   display: grid;
   grid-template-columns: repeat(5, minmax(150px, 1fr));
   gap: 2rem;
