@@ -15,6 +15,7 @@ export const HeroContainer = styled(Container)`
 `;
 
 export const Banner = styled.div`
+  width: 80%;
   height: unset !important;
   max-height: 400px;
   flex: 1 1 auto;
