@@ -1,3 +1,4 @@
+export * from './Box.styled';
 export * from './Button.styled';
 export * from './Container.styled';
 export * from './GridContainer.styled';

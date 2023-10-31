@@ -8,6 +8,7 @@ import { getCategories } from '../../repositories/categoryRepository';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import { PUBLIC_ROUTES } from '../../config';
 import { transformToTitleCase } from '../../utils';
+import SkeletonDepartment from './SkeletonDepartment';
 
 export default function Departments() {
   const { data: categories, loading } = useDataFetcher({ fetcherFn: getCategories });
@@ -17,7 +18,11 @@ export default function Departments() {
       <Container small>
         <Subtitle>Departments</Subtitle>
         {loading ? (
-          <div>Cargando...</div>
+          <GridContainer>
+            {Array.from({ length: 8 }, (_) => null).map((e, index) => (
+              <SkeletonDepartment key={index} />
+            ))}
+          </GridContainer>
         ) : (
           <GridContainer>
             {categories.categories.map((category, index) => (
