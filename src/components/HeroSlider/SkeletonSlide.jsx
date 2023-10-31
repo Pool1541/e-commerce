@@ -4,18 +4,18 @@ import SkeletonLoader from '../skeletonLoader/SkeletonLoader';
 export default function SkeletonSlide() {
   return (
     <Box
-      variant={'container'}
-      flexDirection={'column'}
-      justifyContent={'space-around'}
-      padding={'10px 20px'}>
+      variant='container'
+      flexDirection='column'
+      justifyContent='space-around'
+      padding='10px 20px'>
       <SkeletonLoader width='50%' />
-      <Box display={'flex'} width={'100%'} flexDirection={'column'} gap={'0.3rem'}>
+      <Box display='flex' width='100%' flexDirection='column' gap='0.3rem'>
         <SkeletonLoader />
         <SkeletonLoader />
         <SkeletonLoader />
       </Box>
       <SkeletonLoader height='40%' />
-      <Box display={'flex'} width={'90%'} gap={'1rem'}>
+      <Box display='flex' width='90%' gap='1rem'>
         <SkeletonLoader />
         <SkeletonLoader />
       </Box>

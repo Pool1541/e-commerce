@@ -42,8 +42,5 @@ export const SkeletonLoaderContainer = styled.div`
     }
   }}
 
-  ${({ $borderRadius }) =>
-    css`
-      border-radius: ${$borderRadius};
-    `}
+  border-radius: ${({ $borderRadius }) => $borderRadius && $borderRadius};
 `;
