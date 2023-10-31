@@ -5,11 +5,12 @@ import 'swiper/css/navigation';
 import { fetchProducts } from '../../repositories/productRepository';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import HeroSlide from './HeroSlide';
+import SkeletonSlide from './SkeletonSlide';
 
 export default function HeroSlider() {
   const { data: products, loading } = useDataFetcher({ fetcherFn: fetchProducts });
 
-  if (loading) return <div>Cargando...</div>;
+  if (loading) return <SkeletonSlide />;
 
   return (
     <Swiper
