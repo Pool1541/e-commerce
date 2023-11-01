@@ -42,7 +42,7 @@ const StyledBox = styled.div`
  * @param {string} props.padding - Sets the padding area on all four sides of an element at once
  * @param {"visible" | "hidden" | "scroll" | "auto"} props.overflow - Specifies whether to clip the content or to add scrollbars when the content of an element is too big to fit in the specified area
  * @param {string} props.borderRadius - Rounds the corners of an element's outer border edge
- * @param {React.CSSProperties || import('styled-components').FlattenSimpleInterpolation} props.mixin - Sets a set of css rules
+ * @param {React.CSSProperties | import('styled-components').FlattenSimpleInterpolation} props.mixin - Sets a set of css rules
  * @param {React.ReactNode} props.children - children
  */
 
