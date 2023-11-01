@@ -3,7 +3,7 @@ import BREAKPOINTS from '../../../../assets/styles/breakPoints';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../../components/elements';
 
-export const CardContainer = styled.div`
+export const CardContainerMixin = css`
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,14 @@ export const CardContainer = styled.div`
   border-radius: 25px;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+
+  @media screen and (${BREAKPOINTS.MOVIL_L}) {
+    height: 250px;
+  }
+`;
+
+export const CardContainer = styled.div`
+  ${CardContainerMixin}
 
   &:hover {
     box-shadow: 1px 1px 10px 1px #0000003b;
@@ -40,10 +48,6 @@ export const CardContainer = styled.div`
     font-size: 1.5rem;
     padding: 0 20px;
     color: var(--p-color);
-  }
-
-  @media screen and (${BREAKPOINTS.MOVIL_L}) {
-    height: 250px;
   }
 `;
 

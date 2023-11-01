@@ -1,9 +1,10 @@
 import { Box } from '../../../../components/elements';
 import SkeletonLoader from '../../../../components/skeletonLoader/SkeletonLoader';
+import { CardContainerMixin } from './Card.styled';
 
 export default function SkeletonCard() {
   return (
-    <Box display='flex' height='300px' flexDirection='column' borderRadius='25px' overflow='hidden'>
+    <Box mixin={CardContainerMixin}>
       <Box
         width='100%'
         height='90%'
