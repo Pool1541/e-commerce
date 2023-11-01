@@ -1,4 +1,4 @@
 export const API_URL =
   process.env.NODE_ENV === 'development'
-    ? 'https://e-commerce-api-dev.fl0.io/api'
+    ? 'http://localhost:3000/api'
     : 'https://e-commerce-api-dev.fl0.io/api';
