@@ -1,13 +1,10 @@
 import { Box } from '../elements/Box.styled';
 import SkeletonLoader from '../skeletonLoader/SkeletonLoader';
+import { SlideMixin } from './HeroSlide.styled';
 
 export default function SkeletonSlide() {
   return (
-    <Box
-      variant='container'
-      flexDirection='column'
-      justifyContent='space-around'
-      padding='10px 20px'>
+    <Box width='100%' mixin={SlideMixin}>
       <SkeletonLoader width='50%' />
       <Box display='flex' width='100%' flexDirection='column' gap='0.3rem'>
         <SkeletonLoader />

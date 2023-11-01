@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Slide = styled.div`
+export const SlideMixin = css`
   height: 100%;
   display: flex;
   padding: 10px 20px;
@@ -8,6 +8,10 @@ export const Slide = styled.div`
   justify-content: space-around;
   align-items: center;
   font-weight: 700;
+`;
+
+export const Slide = styled.div`
+  ${SlideMixin}
 
   h3 {
     font-size: 1.5rem;
