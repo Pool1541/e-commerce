@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import BREAKPOINTS from '../../../../assets/styles/breakPoints';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../../components/elements';
 
-export const Slide = styled.div`
+export const CardContainer = styled.div`
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@ export const CardLink = styled(Link)`
   }
 `;
 
-export const SlideImage = styled.div`
+export const CardImage = styled.div`
   width: 100%;
   height: 60%;
   display: flex;
@@ -73,7 +73,7 @@ export const SlideImage = styled.div`
   }
 `;
 
-export const SlidePrice = styled.div`
+export const CardPrice = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;

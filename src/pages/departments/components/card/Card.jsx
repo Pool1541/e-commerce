@@ -1,5 +1,5 @@
 import { formatCurrency } from '../../../../utils/formatCurrency';
-import { Slide, SlideImage, SlidePrice, CardLink, AddButton } from './Card.styled';
+import { CardContainer, CardImage, CardPrice, CardLink, AddButton } from './Card.styled';
 import { PUBLIC_ROUTES } from '../../../../config';
 import { toast } from 'sonner';
 import useBasket from '../../../../hooks/useBasket';
@@ -25,19 +25,19 @@ export default function Card({ product }) {
   }
 
   return (
-    <Slide>
+    <CardContainer>
       <CardLink to={`${PUBLIC_ROUTES.PRODUCT}/${product.id}`}>
-        <SlideImage>
+        <CardImage>
           <img src={product.image} alt={product.title} />
-        </SlideImage>
+        </CardImage>
         <h3>{product.title}</h3>
-        <SlidePrice>
+        <CardPrice>
           <span>{currency}</span>
-        </SlidePrice>
+        </CardPrice>
       </CardLink>
       <AddButton onClick={() => addProduct('Se ha agregado el producto a tu canasta')}>
         Agregar al carrito
       </AddButton>
-    </Slide>
+    </CardContainer>
   );
 }
