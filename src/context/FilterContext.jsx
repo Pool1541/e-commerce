@@ -1,7 +1,7 @@
 import { createContext, useEffect } from 'react';
 import { getFilters } from '../repositories/filterRepository';
 import useSessionStorage from '../hooks/useSessionStorage';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 export const FilterContext = createContext();
 
@@ -9,11 +9,21 @@ export default function FilterContextProvider({ children }) {
   const filtersKey = 'Filters';
   const { categoryName: currentCategory } = useParams();
   const [filters, setFilters] = useSessionStorage(filtersKey, []);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   function changeFilters(filterName, filterValue) {
     const filtersClone = structuredClone(filters);
     const filterToChange = filtersClone.find((filter) => filter.title === filterName);
     filterToChange.filterList = filterValue;
+
+    const result = filterValue
+      .filter((curr) => curr.checked)
+      .map((curr) => curr.value)
+      .join(',');
+
+    result ? searchParams.set(filterName, result) : searchParams.delete(filterName);
+
+    setSearchParams(searchParams);
     setFilters(filtersClone);
   }
 

@@ -1,9 +1,8 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { fetchProducts, searchProducts } from '../repositories/productRepository';
-import { FilterContext } from './FilterContext';
 import { errorHandler } from '../errors/errorHandler';
-import { buildQuery } from '../utils';
 import { usePagination } from '../hooks/usePagination';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 export const ProductContext = createContext();
 
@@ -12,8 +11,9 @@ export default function ProductContextProvider({ children }) {
   const [query, setQuery] = useState('');
   const [pages, setPages] = useState();
   const [currentPage, changeCurrentPage] = usePagination();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
-  const { filters, currentCategory } = useContext(FilterContext);
+  const { categoryName } = useParams();
 
   async function search(options) {
     try {
@@ -38,12 +38,16 @@ export default function ProductContextProvider({ children }) {
     return () => abortController.abort();
   }, [query]);
 
-  async function loadProducts(page = 1, options) {
+  async function loadProducts(options) {
     try {
       setLoading(true);
-      let query = buildQuery(filters);
-      query = query ? query + `&category=${currentCategory}` : `?category=${currentCategory}`;
-      query = query ? `${query}&from=${(page - 1) * 20}` : `?from=${(page - 1) * 20}`;
+      const currentPage = searchParams.get('page') || 1;
+      const limit = (currentPage - 1) * 20;
+      searchParams.delete('page');
+      searchParams.set('category', categoryName);
+      searchParams.set('from', limit);
+
+      const query = '?' + decodeURIComponent(searchParams.toString());
       const data = await fetchProducts({ query, options });
       setProducts(data);
       getTotalPages(data);
@@ -66,12 +70,12 @@ export default function ProductContextProvider({ children }) {
       signal: abortController.signal,
     };
 
-    loadProducts(currentPage, options);
+    loadProducts(options);
 
     return () => {
       abortController.abort();
     };
-  }, [filters, currentPage]);
+  }, [searchParams]);
 
   return (
     <ProductContext.Provider
