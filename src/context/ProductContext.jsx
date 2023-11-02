@@ -79,10 +79,11 @@ export default function ProductContextProvider({ children }) {
 
   function changeCurrentPage(page) {
     setSearchParams((prev) => ({ ...extractExistingParams(prev), page }));
-    setCurrentPage(page);
   }
 
   useEffect(() => {
+    const currentPage = Number(searchParams.get('page'));
+    setCurrentPage(currentPage);
     pagination(currentPage);
   }, [searchParams]);
 
