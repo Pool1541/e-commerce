@@ -6,7 +6,8 @@ import {
 } from '../repositories/productRepository';
 import { FilterContext } from './FilterContext';
 import { errorHandler } from '../errors/errorHandler';
-import { buildQuery } from '../utils';
+import { buildQuery, extractExistingParams } from '../utils';
+import { useSearchParams } from 'react-router-dom';
 
 export const ProductContext = createContext();
 
@@ -17,6 +18,7 @@ export default function ProductContextProvider({ children }) {
   const [currentPage, setCurrentPage] = useState();
   const [loading, setLoading] = useState(true);
   const { filters, currentCategory } = useContext(FilterContext);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   async function search(options) {
     try {
@@ -75,6 +77,15 @@ export default function ProductContextProvider({ children }) {
     }
   }
 
+  function changeCurrentPage(page) {
+    setSearchParams((prev) => ({ ...extractExistingParams(prev), page }));
+    setCurrentPage(page);
+  }
+
+  useEffect(() => {
+    pagination(currentPage);
+  }, [searchParams]);
+
   useEffect(() => {
     const abortController = new AbortController();
     const options = {
@@ -96,6 +107,7 @@ export default function ProductContextProvider({ children }) {
         currentPage,
         pagination,
         setQuery,
+        changeCurrentPage,
       }}>
       {children}
     </ProductContext.Provider>

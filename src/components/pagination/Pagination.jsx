@@ -4,7 +4,7 @@ import { buildPagination } from '../../utils';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../assets/icons';
 
 export default function Pagination() {
-  const { pagination, currentPage, pages } = useProducts();
+  const { changeCurrentPage, currentPage, pages } = useProducts();
   const arrFromPagination = Array.from({ length: pages }, (_, index) => index + 1);
   const pagesToRender = buildPagination(arrFromPagination, currentPage);
 
@@ -14,7 +14,7 @@ export default function Pagination() {
         <li>
           <PaginationButton
             onClick={() => {
-              pagination(currentPage <= 1 ? 1 : currentPage - 1);
+              changeCurrentPage(currentPage <= 1 ? 1 : currentPage - 1);
             }}
             disabled={currentPage === 1 ? true : false}>
             <ChevronLeftIcon />
@@ -25,7 +25,7 @@ export default function Pagination() {
             <PaginationButton
               current={currentPage === e}
               onClick={() => {
-                pagination(e);
+                changeCurrentPage(e);
               }}>
               {e}
             </PaginationButton>
@@ -34,7 +34,7 @@ export default function Pagination() {
         <li>
           <PaginationButton
             onClick={() => {
-              pagination(currentPage >= pages ? currentPage : currentPage + 1);
+              changeCurrentPage(currentPage >= pages ? currentPage : currentPage + 1);
             }}
             disabled={currentPage == pages}>
             <ChevronRightIcon />
