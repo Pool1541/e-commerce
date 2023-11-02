@@ -1,9 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import {
-  fetchProducts,
-  fetchProductsPerPage,
-  searchProducts,
-} from '../repositories/productRepository';
+import { fetchProducts, searchProducts } from '../repositories/productRepository';
 import { FilterContext } from './FilterContext';
 import { errorHandler } from '../errors/errorHandler';
 import { buildQuery, extractExistingParams } from '../utils';
@@ -44,15 +40,15 @@ export default function ProductContextProvider({ children }) {
     return () => abortController.abort();
   }, [query]);
 
-  async function loadProducts(options) {
+  async function loadProducts(page = 1, options) {
     try {
       setLoading(true);
       let query = buildQuery(filters);
       query = query ? query + `&category=${currentCategory}` : `?category=${currentCategory}`;
+      query = query ? `${query}&from=${(page - 1) * 20}` : `?from=${(page - 1) * 20}`;
       const data = await fetchProducts({ query, options });
       setProducts(data);
       getTotalPages(data);
-      setCurrentPage(1);
     } catch (error) {
       errorHandler(error);
     } finally {
@@ -66,38 +62,23 @@ export default function ProductContextProvider({ children }) {
     setPages(totalPages);
   }
 
-  async function pagination(page) {
-    if (typeof page === 'number') {
-      let query = buildQuery(filters);
-      query = query ? query + `&category=${currentCategory}` : `?category=${currentCategory}`;
-      const defQuery = query ? `${query}&from=${(page - 1) * 20}` : `?from=${(page - 1) * 20}`;
-      const results = await fetchProductsPerPage(defQuery);
-      setProducts(results);
-      setCurrentPage(page);
-    }
-  }
-
   function changeCurrentPage(page) {
     setSearchParams((prev) => ({ ...extractExistingParams(prev), page }));
   }
-
-  useEffect(() => {
-    const currentPage = Number(searchParams.get('page'));
-    setCurrentPage(currentPage);
-    pagination(currentPage);
-  }, [searchParams]);
 
   useEffect(() => {
     const abortController = new AbortController();
     const options = {
       signal: abortController.signal,
     };
-    loadProducts(options);
+    const currentPage = Number(searchParams.get('page')) || 1;
+    setCurrentPage(currentPage);
+    loadProducts(currentPage, options);
 
     return () => {
       abortController.abort();
     };
-  }, [filters]);
+  }, [filters, searchParams]);
 
   return (
     <ProductContext.Provider
@@ -106,7 +87,6 @@ export default function ProductContextProvider({ children }) {
         loading,
         pages,
         currentPage,
-        pagination,
         setQuery,
         changeCurrentPage,
       }}>
