@@ -85,7 +85,7 @@ function CheckedInput({ inputData }) {
 
   return (
     <>
-      <input type='checkbox' id={id} value={value} checked={checked} />
+      <input type='checkbox' id={id} value={value} checked={checked} readOnly />
       <label htmlFor={id}>{transformedValue}</label>
     </>
   );
