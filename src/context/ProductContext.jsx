@@ -2,8 +2,8 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { fetchProducts, searchProducts } from '../repositories/productRepository';
 import { FilterContext } from './FilterContext';
 import { errorHandler } from '../errors/errorHandler';
-import { buildQuery, extractExistingParams } from '../utils';
-import { useSearchParams } from 'react-router-dom';
+import { buildQuery } from '../utils';
+import { usePagination } from '../hooks/usePagination';
 
 export const ProductContext = createContext();
 
@@ -11,10 +11,9 @@ export default function ProductContextProvider({ children }) {
   const [products, setProducts] = useState({ products: [] });
   const [query, setQuery] = useState('');
   const [pages, setPages] = useState();
-  const [currentPage, setCurrentPage] = useState();
+  const [currentPage, changeCurrentPage] = usePagination();
   const [loading, setLoading] = useState(true);
   const { filters, currentCategory } = useContext(FilterContext);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   async function search(options) {
     try {
@@ -22,7 +21,6 @@ export default function ProductContextProvider({ children }) {
       const data = await searchProducts({ options, query });
       setProducts(data);
       getTotalPages(data);
-      setCurrentPage(1);
     } catch (error) {
       errorHandler(error);
     } finally {
@@ -62,24 +60,18 @@ export default function ProductContextProvider({ children }) {
     setPages(totalPages);
   }
 
-  function changeCurrentPage(page) {
-    if (typeof page !== 'number') return;
-    setSearchParams((prev) => ({ ...extractExistingParams(prev), page }));
-  }
-
   useEffect(() => {
     const abortController = new AbortController();
     const options = {
       signal: abortController.signal,
     };
-    const currentPage = Number(searchParams.get('page')) || 1;
-    setCurrentPage(currentPage);
+
     loadProducts(currentPage, options);
 
     return () => {
       abortController.abort();
     };
-  }, [filters, searchParams]);
+  }, [filters, currentPage]);
 
   return (
     <ProductContext.Provider
