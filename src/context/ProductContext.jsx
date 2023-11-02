@@ -63,6 +63,7 @@ export default function ProductContextProvider({ children }) {
   }
 
   function changeCurrentPage(page) {
+    if (typeof page !== 'number') return;
     setSearchParams((prev) => ({ ...extractExistingParams(prev), page }));
   }
 
