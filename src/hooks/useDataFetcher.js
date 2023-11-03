@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { errorHandler } from '../errors/errorHandler';
 
-export default function useDataFetcher({ fetcherFn, args = {}, dependencies = [] }) {
+export default function useDataFetcher({ fetcherFn, args = {}, dependencies = [], select }) {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
@@ -11,12 +12,18 @@ export default function useDataFetcher({ fetcherFn, args = {}, dependencies = []
       ...args.options,
       signal: abortController.signal,
     };
+
     (async () => {
       try {
-        const data = await fetcherFn({ ...args });
+        setLoading(true);
+        let data = await fetcherFn({ ...args });
+        if (select) {
+          data = select(data);
+        }
         setData(data);
       } catch (error) {
         console.log(error);
+        errorHandler(error);
         setError(error.message);
       } finally {
         setLoading(false);
