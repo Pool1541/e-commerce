@@ -21,6 +21,7 @@ export default function FilterContextProvider({ children }) {
       .map((curr) => curr.value)
       .join(',');
 
+    searchParams.delete('page');
     result ? searchParams.set(filterName, result) : searchParams.delete(filterName);
 
     setSearchParams(searchParams);
