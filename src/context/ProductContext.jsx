@@ -1,6 +1,5 @@
 import { createContext, useState } from 'react';
 import { fetchProducts } from '../repositories/productRepository';
-import { usePagination } from '../hooks/usePagination';
 import { useParams, useSearchParams } from 'react-router-dom';
 import useDataFetcher from '../hooks/useDataFetcher';
 
@@ -8,15 +7,13 @@ export const ProductContext = createContext();
 
 export default function ProductContextProvider({ children }) {
   const [pages, setPages] = useState();
-  const [currentPage] = usePagination();
   const [searchParams] = useSearchParams();
   const { categoryName } = useParams();
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   const { data: products, loading } = useDataFetcher({
     fetcherFn: fetchProducts,
-    args: {
-      query: buildQueryString(),
-    },
+    args: { query: buildQueryString() },
     dependencies: [searchParams],
     select: (data) => (getTotalPages(data), data),
   });
@@ -42,7 +39,6 @@ export default function ProductContextProvider({ children }) {
         products,
         loading,
         pages,
-        currentPage,
       }}>
       {children}
     </ProductContext.Provider>

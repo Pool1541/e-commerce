@@ -1,12 +1,11 @@
 import { PaginationButton, StyledPaginationContainer } from './Pagination.styled';
 import { buildPagination } from '../../utils';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../assets/icons';
+import useProducts from '../../hooks/useProducts';
 import { usePagination } from '../../hooks/usePagination';
-import { useContext } from 'react';
-import { ProductContext } from '../../context/ProductContext';
 
 export default function Pagination() {
-  const { pages } = useContext(ProductContext);
+  const { pages } = useProducts();
   const [currentPage, changeCurrentPage] = usePagination();
   const arrFromPagination = Array.from({ length: pages }, (_, index) => index + 1);
   const pagesToRender = buildPagination(arrFromPagination, currentPage);
