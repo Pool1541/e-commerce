@@ -14,14 +14,21 @@ const filterLabels = {
 export default function Filters({ title, filterList }) {
   const [open, setOpen] = useState(false);
 
-  function handleOpen(e) {
-    e.preventDefault();
+  function handleToggle(e) {
     setOpen(!open);
+  }
+
+  function handleOpen() {
+    setOpen(true);
+  }
+
+  function handleClose() {
+    setOpen(false);
   }
 
   return (
     <StyledFilters open={open}>
-      <button onClick={handleOpen}>
+      <button type='button' onClick={handleToggle}>
         <h4>{filterLabels[title]}</h4>
         <span>
           <CaretDownIcon />
@@ -31,7 +38,7 @@ export default function Filters({ title, filterList }) {
         {filterList.map((filter, index) => {
           return (
             <FilterWrapper key={index}>
-              <CheckedInput label={filter} title={title} />
+              <CheckedInput label={filter} title={title} handleOpen={handleOpen} />
             </FilterWrapper>
           );
         })}
@@ -40,7 +47,7 @@ export default function Filters({ title, filterList }) {
   );
 }
 
-function CheckedInput({ label, title }) {
+function CheckedInput({ label, title, handleOpen }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialValue = searchParams.get(title)?.includes(label);
   const transformedLabel = transformToTitleCase(label);
@@ -73,6 +80,7 @@ function CheckedInput({ label, title }) {
     const params = searchParams.get(title);
 
     params && params.includes(label) ? (ref.current.checked = true) : (ref.current.checked = false);
+    ref.current.checked && handleOpen();
   }, [searchParams]);
 
   return (
