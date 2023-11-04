@@ -7,7 +7,7 @@ export async function getFilters({ category = '' }) {
 
     return await httpRequest(
       {},
-      `${ENDPOINTS.GET_FILTERS_BY_NAME}?filters=subCategory,brand,maxPrice${category}`
+      `${ENDPOINTS.GET_FILTERS_BY_NAME}?filters=subCategory,brand${category}`
     );
   } catch (error) {
     console.log(error);

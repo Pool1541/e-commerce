@@ -7,28 +7,25 @@ import GridContainer from './components/gridContainer/GridContainer';
 import FilterContainer from './components/filters/FilterContainer';
 import FilterSidebarContextProvider from './context/FilterSidebarContext';
 import Pagination from '../../components/pagination/Pagination';
-import FilterContextProvider from '../../context/FilterContext';
 import ProductContextProvider from '../../context/ProductContext';
 
 export default function Departments() {
   return (
-    <FilterContextProvider>
-      <ProductContextProvider>
-        <FilterSidebarContextProvider>
-          <Header />
-          <Main>
-            <DepartmentsContainer>
-              <FilterContainer />
-              <div style={{ flex: '1 1 auto' }}>
-                <Buttons />
-                <GridContainer />
-                <Pagination />
-              </div>
-            </DepartmentsContainer>
-          </Main>
-          <Footer />
-        </FilterSidebarContextProvider>
-      </ProductContextProvider>
-    </FilterContextProvider>
+    <ProductContextProvider>
+      <FilterSidebarContextProvider>
+        <Header />
+        <Main>
+          <DepartmentsContainer>
+            <FilterContainer />
+            <div style={{ flex: '1 1 auto' }}>
+              <Buttons />
+              <GridContainer />
+              <Pagination />
+            </div>
+          </DepartmentsContainer>
+        </Main>
+        <Footer />
+      </FilterSidebarContextProvider>
+    </ProductContextProvider>
   );
 }

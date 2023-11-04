@@ -1,9 +1,9 @@
-import { useContext, useId } from 'react';
-import { FilterRange, FilterWrapper, StyledFilters } from './Filters.styled';
-import { FilterContext } from '../../../../context/FilterContext';
+import { useEffect, useId, useRef } from 'react';
+import { FilterWrapper, StyledFilters } from './Filters.styled';
 import { CaretDownIcon } from '../../../../assets/icons';
 import { useState } from 'react';
 import { transformToTitleCase } from '../../../../utils';
+import { useSearchParams } from 'react-router-dom';
 
 const filterLabels = {
   subCategory: 'Sub categorías',
@@ -11,50 +11,16 @@ const filterLabels = {
   maxPrice: 'Precio máximo',
 };
 
-export default function Filters({ title, filterList, range = false }) {
-  const { changeFilters } = useContext(FilterContext);
-  const someFilterChecked = filterList.some(
-    (filter) => filter.checked || (typeof filter.value === 'number' && filter.value > 0)
-  );
-  const [open, setOpen] = useState(someFilterChecked);
+export default function Filters({ title, filterList }) {
+  const [open, setOpen] = useState(false);
 
   function handleOpen(e) {
     e.preventDefault();
     setOpen(!open);
   }
 
-  function handleChange(e) {
-    const nodes = e.target.form.querySelectorAll('input');
-    const filters = Array.from(nodes).reduce((acc, curr) => {
-      let filterObject = {
-        value: curr.value,
-        checked: curr.checked,
-      };
-      acc.push(filterObject);
-      return acc;
-    }, []);
-
-    changeFilters(title, filters);
-  }
-
-  function handleRangeChange(e) {
-    const nodes = e.target.form.querySelectorAll('input');
-    const filters = Array.from(nodes).reduce((acc, curr) => {
-      let filterObject = {
-        value: +curr.value,
-        maxValue: curr.max,
-        checked: false,
-      };
-      acc.push(filterObject);
-
-      return acc;
-    }, []);
-
-    changeFilters(title, filters);
-  }
-
   return (
-    <StyledFilters onChange={range ? () => {} : handleChange} open={open}>
+    <StyledFilters open={open}>
       <button onClick={handleOpen}>
         <h4>{filterLabels[title]}</h4>
         <span>
@@ -62,14 +28,10 @@ export default function Filters({ title, filterList, range = false }) {
         </span>
       </button>
       <div>
-        {filterList.map((item, index) => {
+        {filterList.map((filter, index) => {
           return (
             <FilterWrapper key={index}>
-              {range ? (
-                <RangeInput inputData={item} controller={handleRangeChange} />
-              ) : (
-                <CheckedInput inputData={item} title={title} />
-              )}
+              <CheckedInput label={filter} title={title} />
             </FilterWrapper>
           );
         })}
@@ -78,25 +40,52 @@ export default function Filters({ title, filterList, range = false }) {
   );
 }
 
-function CheckedInput({ inputData }) {
-  const { checked, value } = inputData;
-  const transformedValue = transformToTitleCase(value);
+function CheckedInput({ label, title }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialValue = searchParams.get(title)?.includes(label);
+  const transformedLabel = transformToTitleCase(label);
+  const ref = useRef();
   const id = useId();
+
+  function handleChange() {
+    const isChecked = ref.current.checked;
+
+    if (isChecked) {
+      let params = searchParams.get(title);
+      params = params ? params.split(',').concat(label).join(',') : label;
+
+      searchParams.set(title, params);
+    } else {
+      let params = searchParams.get(title);
+      params = params
+        .split(',')
+        .filter((param) => param !== label)
+        .join(',');
+
+      params ? searchParams.set(title, params) : searchParams.delete(title);
+    }
+
+    searchParams.delete('page');
+    setSearchParams(searchParams);
+  }
+
+  useEffect(() => {
+    const params = searchParams.get(title);
+
+    params && params.includes(label) ? (ref.current.checked = true) : (ref.current.checked = false);
+  }, [searchParams]);
 
   return (
     <>
-      <input type='checkbox' id={id} value={value} checked={checked} readOnly />
-      <label htmlFor={id}>{transformedValue}</label>
+      <input
+        type='checkbox'
+        ref={ref}
+        id={id}
+        value={label}
+        defaultChecked={initialValue}
+        onChange={handleChange}
+      />
+      <label htmlFor={id}>{transformedLabel}</label>
     </>
-  );
-}
-
-function RangeInput({ inputData, controller }) {
-  const { value, maxValue } = inputData;
-  return (
-    <FilterRange>
-      <input type='range' defaultValue={value} min={0} max={maxValue} onChange={controller} />
-      <span>$ {value}</span>
-    </FilterRange>
   );
 }
