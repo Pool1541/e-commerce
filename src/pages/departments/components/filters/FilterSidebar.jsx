@@ -4,6 +4,7 @@ import Filters from './Filters';
 import { StyledFilterContainer } from './Filters.styled';
 import useDataFetcher from '../../../../hooks/useDataFetcher';
 import { getFilters } from '../../../../repositories/filterRepository';
+import { useParams } from 'react-router-dom';
 
 export default function FilterSidebar() {
   const { toggleFilterSidebar } = useFilterSidebar();
