@@ -14,7 +14,6 @@ export default function FeaturedProducts() {
           <img src={backgroundImage} alt='featured products background' />
           <FPHeader>
             <Subtitle>Featured Products</Subtitle>
-            <Button>See more</Button>
           </FPHeader>
           <Slider>
             <FeaturedProductsSlider />

@@ -29,7 +29,7 @@ export const FPContainer = styled.div`
 `;
 
 export const FPHeader = styled.div`
-  padding: 20px 40px;
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
 
