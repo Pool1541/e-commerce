@@ -6,10 +6,11 @@ import 'swiper/css/navigation';
 import styled from 'styled-components';
 import useSlidesPerView from '../../hooks/useSlidesPerView';
 import BREAKPOINTS from '../../assets/styles/breakPoints';
+import useDataFetcher from '../../hooks/useDataFetcher';
+import { fetchProducts } from '../../repositories/productRepository';
+import SkeletonSlide from '../HeroSlider/SkeletonSlide';
 
 const FPSwiper = styled(Swiper)`
-  padding: 0 0 0 30px;
-
   @media screen and (${BREAKPOINTS.MOVIL_L}) {
     padding: 0;
   }
@@ -17,65 +18,38 @@ const FPSwiper = styled(Swiper)`
 
 export default function FeaturedProductsSlider() {
   const SlidesPerView = useSlidesPerView();
+  const { data: products, loading } = useDataFetcher({ fetcherFn: fetchProducts });
+  const SkeletonSlides = Array.from({ length: SlidesPerView }).map((_, index) => (
+    <SkeletonSlide key={index} />
+  ));
+
+  if (loading)
+    return (
+      <div
+        style={{
+          width: '100%',
+          display: 'flex',
+          gap: '15px',
+        }}>
+        {SkeletonSlides}
+      </div>
+    );
 
   return (
     <FPSwiper
       slidesPerView={SlidesPerView}
       centeredSlidesBounds={true}
-      spaceBetween={10}
+      spaceBetween={15}
       autoplay={{
         delay: 5000,
         pauseOnMouseEnter: true,
       }}
       modules={[Autoplay]}>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FeaturedProductsSlide />
-      </SwiperSlide>
+      {products.products.map((product) => (
+        <SwiperSlide key={product.id}>
+          <FeaturedProductsSlide product={product} />
+        </SwiperSlide>
+      ))}
     </FPSwiper>
   );
 }
