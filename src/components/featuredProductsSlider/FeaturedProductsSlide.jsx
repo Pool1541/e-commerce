@@ -1,14 +1,23 @@
-import { FPSlide } from './FeaturedProductsSlide.styled';
+import { Link } from 'react-router-dom';
+import { formatCurrency } from '../../utils';
+import { Slide, SlideImage, SlidePrice } from '../HeroSlider/HeroSlide.styled';
+import { PUBLIC_ROUTES } from '../../config';
 
-export default function FeaturedProductsSlide() {
+export default function FeaturedProductsSlide({ product }) {
+  let { title, brand, price, image, id } = product;
+  price = formatCurrency(price);
+
   return (
-    <FPSlide>
-      <img
-        src='https://mevgal.com/wp-content/uploads/authentic-greek-lactose-free-yogurt-10-150gr.png'
-        alt=''
-      />
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-      <div>$ 8.99</div>
-    </FPSlide>
+    <Slide>
+      <h3>{brand}</h3>
+      <Link to={`${PUBLIC_ROUTES.PRODUCT}/${id}`}>{title}</Link>
+      <SlideImage>
+        <img src={image} alt={title} />
+      </SlideImage>
+      <SlidePrice>
+        <span>{price}</span>
+        <span>{price}</span>
+      </SlidePrice>
+    </Slide>
   );
 }

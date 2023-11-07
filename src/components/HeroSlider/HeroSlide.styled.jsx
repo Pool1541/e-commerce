@@ -8,6 +8,8 @@ export const SlideMixin = css`
   justify-content: space-around;
   align-items: center;
   font-weight: 700;
+  background-color: var(--white);
+  border-radius: 25px;
 `;
 
 export const Slide = styled.div`
