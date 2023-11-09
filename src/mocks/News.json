@@ -2,18 +2,18 @@
   "news": [
     {
       "id": 1,
-      "title": "GARDEN SHOP IS NOW OPEN!",
-      "thumbnail": "/assets/images/flowers.jpg"
+      "title": "iPhone 15 Pro y iPhone 15 Pro Max",
+      "thumbnail": "/assets/images/iphone15.jpeg"
     },
     {
       "id": 2,
-      "title": "CELEBRATION CAKES",
-      "thumbnail": "/assets/images/cake.jpg"
+      "title": "Microsoft lanzará la PS5 slim a finales de año",
+      "thumbnail": "/assets/images/ps5.webp"
     },
     {
       "id": 3,
-      "title": "SEE ALL OUR UPCOMING EVENTS",
-      "thumbnail": "/assets/images/events.jpg"
+      "title": "Samsung Galaxy S24: fecha de salida y precios",
+      "thumbnail": "/assets/images/samsung.jpeg"
     }
   ]
 }

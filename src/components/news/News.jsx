@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import { NewsSubtitle, NewsThumbnailsContainer, NewsThumbnail } from './News.styled';
 import { Section, Subtitle, Container } from '../elements';
 import { news } from '../../mocks/News.json';
-import image1 from '../../assets/images/cake.jpg';
-import image2 from '../../assets/images/events.jpg';
-import image3 from '../../assets/images/flowers.jpg';
+import image1 from '../../assets/images/iphone15.jpeg';
+import image2 from '../../assets/images/ps5.webp';
+import image3 from '../../assets/images/samsung.jpeg';
 
 const images = [image1, image2, image3];
 

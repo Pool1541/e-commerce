@@ -55,14 +55,14 @@ export const NewsThumbnail = styled.div`
     color: var(--snow);
     font-size: clamp(1.3rem, 1.5vw, 1.8rem);
     font-weight: 700;
-    background-color: #529945be;
+    background-color: #b6b6b6bb;
     width: 100%;
     height: 30%;
     transition: all 0.3s ease;
   }
 
   &:hover > p {
-    background-color: #bd40067f;
+    background-color: #bd400653;
     height: 100%;
   }
 `;
