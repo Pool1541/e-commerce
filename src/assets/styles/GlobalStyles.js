@@ -36,6 +36,7 @@ const GlobalStyle = createGlobalStyle`
     --tea-rose : #D0ACAF;
     --snow: #f4eced;
     --white: #fff;
+    --gray-light: #e0e0e0;
     --y-green: #94BE1E;
     --green: #008000;
     --gray: #777772;
