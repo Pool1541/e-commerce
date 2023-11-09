@@ -25,6 +25,7 @@ export default function useCheckedInput({ title, label, handleOpen }) {
     }
 
     searchParams.delete('page');
+    searchParams.delete('sort');
     setSearchParams(searchParams);
   }
 
