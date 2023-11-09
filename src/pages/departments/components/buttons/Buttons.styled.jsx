@@ -44,6 +44,7 @@ export const StyledButtonsContainer = styled.div`
 `;
 
 export const StyledSortButtonContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 1rem;
