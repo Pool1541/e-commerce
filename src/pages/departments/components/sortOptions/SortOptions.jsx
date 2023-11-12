@@ -13,7 +13,7 @@ export default function SortOptions({ onClick }) {
   function handleDescending() {
     searchParams.set('sort', 'desc');
     setSearchParams(searchParams);
-    onclick();
+    onClick();
   }
   return (
     <StyledSortOptions>
