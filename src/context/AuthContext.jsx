@@ -101,6 +101,7 @@ export default function AuthContextProvider({ children }) {
         isAuthenticated,
         userImage,
         authenticateUser,
+        getAuthenticatedUserInfo,
         logout,
       }}>
       {children}
