@@ -7,5 +7,12 @@ export const PUBLIC_ROUTES = {
 
 export const PRIVATE_ROUTES = {
   SETTINGS: '/settings',
-  DASHBOARD: '/dashboard',
+  ACCOUNT: '/account',
+};
+
+export const ACCOUNT_ROUTES = {
+  PROFILE: 'profile',
+  SECURITY: 'security',
+  ORDERS: 'orders',
+  BILLING: 'billing',
 };
