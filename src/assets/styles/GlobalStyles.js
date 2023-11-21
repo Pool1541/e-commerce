@@ -38,8 +38,10 @@ const GlobalStyle = createGlobalStyle`
     --white: #fff;
     --gray-light: #e0e0e0;
     --y-green: #94BE1E;
-    --green: #008000;
+    --green: #801a00;
+    --error: #e61d1d;
     --gray: #777772;
+    --gray-medium: #c1c1c1;
     --black: #020202;
     --p-color: #3d3d3d;
     --paragraph-size: 1.5rem;
