@@ -1,6 +1,6 @@
 import { Toaster } from 'sonner';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { PUBLIC_ROUTES } from './config';
+import { PRIVATE_ROUTES, PUBLIC_ROUTES } from './config';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Product from './pages/product/Product';
@@ -9,6 +9,7 @@ import ScrollRestoration from './components/scrollRestoration/ScrollRestoration'
 import GlobalStyle from './assets/styles/GlobalStyles.js';
 import AuthContextProvider from './context/AuthContext.jsx';
 import BasketContextProvider from './context/BasketContext.jsx';
+import Account from './pages/account/Account.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path={PUBLIC_ROUTES.LOGIN} element={<Login />} />
             <Route path={`${PUBLIC_ROUTES.CATEGORY}/:categoryName`} element={<Departments />} />
             <Route path={`${PUBLIC_ROUTES.PRODUCT}/:productID`} element={<Product />} />
+            <Route path={`${PRIVATE_ROUTES.ACCOUNT}/*`} element={<Account />} />
           </Routes>
           <GlobalStyle />
         </BasketContextProvider>
