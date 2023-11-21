@@ -9,4 +9,6 @@ export const ENDPOINTS = {
   SEARCH_PRODUCTS: '/search',
   GET_REFRESH_TOKEN: '/auth/refresh',
   GET_FILTERS_BY_NAME: '/filters/',
+  PUT_UPDATE_USER: '/users',
+  POST_UPDATE_USER_IMAGE: '/uploads/users',
 };
