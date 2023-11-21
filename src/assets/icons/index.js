@@ -16,3 +16,6 @@ export { default as FilterICon } from './Filter.icon';
 export { default as SortIcon } from './Sort.icon';
 export { default as ChevronLeftIcon } from './ChevronLeft.icon';
 export { default as ChevronRightIcon } from './ChevronRight.icon';
+export { default as FingerPrintIcon } from './FingerPrint.icon';
+export { default as BillingIcon } from './Billing.icon';
+export { default as PackageIcon } from './Package.icon';
