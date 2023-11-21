@@ -14,9 +14,9 @@ export default function ProfileOptions({ username, handleClose }) {
       <p>Welcome {username}</p>
       <ul>
         <li>
-          <Link to={PRIVATE_ROUTES.DASHBOARD}>
+          <Link to={PRIVATE_ROUTES.ACCOUNT}>
             <UserIcon />
-            Perfil
+            Mi cuenta
           </Link>
         </li>
         <li>
