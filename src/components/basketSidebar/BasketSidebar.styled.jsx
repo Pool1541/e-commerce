@@ -37,7 +37,7 @@ export const BasketSidebarContainer = styled.div`
   right: 0;
   width: 100%;
   max-width: 380px;
-  height: 100%;
+  height: 100dvh;
   background-color: white;
   display: flex;
   flex-direction: column;
