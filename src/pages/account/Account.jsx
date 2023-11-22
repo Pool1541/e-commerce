@@ -1,5 +1,5 @@
 import { ACCOUNT_ROUTES } from '../../config';
-import { Container, Section } from '../../components/elements';
+import { Container } from '../../components/elements';
 import { Main } from '../../components/elements/Main.styled';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
@@ -10,6 +10,7 @@ import Security from './pages/security/Security';
 import Orders from './pages/orders/Orders';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ViewWrapper } from './components/elements';
+import { AccountSection } from './components/elements/AccountSection.styled';
 
 export default function Account() {
   return (
@@ -17,7 +18,7 @@ export default function Account() {
       <Header />
       <Main>
         <Container>
-          <Section>
+          <AccountSection>
             <Sidebar />
             <ViewWrapper>
               <Routes>
@@ -28,7 +29,7 @@ export default function Account() {
                 <Route path={`${ACCOUNT_ROUTES.ORDERS}`} element={<Orders />} />
               </Routes>
             </ViewWrapper>
-          </Section>
+          </AccountSection>
         </Container>
       </Main>
       <Footer />

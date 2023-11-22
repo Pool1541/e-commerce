@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import BREAKPOINTS from '../../../../assets/styles/breakPoints';
 
 export const StyledSidebar = styled.aside`
-  position: fixed;
+  /* width: 100%; */
+  /* height: calc(100vh - 6.4rem); */
+  /* top: 6.4rem; */
+  /* max-width: 28.8rem; */
   width: 100%;
-  height: calc(100vh - 6.4rem);
-  top: 6.4rem;
-  max-width: 28.8rem;
+  max-width: 20rem;
   color: var(--p-color);
+  overflow: auto;
 
   @media screen and (${BREAKPOINTS.TABLET_L}) {
     position: static;
@@ -17,7 +19,6 @@ export const StyledSidebar = styled.aside`
 `;
 
 export const SidebarNav = styled.ul`
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -28,10 +29,11 @@ export const SidebarNav = styled.ul`
     margin-top: unset;
     flex-direction: row;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 0;
 
     li {
       width: 50%;
+      min-width: 12rem;
 
       a {
         padding: 1rem 0;
