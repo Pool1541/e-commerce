@@ -49,6 +49,18 @@ export const InputGroup = styled.div`
     }
   }
 
+  input:disabled {
+    background-color: var(--gray-medium);
+    cursor: not-allowed;
+  }
+
+  button:disabled {
+    background-color: var(--gray-medium);
+    transition: all 0.2s ease;
+    color: var(--black);
+    cursor: not-allowed;
+  }
+
   textArea {
     height: 15rem;
   }
