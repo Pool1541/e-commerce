@@ -10,6 +10,7 @@ import GlobalStyle from './assets/styles/GlobalStyles.js';
 import AuthContextProvider from './context/AuthContext.jsx';
 import BasketContextProvider from './context/BasketContext.jsx';
 import Account from './pages/account/Account.jsx';
+import AuthGuard from './guards/AuthGuard.jsx';
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
             <Route path={PUBLIC_ROUTES.LOGIN} element={<Login />} />
             <Route path={`${PUBLIC_ROUTES.CATEGORY}/:categoryName`} element={<Departments />} />
             <Route path={`${PUBLIC_ROUTES.PRODUCT}/:productID`} element={<Product />} />
-            <Route path={`${PRIVATE_ROUTES.ACCOUNT}/*`} element={<Account />} />
+            <Route element={<AuthGuard />}>
+              <Route path={`${PRIVATE_ROUTES.ACCOUNT}/*`} element={<Account />} />
+            </Route>
           </Routes>
           <GlobalStyle />
         </BasketContextProvider>
