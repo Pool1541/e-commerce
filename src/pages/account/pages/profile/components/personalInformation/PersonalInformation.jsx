@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import useAuth from '../../../../../../hooks/useAuth';
 import { updateUser } from '../../../../../../repositories/userRepository';
+import { toast } from 'sonner';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -39,9 +40,11 @@ export default function PersonalInformation() {
       const headers = {
         Authorization: accessToken.token,
       };
-      const updatedUser = await updateUser({ id: authenticatedUser.uid, body: values, headers });
+      await updateUser({ id: authenticatedUser.uid, body: values, headers });
+      toast.success('Se aplicaron los cambios.');
     } catch (error) {
-      setAuthError(error);
+      setAuthError(error.message);
+      toast.error(error.message);
     }
     setSubmitting(false);
   }
@@ -81,7 +84,7 @@ export default function PersonalInformation() {
             <InputGroup>
               <div>
                 <label htmlFor='email'>Correo electrónico</label>
-                <Field type='text' id='email' name='email' required />
+                <Field type='text' id='email' name='email' required disabled />
                 <ErrorMessage component='span' name='email' />
               </div>
             </InputGroup>
