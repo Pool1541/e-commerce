@@ -2,6 +2,8 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { FormBlock, FormWrapper, FormCaption, InputGroup } from '../../../../components/elements';
 import * as Yup from 'yup';
 import { useState } from 'react';
+import { changeUserPassword } from '../../../../repositories/userRepository';
+import useAuth from '../../../../hooks/useAuth';
 
 const validationSchema = Yup.object({
   current_password: Yup.string()
@@ -22,10 +24,19 @@ const validationSchema = Yup.object({
 
 export default function Security() {
   const [authError, setAuthError] = useState();
+  const { authenticatedUser, accessToken } = useAuth();
 
   async function handleSubmit(values, { setSubmitting }) {
     try {
-      console.log(values);
+      const headers = {
+        Authorization: accessToken.token,
+      };
+
+      await changeUserPassword({
+        body: { password: values.new_password },
+        headers,
+        id: authenticatedUser.uid,
+      });
     } catch (error) {
       setAuthError(error);
     }
@@ -70,7 +81,9 @@ export default function Security() {
               </div>
             </InputGroup>
             <InputGroup>
-              <button disabled={isSubmitting}>Guardar</button>
+              <button type='submit' disabled={isSubmitting}>
+                Guardar
+              </button>
             </InputGroup>
           </FormWrapper>
         )}

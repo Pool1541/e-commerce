@@ -36,3 +36,21 @@ export async function updateUserImage({ id, body, headers }) {
     throw new UserError(error.message);
   }
 }
+
+export async function changeUserPassword({ id, body, headers }) {
+  try {
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        ...headers,
+      },
+      body: JSON.stringify(body),
+      credentials: 'include',
+    };
+
+    return await httpRequest(options, `${ENDPOINTS.PATCH_CHANGE_PASSWORD}/${id}`);
+  } catch (error) {
+    throw new UserError(error.message);
+  }
+}

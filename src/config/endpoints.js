@@ -11,4 +11,5 @@ export const ENDPOINTS = {
   GET_FILTERS_BY_NAME: '/filters/',
   PUT_UPDATE_USER: '/users',
   POST_UPDATE_USER_IMAGE: '/uploads/users',
+  PATCH_CHANGE_PASSWORD: '/users',
 };
