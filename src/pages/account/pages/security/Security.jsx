@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import { changeUserPassword } from '../../../../repositories/userRepository';
 import useAuth from '../../../../hooks/useAuth';
+import { toast } from 'sonner';
 
 const validationSchema = Yup.object({
   current_password: Yup.string()
@@ -28,17 +29,20 @@ export default function Security() {
 
   async function handleSubmit(values, { setSubmitting }) {
     try {
+      const { current_password, new_password, confirm_password } = values;
       const headers = {
         Authorization: accessToken.token,
       };
 
       await changeUserPassword({
-        body: { password: values.new_password },
+        body: { current_password, new_password, confirm_password },
         headers,
         id: authenticatedUser.uid,
       });
+      toast.success('Se cambió la contraseña');
     } catch (error) {
       setAuthError(error);
+      toast.error(error.message);
     }
     setSubmitting(false);
   }
