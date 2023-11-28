@@ -1,20 +1,18 @@
 import { Link } from 'react-router-dom';
 import { GearIcon, LogoutIcon, UserIcon } from '../../assets/icons';
 import { ProfileOptionsContainer } from './ProfileOptions.styled';
-import useOutsideClick from '../../hooks/useOutsideClick';
 import useAuth from '../../hooks/useAuth';
-import { PRIVATE_ROUTES } from '../../config';
+import { ACCOUNT_ROUTES, PRIVATE_ROUTES } from '../../config';
 
-export default function ProfileOptions({ username, handleClose }) {
+export default function ProfileOptions({ ref, username }) {
   const { logout } = useAuth();
-  const ref = useOutsideClick(handleClose);
 
   return (
     <ProfileOptionsContainer ref={ref}>
       <p>Welcome {username}</p>
       <ul>
         <li>
-          <Link to={PRIVATE_ROUTES.ACCOUNT}>
+          <Link to={PRIVATE_ROUTES.ACCOUNT + '/' + ACCOUNT_ROUTES.PROFILE}>
             <UserIcon />
             Mi cuenta
           </Link>
