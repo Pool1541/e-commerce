@@ -49,6 +49,20 @@ export const InputGroup = styled.div`
     }
   }
 
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  input[type='number'] {
+    appearance: none;
+  }
+
   input:disabled {
     background-color: var(--gray-medium);
     cursor: not-allowed;
