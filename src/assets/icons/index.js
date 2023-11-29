@@ -19,3 +19,6 @@ export { default as ChevronRightIcon } from './ChevronRight.icon';
 export { default as FingerPrintIcon } from './FingerPrint.icon';
 export { default as BillingIcon } from './Billing.icon';
 export { default as PackageIcon } from './Package.icon';
+export { default as MastercardIcon } from './Mastercard.icon';
+export { default as VisaIcon } from './Visa.icon';
+export { default as AmericanExpressIcon } from './AmericanExpress.icon';
