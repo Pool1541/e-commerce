@@ -3,6 +3,7 @@ export const PUBLIC_ROUTES = {
   LOGIN: '/login',
   CATEGORY: '/category',
   PRODUCT: '/product',
+  ERROR: '/server-error',
 };
 
 export const PRIVATE_ROUTES = {
