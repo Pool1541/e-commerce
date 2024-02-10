@@ -18,7 +18,7 @@ const FPSwiper = styled(Swiper)`
 
 export default function FeaturedProductsSlider() {
   const SlidesPerView = useSlidesPerView();
-  const { data: products, loading } = useDataFetcher({ fetcherFn: fetchProducts });
+  const { data: products, loading, error } = useDataFetcher({ fetcherFn: fetchProducts });
   const SkeletonSlides = Array.from({ length: SlidesPerView }).map((_, index) => (
     <SkeletonSlide key={index} />
   ));
@@ -34,6 +34,8 @@ export default function FeaturedProductsSlider() {
         {SkeletonSlides}
       </div>
     );
+
+  if (error) return <div>Error durante la solicitud al servidor</div>;
 
   return (
     <FPSwiper

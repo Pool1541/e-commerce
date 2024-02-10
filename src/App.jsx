@@ -12,28 +12,33 @@ import BasketContextProvider from './context/BasketContext.jsx';
 import Account from './pages/account/Account.jsx';
 import AuthGuard from './guards/AuthGuard.jsx';
 import UnAuthGuard from './guards/UnAuthGuard.jsx';
+import Error from './pages/error/Error.jsx';
+import ErrorHandlerProvider from './context/ErrorHandlerContext.jsx';
 
 function App() {
   return (
     <Router>
-      <AuthContextProvider>
-        <BasketContextProvider>
-          <ScrollRestoration />
-          <Toaster richColors position='top-center' expand={true} closeButton />
-          <Routes>
-            <Route path={PUBLIC_ROUTES.HOME} element={<Home />} />
-            <Route path={`${PUBLIC_ROUTES.CATEGORY}/:categoryName`} element={<Departments />} />
-            <Route path={`${PUBLIC_ROUTES.PRODUCT}/:productID`} element={<Product />} />
-            <Route element={<UnAuthGuard />}>
-              <Route path={PUBLIC_ROUTES.LOGIN} element={<Login />} />
-            </Route>
-            <Route element={<AuthGuard />}>
-              <Route path={`${PRIVATE_ROUTES.ACCOUNT}/*`} element={<Account />} />
-            </Route>
-          </Routes>
-          <GlobalStyle />
-        </BasketContextProvider>
-      </AuthContextProvider>
+      <ErrorHandlerProvider>
+        <AuthContextProvider>
+          <BasketContextProvider>
+            <ScrollRestoration />
+            <Toaster richColors position='top-center' expand={true} closeButton />
+            <Routes>
+              <Route path={PUBLIC_ROUTES.HOME} element={<Home />} />
+              <Route path={`${PUBLIC_ROUTES.CATEGORY}/:categoryName`} element={<Departments />} />
+              <Route path={`${PUBLIC_ROUTES.PRODUCT}/:productID`} element={<Product />} />
+              <Route path={'/server-error'} element={<Error />} />
+              <Route element={<UnAuthGuard />}>
+                <Route path={PUBLIC_ROUTES.LOGIN} element={<Login />} />
+              </Route>
+              <Route element={<AuthGuard />}>
+                <Route path={`${PRIVATE_ROUTES.ACCOUNT}/*`} element={<Account />} />
+              </Route>
+            </Routes>
+            <GlobalStyle />
+          </BasketContextProvider>
+        </AuthContextProvider>
+      </ErrorHandlerProvider>
     </Router>
   );
 }

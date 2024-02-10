@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { errorHandler } from '../errors/errorHandler';
+import useErrorHandler from './useErrorHandler';
 
 export default function useDataFetcher({ fetcherFn, args = {}, dependencies = [], select }) {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
+  const { manageError } = useErrorHandler();
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -23,6 +25,7 @@ export default function useDataFetcher({ fetcherFn, args = {}, dependencies = []
         setData(data);
       } catch (error) {
         console.log(error);
+        manageError(error);
         errorHandler(error);
         setError(error.message);
       } finally {

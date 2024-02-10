@@ -1,10 +1,10 @@
 import { ENDPOINTS } from '../config';
 import { httpRequest } from '../utils';
 
-export async function getCategories() {
+export async function getCategories({ options = {} }) {
   try {
-    return await httpRequest({}, ENDPOINTS.GET_CATEGORIES);
+    return await httpRequest(options, ENDPOINTS.GET_CATEGORIES);
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
   }
 }

@@ -8,9 +8,11 @@ import HeroSlide from './HeroSlide';
 import SkeletonSlide from './SkeletonSlide';
 
 export default function HeroSlider() {
-  const { data: products, loading } = useDataFetcher({ fetcherFn: fetchProducts });
+  const { data: products, loading, error } = useDataFetcher({ fetcherFn: fetchProducts });
 
   if (loading) return <SkeletonSlide />;
+
+  if (error) return <div>Error durante la solicitud al servidor</div>;
 
   return (
     <Swiper

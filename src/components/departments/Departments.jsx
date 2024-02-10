@@ -11,7 +11,11 @@ import { transformToTitleCase } from '../../utils';
 import SkeletonDepartment from './SkeletonDepartment';
 
 export default function Departments() {
-  const { data: categories, loading } = useDataFetcher({ fetcherFn: getCategories });
+  const { data: categories, loading, error } = useDataFetcher({ fetcherFn: getCategories });
+
+  console.log(error);
+
+  if (error) return <div>Error durante la solicitud al servidor</div>;
 
   return (
     <Section>
