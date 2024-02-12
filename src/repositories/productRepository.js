@@ -6,6 +6,9 @@ export async function fetchProducts({ query = '', options = {} }) {
   try {
     return await httpRequest(options, `${ENDPOINTS.GET_PRODUCTS}${query}`);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new ProductError(error.message);
   }
 }
@@ -14,6 +17,9 @@ export async function fetchProductById({ id = '', options = {} }) {
   try {
     return await httpRequest(options, `${ENDPOINTS.GET_PRODUCT_BY_ID}/${id}`);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new ProductError(error.message);
   }
 }
@@ -22,6 +28,9 @@ export async function searchProducts({ query = '', options = {} }) {
   try {
     return await httpRequest(options, `${ENDPOINTS.SEARCH_PRODUCTS}/?keyword=${query}`);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new ProductError(error.message);
   }
 }
@@ -32,6 +41,9 @@ export async function fetchProductsPerPage(query) {
 
     return await httpRequest(options, `${ENDPOINTS.GET_PRODUCTS}${query}`);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new ProductError(error.message);
   }
 }

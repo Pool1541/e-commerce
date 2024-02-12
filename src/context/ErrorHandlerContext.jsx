@@ -17,6 +17,7 @@ export default function ErrorHandlerProvider({ children }) {
         error.message.split(',').forEach((message) => {
           toast.error(message);
         });
+      } else if (error.name === 'AbortError') {
       } else {
         if (!manageErrorRef.current) {
           navigate(PUBLIC_ROUTES.ERROR);
