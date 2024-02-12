@@ -9,4 +9,4 @@ TODO:
 ### Bugs
 
 - [ ] Cuando se cancela una solicitud (abortController.abort) el manejador de errores lo interpreta como error de la aplicacon y envía al usuario a la vista de error. Excluir la cancelación de solicitudes de los errores críticos.
-- [] Manejar los errores comunes en el contexto del manejador de errores.
+- [ ] Manejar los errores comunes en el contexto del manejador de errores.
