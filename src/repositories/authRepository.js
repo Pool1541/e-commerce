@@ -15,6 +15,9 @@ export async function loginUser(body) {
 
     return await httpRequest(options, ENDPOINTS.POST_LOGIN);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new AuthError(error.message);
   }
 }
@@ -32,6 +35,9 @@ export async function registerUser(body) {
 
     return await httpRequest(options, ENDPOINTS.POST_REGISTER);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new AuthError(error.message);
   }
 }
@@ -46,6 +52,9 @@ export async function getUserById(uid, token) {
 
     return await httpRequest(options, `${ENDPOINTS.GET_USER_BY_ID}/${uid}`);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new UserError(error.message);
   }
 }
@@ -58,6 +67,9 @@ export async function getAuthTokenByRefreshToken() {
 
     return await httpRequest(options, ENDPOINTS.GET_REFRESH_TOKEN);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new UserError(error.message);
   }
 }
@@ -70,6 +82,9 @@ export async function removeRefreshToken() {
 
     return await httpRequest(options, ENDPOINTS.GET_LOGOUT);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new UserError(error.message);
   }
 }

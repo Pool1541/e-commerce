@@ -16,6 +16,9 @@ export async function updateUser({ id, body, headers }) {
 
     return await httpRequest(options, `${ENDPOINTS.PUT_UPDATE_USER}/${id}`);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new UserError(error.message);
   }
 }
@@ -33,6 +36,9 @@ export async function updateUserImage({ id, body, headers }) {
 
     return await httpRequest(options, `${ENDPOINTS.POST_UPDATE_USER_IMAGE}/${id}`);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new UserError(error.message);
   }
 }
@@ -51,6 +57,9 @@ export async function changeUserPassword({ id, body, headers }) {
 
     return await httpRequest(options, `${ENDPOINTS.PATCH_CHANGE_PASSWORD}/${id}`);
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     throw new UserError(error.message);
   }
 }

@@ -10,6 +10,9 @@ export async function getFilters({ category = '' }) {
       `${ENDPOINTS.GET_FILTERS_BY_NAME}?filters=subCategory,brand${category}`
     );
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new DOMException('La solicitud ha sido cancelada.', 'AbortError');
+    }
     console.log(error);
   }
 }
