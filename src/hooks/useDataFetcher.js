@@ -22,14 +22,17 @@ export default function useDataFetcher({ fetcherFn, args = {}, dependencies = []
         if (select) {
           data = select(data);
         }
-        setData(data);
+
+        if (!abortController.signal.aborted) setData(data);
       } catch (error) {
-        console.log(error);
-        manageError(error);
-        errorHandler(error);
-        setError(error.message);
+        if (!abortController.signal.aborted) {
+          console.log(error);
+          manageError(error);
+          errorHandler(error);
+          setError(error.message);
+        }
       } finally {
-        setLoading(false);
+        if (!abortController.signal.aborted) setLoading(false);
       }
     })();
 
