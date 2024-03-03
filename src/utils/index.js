@@ -7,3 +7,4 @@ export * from './handlerYupErrors';
 export * from './httpRequest';
 export * from './toFixed';
 export * from './transformToTitleCase';
+export * from './transformCard';
