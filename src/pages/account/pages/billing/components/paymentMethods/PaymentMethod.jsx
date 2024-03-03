@@ -1,4 +1,7 @@
+import { toast } from 'sonner';
 import { AmericanExpressIcon, VisaIcon, MastercardIcon } from '../../../../../../assets/icons';
+import useAuth from '../../../../../../hooks/useAuth';
+import { deletePaymentMethod } from '../../../../../../repositories/paymentMethods';
 import {
   StyledPaymentMethod,
   PaymentMethodInfo,
@@ -6,24 +9,46 @@ import {
   PaymentMethodCardNumber,
   PaymentMethodActions,
 } from './PaymentMethod.styled';
+import useBilling from '../../hooks/useBilling';
 
-export default function PaymentMethod({ creditCard, cardNumber }) {
+export default function PaymentMethod({ id, cardNumber }) {
+  const { refetchData } = useBilling();
+  const { accessToken } = useAuth();
+
   const CREDIT_CARDS_LOGOS = {
-    americanExpress: <AmericanExpressIcon />,
-    visa: <VisaIcon />,
-    mastercard: <MastercardIcon />,
+    3: <AmericanExpressIcon />,
+    4: <VisaIcon />,
+    5: <MastercardIcon />,
   };
+
+  const endsWidth = cardNumber.slice(-4);
+
+  async function remove() {
+    try {
+      const headers = {
+        Authorization: accessToken.token,
+      };
+
+      await deletePaymentMethod({ id, headers });
+
+      refetchData();
+      toast.info('Se eliminó el método de pago');
+    } catch (error) {
+      toast.error('No se pudo eliminar el método de pago');
+      console.log(error);
+    }
+  }
 
   return (
     <StyledPaymentMethod>
       <PaymentMethodInfo>
-        <PaymentMethodLogo>{CREDIT_CARDS_LOGOS[creditCard]}</PaymentMethodLogo>
+        <PaymentMethodLogo>{CREDIT_CARDS_LOGOS[cardNumber[0]]}</PaymentMethodLogo>
         <PaymentMethodCardNumber>
-          <p>Terminada en {cardNumber}</p>
+          <p>Terminada en {endsWidth}</p>
         </PaymentMethodCardNumber>
       </PaymentMethodInfo>
       <PaymentMethodActions>
-        <button>Eliminar</button>
+        <button onClick={remove}>Eliminar</button>
       </PaymentMethodActions>
     </StyledPaymentMethod>
   );
