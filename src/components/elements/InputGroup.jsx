@@ -87,6 +87,13 @@ export const InputGroup = styled.div`
     border-radius: 1rem;
   }
 
+  button:disabled {
+    background-color: var(--gray-medium);
+    color: var(--black);
+    cursor: not-allowed;
+    transition: all 0.2s ease;
+  }
+
   span {
     white-space: nowrap;
     font-size: clamp(1rem, 3.5vw, 1.3rem);
