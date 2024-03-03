@@ -12,4 +12,7 @@ export const ENDPOINTS = {
   PUT_UPDATE_USER: '/users',
   POST_UPDATE_USER_IMAGE: '/uploads/users',
   PATCH_CHANGE_PASSWORD: '/users',
+  GET_PAYMENT_METHODS: '/paymentMethods',
+  CREATE_PAYMENT_METHOD: '/paymentMethods',
+  DELETE_PAYMENT_METHOD: '/paymentMethods',
 };
