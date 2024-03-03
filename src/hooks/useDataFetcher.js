@@ -2,13 +2,21 @@ import { useEffect, useState } from 'react';
 import { errorHandler } from '../errors/errorHandler';
 import useErrorHandler from './useErrorHandler';
 
-export default function useDataFetcher({ fetcherFn, args = {}, dependencies = [], select }) {
+export default function useDataFetcher({
+  fetcherFn,
+  args = {},
+  dependencies = [],
+  select,
+  canFetch = true,
+}) {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
   const { manageError } = useErrorHandler();
 
   useEffect(() => {
+    if (!canFetch) return;
+
     const abortController = new AbortController();
     args.options = {
       ...args.options,
@@ -37,7 +45,7 @@ export default function useDataFetcher({ fetcherFn, args = {}, dependencies = []
     })();
 
     return () => abortController.abort();
-  }, [...dependencies]);
+  }, [...dependencies, canFetch]);
 
   return { data, loading, error };
 }
