@@ -6,7 +6,6 @@ export const ENDPOINTS = {
   POST_REGISTER: '/users',
   GET_PRODUCTS: '/products',
   GET_PRODUCT_BY_ID: '/products',
-  SEARCH_PRODUCTS: '/search',
   GET_REFRESH_TOKEN: '/auth/refresh',
   GET_FILTERS_BY_NAME: '/filters/',
   PUT_UPDATE_USER: '/users',
