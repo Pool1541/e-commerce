@@ -1,15 +1,18 @@
-import useOutsideClick from '../../../../hooks/useOutsideClick';
-import useFilterSidebar from '../../hooks/useFilterSidebar';
-import Filters from './Filters';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { StyledFilterContainer } from './Filters.styled';
-import useDataFetcher from '../../../../hooks/useDataFetcher';
-import { getFilters } from '../../../../repositories/filterRepository';
-import { useParams } from 'react-router-dom';
+import Filters from './Filters';
+import { getFilters } from '@/repositories/filterRepository';
+import { useOutsideClick, useDataFetcher } from '@/hooks';
+import useFilterSidebar from '../../hooks/useFilterSidebar';
 
 export default function FilterSidebar() {
   const { toggleFilterSidebar } = useFilterSidebar();
-  const ref = useOutsideClick(toggleFilterSidebar);
+  const [searchParams] = useSearchParams();
   const { categoryName: currentCategory } = useParams();
+  const ref = useOutsideClick(toggleFilterSidebar);
+
+  const keyword = searchParams.get('keyword');
+  const query = keyword ? { keyword } : { category: currentCategory };
 
   const {
     data: filters,
@@ -17,7 +20,7 @@ export default function FilterSidebar() {
     error,
   } = useDataFetcher({
     fetcherFn: getFilters,
-    args: { category: currentCategory },
+    args: query,
     dependencies: [currentCategory],
   });
 
