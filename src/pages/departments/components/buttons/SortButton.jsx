@@ -1,9 +1,8 @@
-import { SortIcon } from '../../../../assets/icons';
-import { Button } from '../../../../components/elements';
 import { StyledSortButtonContainer } from './Buttons.styled';
-import SortOptions from '../sortOptions/sortOptions';
-import useBoolean from '../../../../hooks/useBoolean';
-import useOutsideClick from '../../../../hooks/useOutsideClick';
+import SortOptions from '../sortOptions/SortOptions';
+import { Button } from '@/components/elements';
+import { useBoolean, useOutsideClick } from '@/hooks/';
+import { SortIcon } from '@/assets/icons';
 
 export default function SortButton() {
   const { value, setToggle, setFalse } = useBoolean();
