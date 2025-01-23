@@ -4,6 +4,7 @@ export const PUBLIC_ROUTES = {
   CATEGORY: '/category',
   PRODUCT: '/product',
   ERROR: '/server-error',
+  SEARCH: '/search',
 };
 
 export const PRIVATE_ROUTES = {
