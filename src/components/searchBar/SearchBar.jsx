@@ -8,7 +8,7 @@ export default function SearchBar() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const keyword = e.target.querySelector('input').value.trim();
+    const keyword = event.target.querySelector('input').value.trim();
 
     if (keyword) {
       navigate(`/search?keyword=${keyword}`);
