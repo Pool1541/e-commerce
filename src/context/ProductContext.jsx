@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
-import { fetchProducts } from '../repositories/productRepository';
 import { useParams, useSearchParams } from 'react-router-dom';
-import useDataFetcher from '../hooks/useDataFetcher';
+import { fetchProducts } from '@/repositories/productRepository';
+import { useDataFetcher } from '@/hooks';
 
 export const ProductContext = createContext();
 
@@ -9,7 +9,9 @@ export default function ProductContextProvider({ children }) {
   const [pages, setPages] = useState();
   const [searchParams] = useSearchParams();
   const { categoryName } = useParams();
+
   const currentPage = Number(searchParams.get('page')) || 1;
+  const keyword = searchParams.get('keyword');
 
   const { data: products, loading } = useDataFetcher({
     fetcherFn: fetchProducts,
@@ -21,7 +23,7 @@ export default function ProductContextProvider({ children }) {
   function buildQueryString() {
     const limit = (currentPage - 1) * 20;
     searchParams.delete('page');
-    searchParams.set('category', categoryName);
+    !keyword && searchParams.set('category', categoryName);
     searchParams.set('from', limit);
 
     return '?' + decodeURIComponent(searchParams.toString());
