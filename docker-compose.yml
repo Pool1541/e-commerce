@@ -1,0 +1,39 @@
+
+services:
+  client:
+    image: emporium-frontend:prod
+    container_name: emporium-frontend
+    restart: always
+    ports:
+      - "5432:3002"
+  
+  api:
+    image: emporium-api:prod
+    container_name: emporium-api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: ${PORT}
+      MONGODB_CONNECTION: /run/secrets/mongodb_connection
+      PRIVATE_KEY: /run/secrets/jwt_private_key
+      PRIVATE_REFRESH_KEY: /run/secrets/jwt_private_refresh_key
+      NODE_ENV: ${NODE_ENV}
+      FRONTEND_URL: ${FRONTEND_URL}
+      CLOUDINARY_URL: ${CLOUDINARY_URL}
+      CRYPTO_SECRET_KEY: /run/secrets/crypto_secret_key
+    secrets:
+      - mongodb_connection
+      - jwt_private_key
+      - jwt_private_refresh_key
+      - crypto_secret_key
+
+secrets:
+  mongodb_connection:
+    file: ./secrets/mongodb-connection.txt
+  jwt_private_key:
+    file: ./secrets/jwt-private-key.txt
+  jwt_private_refresh_key:
+    file: ./secrets/jwt-private-refresh-key.txt
+  crypto_secret_key:
+    file: ./secrets/crypto-secret-key.txt
