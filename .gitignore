@@ -12,6 +12,8 @@ dist
 dist-ssr
 build
 *.local
+*.prod
+.env
 
 # Editor directories and files
 .vscode/*
@@ -23,3 +25,6 @@ build
 *.njsproj
 *.sln
 *.sw?
+
+secrets
+.env.docker
