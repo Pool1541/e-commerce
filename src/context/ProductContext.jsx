@@ -16,7 +16,7 @@ export default function ProductContextProvider({ children }) {
   const { data: products, loading } = useDataFetcher({
     fetcherFn: fetchProducts,
     args: { query: buildQueryString() },
-    dependencies: [searchParams],
+    dependencies: [searchParams, categoryName],
     select: (data) => (getTotalPages(data), data),
   });
 

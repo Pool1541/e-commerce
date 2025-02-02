@@ -21,7 +21,7 @@ export default function FilterSidebar() {
   } = useDataFetcher({
     fetcherFn: getFilters,
     args: query,
-    dependencies: [currentCategory],
+    dependencies: [currentCategory, searchParams],
   });
 
   return (
