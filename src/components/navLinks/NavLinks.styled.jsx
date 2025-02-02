@@ -4,6 +4,7 @@ import BREAKPOINTS from '../../assets/styles/breakPoints';
 const NavLinkContainer = styled.ul`
   display: flex;
   gap: 40px;
+  
   li {
     color: var(--mahogany);
   }
