@@ -7,7 +7,7 @@ import GridContainer from './components/gridContainer/GridContainer';
 import FilterContainer from './components/filters/FilterContainer';
 import FilterSidebarContextProvider from './context/FilterSidebarContext';
 import Pagination from '../../components/pagination/Pagination';
-import ProductContextProvider from '../../context/ProductContext';
+import ProductContextProvider from '@/context/ProductContextProvider';
 
 export default function Departments() {
   return (
