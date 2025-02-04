@@ -57,7 +57,7 @@ export default function NavLinks() {
         </DropdownMenu>
       </li>
       <li>
-        <Link>Productos con descuento</Link>
+        <Link to={`${PUBLIC_ROUTES.OFFERS}`}>Productos con descuento</Link>
       </li>
       <li>
         <Link>Novedades</Link>

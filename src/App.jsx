@@ -26,6 +26,7 @@ function App() {
             <Routes>
               <Route path={PUBLIC_ROUTES.HOME} element={<Home />} />
               <Route path={`${PUBLIC_ROUTES.CATEGORY}/:categoryName`} element={<Departments />} />
+              <Route path={`${PUBLIC_ROUTES.OFFERS}/`} element={<Departments />} />
               <Route path={`${PUBLIC_ROUTES.SEARCH}`} element={<Departments />} />
               <Route path={`${PUBLIC_ROUTES.PRODUCT}/:productID`} element={<Product />} />
               <Route path={PUBLIC_ROUTES.ERROR} element={<Error />} />

@@ -5,6 +5,7 @@ export const PUBLIC_ROUTES = {
   PRODUCT: '/product',
   ERROR: '/server-error',
   SEARCH: '/search',
+  OFFERS: '/productos-con-descuento'
 };
 
 export const PRIVATE_ROUTES = {
