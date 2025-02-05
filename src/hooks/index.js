@@ -11,4 +11,5 @@ export { default as useQuantity } from './useQuantity';
 export { default as useSessionStorage } from './useSessionStorage';
 export { default as useSlidesPerView } from './useSlidesPerView';
 export { default as useProductQueries } from './useProductQueries';
+export { default as useFilterQueries } from './useFilterQueries';
 export * from './usePagination';
