@@ -1,7 +1,4 @@
-import { PUBLIC_ROUTES } from '@/config';
-
-export const ITEMS_PER_PAGE = 20;
-export const MIN_DISCOUNT = 40;
+import { PUBLIC_ROUTES, MIN_DISCOUNT, ITEMS_PER_PAGE } from '@/config';
 
 export const calculateOffset = (page) => (page - 1) * ITEMS_PER_PAGE;
 
@@ -15,7 +12,7 @@ export const buildSearchParams = (params, searchParams) => {
     if (value !== null) cleanParams.set(key, value);
   });
 
-  return '?' + decodeURIComponent(cleanParams.toString());
+  return '?' + cleanParams.toString();
 };
 
 export const createQueryBuilders = (searchParams, currentPage, keyword, categoryName) => ({
