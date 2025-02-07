@@ -19,7 +19,7 @@ export const createQueryBuilders = (searchParams, currentPage, keyword, category
   [PUBLIC_ROUTES.CATEGORY]: (() =>
     buildSearchParams(
       {
-        category: !keyword ? categoryName : null,
+        category: categoryName,
         from: calculateOffset(currentPage),
       },
       searchParams
@@ -29,6 +29,15 @@ export const createQueryBuilders = (searchParams, currentPage, keyword, category
     buildSearchParams(
       {
         minDiscount: MIN_DISCOUNT,
+        from: calculateOffset(currentPage),
+      },
+      searchParams
+    ))(),
+
+    [PUBLIC_ROUTES.SEARCH]: (() =>
+    buildSearchParams(
+      {
+        keyword,
         from: calculateOffset(currentPage),
       },
       searchParams
