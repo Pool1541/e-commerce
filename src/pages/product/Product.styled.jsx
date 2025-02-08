@@ -53,3 +53,37 @@ export const ProductBodyRight = styled.div`
     flex: none;
   }
 `;
+
+export const SkeletonContainer = styled.div`
+  display: flex;
+  margin-bottom: 5rem;
+  gap: 5rem;
+
+  & div {
+    width: 50%;
+    height: 50rem;
+    border-radius: 0.8rem;
+  }
+
+  & :first-child {
+    width: 45%;
+  }
+
+  @media screen and (${BREAKPOINTS.TABLET_L}) {
+    flex-direction: column;
+    gap: 1rem;
+
+    & div {
+      width: 100%;
+      height: 20rem;
+    }
+
+    & :first-child {
+      width: 100%;
+    }
+
+    & :last-child {
+      height: 400px;
+    }
+  }
+`;

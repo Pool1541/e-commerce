@@ -1,13 +1,14 @@
-import { Main, Container, Section } from '../../components/elements';
+import { Main, Container, Section } from '@/components/elements';
 import { ContainerProduct } from './Product.styled';
-import { fetchProductById } from '../../repositories/productRepository';
+import { fetchProductById } from '@/repositories/productRepository';
 import { useParams } from 'react-router-dom';
 import ProductInformation from './components/productInfomation/ProductInformation';
 import ProductContent from './components/productContent/ProductContent';
-import useDataFetcher from '../../hooks/useDataFetcher';
+import useDataFetcher from '@/hooks/useDataFetcher';
 import ProductImage from './components/productImage/ProductImage';
-import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
+import Header from '@/components/header/Header';
+import Footer from '@/components/footer/Footer';
+import ProductSkeleton from './ProductSkeleton';
 
 export default function Product() {
   const { productID } = useParams();
@@ -19,7 +20,7 @@ export default function Product() {
     dependencies: [productID],
   });
 
-  if (loading) return <div>Cargando...</div>;
+  if (loading) return <ProductSkeleton />;
 
   return (
     <>
