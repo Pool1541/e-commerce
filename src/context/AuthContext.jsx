@@ -10,7 +10,15 @@ import {
 } from '../repositories/authRepository';
 import { errorHandler } from '../errors/errorHandler';
 
-export const AuthContext = createContext();
+export const AuthContext = createContext({
+  authenticatedUser: {},
+  accessToken: {},
+  isAuthenticated: false,
+  userImage: undefined,
+  authenticateUser: () => {},
+  getAuthenticatedUserInfo: () => {},
+  logout: () => {},
+});
 
 export default function AuthContextProvider({ children }) {
   const isAuthenticatedKey = 'isAuthenticated';
@@ -22,7 +30,7 @@ export default function AuthContextProvider({ children }) {
     setValue: setUserImage,
     removeValue: removeUserImage,
   } = useLocalStorage(userImageKey, undefined);
-  const { storedValue: isAuthenticated, setValue: setIsAuthenticated } = useLocalStorage(
+  const { storedValue: isAuthenticated = false, setValue: setIsAuthenticated } = useLocalStorage(
     isAuthenticatedKey,
     false
   );
